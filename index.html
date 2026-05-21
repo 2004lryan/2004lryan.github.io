@@ -3,26 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ryan Lin — Homepage</title>
+<title>Ryan Lin</title>
 <meta name="description" content="Personal homepage of Ryan Lin." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
+<script>
+  // Restore language preference before render to avoid flash
+  (function () {
+    var saved = localStorage.getItem('lang') || 'en';
+    document.documentElement.setAttribute('data-lang', saved);
+  })();
+</script>
 </head>
 <body>
 
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-glow" aria-hidden="true"></div>
-
 <nav class="top-nav">
-  <a href="#top" class="brand"><span class="brand-mark">●</span> Ryan Lin</a>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#news">News</a>
-    <a href="#publications">Publications</a>
-    <a href="#cv">CV</a>
-    <a href="#contact">Contact</a>
+  <a href="#top" class="brand">Ryan Lin</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about"><span data-lang="en">About</span><span data-lang="zh">简介</span></a>
+      <a href="#news"><span data-lang="en">News</span><span data-lang="zh">动态</span></a>
+      <a href="#publications"><span data-lang="en">Publications</span><span data-lang="zh">论文</span></a>
+      <a href="#cv">CV</a>
+      <a href="#contact"><span data-lang="en">Contact</span><span data-lang="zh">联系</span></a>
+    </div>
+    <button class="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">
+      <span class="lt-en">EN</span><span class="lt-sep">·</span><span class="lt-zh">中</span>
+    </button>
   </div>
 </nav>
 
@@ -31,153 +40,163 @@
   <!-- ========== HERO ========== -->
   <section class="hero">
     <div class="hero-photo">
-      <div class="photo-frame">
-        <div class="photo-placeholder">
-          <span class="photo-initial">R</span>
-        </div>
-        <div class="photo-ring"></div>
+      <div class="photo-placeholder">
+        <span class="photo-initial">R</span>
       </div>
     </div>
 
     <div class="hero-text">
-      <div class="eyebrow"><span class="mono">// hello world</span></div>
-      <h1 class="name"><span class="serif-italic">Ryan</span> Lin</h1>
+      <h1 class="name">Ryan Lin</h1>
       <p class="title">
-        Undergraduate Researcher &nbsp;·&nbsp; <span class="muted">Affiliation TBD</span>
+        <span data-lang="en">Undergraduate Researcher</span><span data-lang="zh">本科研究者</span>
+        &nbsp;·&nbsp;
+        <span class="muted">
+          <span data-lang="en">Affiliation TBD</span><span data-lang="zh">机构待定</span>
+        </span>
       </p>
-      <p class="tagline">
-        Working on <span class="accent">computer vision</span>,
-        <span class="accent">diffusion models</span>, and
-        <span class="accent">embodied AI</span>.
+      <p class="tagline" data-lang="en">
+        I work on computer vision, diffusion models, and embodied AI.
+        Actively looking for PhD opportunities for Fall 2027.
       </p>
-      <div class="hero-meta">
-        <a href="mailto:2004lryan@gmail.com" class="chip">
-          <span class="mono">↳</span> 2004lryan@gmail.com
-        </a>
-        <a href="https://github.com/2004lryan" class="chip" target="_blank" rel="noopener">
-          <span class="mono">↳</span> github.com/2004lryan
-        </a>
+      <p class="tagline" data-lang="zh">
+        研究方向：计算机视觉、扩散模型、具身智能。正在寻找 2027 年秋入学的博士机会。
+      </p>
+      <div class="hero-links">
+        <a href="mailto:2004lryan@gmail.com">2004lryan@gmail.com</a>
+        <span class="dot">·</span>
+        <a href="https://github.com/2004lryan" target="_blank" rel="noopener">GitHub</a>
+        <span class="dot">·</span>
+        <a href="#" target="_blank" rel="noopener">Scholar</a>
+        <span class="dot">·</span>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </section>
 
   <!-- ========== ABOUT ========== -->
   <section id="about" class="section">
-    <header class="section-head">
-      <span class="section-num mono">01</span>
-      <h2>About</h2>
-    </header>
+    <h2 class="section-title">
+      <span data-lang="en">About</span><span data-lang="zh">关于</span>
+    </h2>
     <div class="prose">
-      <p>
+      <p data-lang="en">
         I am Ryan Lin, an undergraduate researcher interested in machine learning,
-        computer vision, and how learned systems can ground themselves in the
-        physical world. My current focus is on diffusion-based generative models and
-        their applications to embodied agents.
+        computer vision, and how learned systems ground themselves in the physical
+        world. My current focus is on diffusion-based generative models and their
+        application to embodied agents.
       </p>
-      <p>
+      <p data-lang="en">
         Outside of research, I enjoy long-distance running, mechanical keyboards,
-        and over-engineering my dotfiles. I am actively looking for
-        <span class="hl">PhD opportunities for Fall 2027</span>.
+        and over-engineering my dotfiles. I am actively looking for PhD
+        opportunities for Fall 2027.
+      </p>
+      <p data-lang="zh">
+        我是 Ryan Lin，一名本科生研究者，关注机器学习、计算机视觉，以及学习系统如何与物理世界建立联系。
+        目前的研究重点是基于扩散模型的生成方法及其在具身智能中的应用。
+      </p>
+      <p data-lang="zh">
+        研究之外，喜欢长跑、机械键盘，以及过度折腾自己的 dotfiles。
+        正在寻找 2027 年秋季入学的博士机会。
       </p>
     </div>
   </section>
 
   <!-- ========== NEWS ========== -->
   <section id="news" class="section">
-    <header class="section-head">
-      <span class="section-num mono">02</span>
-      <h2>News</h2>
-    </header>
+    <h2 class="section-title">
+      <span data-lang="en">News</span><span data-lang="zh">动态</span>
+    </h2>
     <ul class="news-list">
       <li>
-        <span class="date mono">2026.05</span>
-        <span class="news-body">Submitted first-author paper to <em>NeurIPS 2026</em>.</span>
+        <span class="date">May 2026</span>
+        <span class="news-body" data-lang="en">Submitted first-author paper to <em>NeurIPS 2026</em>.</span>
+        <span class="news-body" data-lang="zh">以一作向 <em>NeurIPS 2026</em> 投稿。</span>
       </li>
       <li>
-        <span class="date mono">2026.03</span>
-        <span class="news-body">Started research internship at <em>Lab Placeholder</em>.</span>
+        <span class="date">Mar 2026</span>
+        <span class="news-body" data-lang="en">Started research internship at <em>Lab Placeholder</em>.</span>
+        <span class="news-body" data-lang="zh">在 <em>实验室占位</em> 开始研究实习。</span>
       </li>
       <li>
-        <span class="date mono">2025.11</span>
-        <span class="news-body">Received the <em>Outstanding Undergraduate Researcher</em> award.</span>
+        <span class="date">Nov 2025</span>
+        <span class="news-body" data-lang="en">Received the <em>Outstanding Undergraduate Researcher</em> award.</span>
+        <span class="news-body" data-lang="zh">获得 <em>优秀本科生研究者</em> 称号。</span>
       </li>
       <li>
-        <span class="date mono">2025.09</span>
-        <span class="news-body">First paper accepted to <em>CVPR Workshop 2025</em>.</span>
+        <span class="date">Sep 2025</span>
+        <span class="news-body" data-lang="en">First paper accepted to <em>CVPR Workshop 2025</em>.</span>
+        <span class="news-body" data-lang="zh">第一篇论文被 <em>CVPR Workshop 2025</em> 接收。</span>
       </li>
     </ul>
   </section>
 
   <!-- ========== PUBLICATIONS ========== -->
   <section id="publications" class="section">
-    <header class="section-head">
-      <span class="section-num mono">03</span>
-      <h2>Publications</h2>
-    </header>
+    <h2 class="section-title">
+      <span data-lang="en">Publications</span><span data-lang="zh">论文</span>
+    </h2>
 
     <div class="pub-list">
 
       <article class="pub">
-        <div class="pub-thumb">
-          <div class="thumb-placeholder"><span class="mono">FIG&nbsp;1</span></div>
-        </div>
-        <div class="pub-content">
-          <h3 class="pub-title">A Placeholder Paper on Diffusion-Based Embodied Agents</h3>
-          <p class="pub-authors">
-            <strong>Ryan Lin</strong>, Co-author A, Co-author B, Advisor C
-          </p>
-          <p class="pub-venue"><em>NeurIPS</em>, 2026 &nbsp;·&nbsp; <span class="badge">Under Review</span></p>
-          <p class="pub-abstract">
-            A short one-sentence abstract goes here. The page intentionally keeps it
-            brief so the visual rhythm of the publication list stays clean.
-          </p>
-          <div class="pub-links">
-            <a href="#" class="lk"><span class="mono">[PDF]</span></a>
-            <a href="#" class="lk"><span class="mono">[arXiv]</span></a>
-            <a href="#" class="lk"><span class="mono">[Code]</span></a>
-            <a href="#" class="lk"><span class="mono">[BibTeX]</span></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="pub">
-        <div class="pub-thumb">
-          <div class="thumb-placeholder"><span class="mono">FIG&nbsp;2</span></div>
-        </div>
-        <div class="pub-content">
-          <h3 class="pub-title">Sample Title for an Earlier Vision Paper</h3>
-          <p class="pub-authors">
-            Co-author X, <strong>Ryan Lin</strong>, Co-author Y
-          </p>
-          <p class="pub-venue"><em>CVPR Workshop</em>, 2025</p>
-          <p class="pub-abstract">
-            Another one-line teaser describing the contribution of this work.
-          </p>
-          <div class="pub-links">
-            <a href="#" class="lk"><span class="mono">[PDF]</span></a>
-            <a href="#" class="lk"><span class="mono">[Code]</span></a>
-            <a href="#" class="lk"><span class="mono">[Slides]</span></a>
-          </div>
+        <h3 class="pub-title">A Placeholder Paper on Diffusion-Based Embodied Agents</h3>
+        <p class="pub-authors">
+          <strong>Ryan Lin</strong>, Co-author A, Co-author B, Advisor C
+        </p>
+        <p class="pub-venue">
+          <em>NeurIPS</em>, 2026 &nbsp;·&nbsp;
+          <span class="badge" data-lang="en">Under Review</span>
+          <span class="badge" data-lang="zh">审稿中</span>
+        </p>
+        <p class="pub-abstract" data-lang="en">
+          A short one-sentence abstract describing the contribution. Kept brief
+          so the page rhythm stays clean.
+        </p>
+        <p class="pub-abstract" data-lang="zh">
+          一句话概括的摘要。保持简短，让页面节奏更清爽。
+        </p>
+        <div class="pub-links">
+          <a href="#">[PDF]</a>
+          <a href="#">[arXiv]</a>
+          <a href="#">[Code]</a>
+          <a href="#">[BibTeX]</a>
         </div>
       </article>
 
       <article class="pub">
-        <div class="pub-thumb">
-          <div class="thumb-placeholder"><span class="mono">FIG&nbsp;3</span></div>
+        <h3 class="pub-title">Sample Title for an Earlier Vision Paper</h3>
+        <p class="pub-authors">
+          Co-author X, <strong>Ryan Lin</strong>, Co-author Y
+        </p>
+        <p class="pub-venue"><em>CVPR Workshop</em>, 2025</p>
+        <p class="pub-abstract" data-lang="en">
+          Another one-line teaser describing this work.
+        </p>
+        <p class="pub-abstract" data-lang="zh">
+          另一段简短的工作描述。
+        </p>
+        <div class="pub-links">
+          <a href="#">[PDF]</a>
+          <a href="#">[Code]</a>
+          <a href="#">[Slides]</a>
         </div>
-        <div class="pub-content">
-          <h3 class="pub-title">Yet Another Placeholder Project Page</h3>
-          <p class="pub-authors">
-            <strong>Ryan Lin</strong>, Co-author Z
-          </p>
-          <p class="pub-venue"><em>Preprint</em>, 2024</p>
-          <p class="pub-abstract">
-            Brief description of the project's main idea.
-          </p>
-          <div class="pub-links">
-            <a href="#" class="lk"><span class="mono">[PDF]</span></a>
-            <a href="#" class="lk"><span class="mono">[Project Page]</span></a>
-          </div>
+      </article>
+
+      <article class="pub">
+        <h3 class="pub-title">Yet Another Placeholder Project Page</h3>
+        <p class="pub-authors">
+          <strong>Ryan Lin</strong>, Co-author Z
+        </p>
+        <p class="pub-venue"><em>Preprint</em>, 2024</p>
+        <p class="pub-abstract" data-lang="en">
+          Brief description of the project's main idea.
+        </p>
+        <p class="pub-abstract" data-lang="zh">
+          这个项目的核心想法。
+        </p>
+        <div class="pub-links">
+          <a href="#">[PDF]</a>
+          <a href="#">[Project Page]</a>
         </div>
       </article>
 
@@ -186,58 +205,62 @@
 
   <!-- ========== CV ========== -->
   <section id="cv" class="section">
-    <header class="section-head">
-      <span class="section-num mono">04</span>
-      <h2>Curriculum Vitae</h2>
-    </header>
+    <h2 class="section-title">
+      <span data-lang="en">Curriculum Vitae</span><span data-lang="zh">个人简历</span>
+    </h2>
     <div class="cv-download">
       <a href="https://github.com/2004lryan/about_me/raw/main/02resume.pdf" class="cv-btn" target="_blank" rel="noopener">
-        <span class="mono">[PDF]</span>
-        <span class="cv-label">English Resume</span>
-        <span class="cv-arrow">→</span>
+        <span class="cv-tag">[PDF]</span>
+        <span data-lang="en">English Resume</span>
+        <span data-lang="zh">英文简历</span>
       </a>
-      <a href="https://github.com/2004lryan/about_me" class="cv-btn cv-btn-alt" target="_blank" rel="noopener">
-        <span class="mono">[Git]</span>
-        <span class="cv-label">Source Repo</span>
-        <span class="cv-arrow">→</span>
+      <a href="https://github.com/2004lryan/about_me" class="cv-btn" target="_blank" rel="noopener">
+        <span class="cv-tag">[Git]</span>
+        <span data-lang="en">Source Repository</span>
+        <span data-lang="zh">源文件仓库</span>
       </a>
     </div>
   </section>
 
   <!-- ========== CONTACT ========== -->
   <section id="contact" class="section">
-    <header class="section-head">
-      <span class="section-num mono">05</span>
-      <h2>Contact</h2>
-    </header>
-    <div class="contact-grid">
-      <a class="contact-card" href="mailto:2004lryan@gmail.com">
-        <span class="mono cc-label">// email</span>
-        <span class="cc-value">2004lryan@gmail.com</span>
-      </a>
-      <a class="contact-card" href="https://github.com/2004lryan" target="_blank" rel="noopener">
-        <span class="mono cc-label">// github</span>
-        <span class="cc-value">@2004lryan</span>
-      </a>
-      <a class="contact-card" href="#" target="_blank" rel="noopener">
-        <span class="mono cc-label">// scholar</span>
-        <span class="cc-value">Google Scholar →</span>
-      </a>
-      <a class="contact-card" href="#" target="_blank" rel="noopener">
-        <span class="mono cc-label">// linkedin</span>
-        <span class="cc-value">LinkedIn →</span>
-      </a>
-    </div>
+    <h2 class="section-title">
+      <span data-lang="en">Contact</span><span data-lang="zh">联系</span>
+    </h2>
+    <dl class="contact-list">
+      <dt data-lang="en">Email</dt>
+      <dt data-lang="zh">邮箱</dt>
+      <dd><a href="mailto:2004lryan@gmail.com">2004lryan@gmail.com</a></dd>
+
+      <dt data-lang="en">GitHub</dt>
+      <dt data-lang="zh">GitHub</dt>
+      <dd><a href="https://github.com/2004lryan" target="_blank" rel="noopener">@2004lryan</a></dd>
+
+      <dt data-lang="en">Scholar</dt>
+      <dt data-lang="zh">学术主页</dt>
+      <dd><a href="#" target="_blank" rel="noopener">Google Scholar</a></dd>
+
+      <dt data-lang="en">LinkedIn</dt>
+      <dt data-lang="zh">领英</dt>
+      <dd><a href="#" target="_blank" rel="noopener">linkedin.com/in/—</a></dd>
+    </dl>
   </section>
 
   <footer class="site-foot">
-    <div class="foot-row">
-      <span class="mono">© 2026 Ryan Lin</span>
-      <span class="mono dim">— hand-crafted · last updated 2026.05.21</span>
-    </div>
+    <span data-lang="en">© 2026 Ryan Lin · Last updated May 21, 2026</span>
+    <span data-lang="zh">© 2026 Ryan Lin · 最后更新 2026 年 5 月 21 日</span>
   </footer>
 
 </main>
+
+<script>
+  function toggleLang() {
+    var current = document.documentElement.getAttribute('data-lang') || 'en';
+    var next = current === 'en' ? 'zh' : 'en';
+    document.documentElement.setAttribute('data-lang', next);
+    try { localStorage.setItem('lang', next); } catch (e) {}
+  }
+</script>
 
 </body>
 </html>
