@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ryan Lin — Homepage</title>
+<meta name="description" content="Personal homepage of Ryan Lin." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+
+<nav class="top-nav">
+  <a href="#top" class="brand"><span class="brand-mark">●</span> Ryan Lin</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#cv">CV</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <div class="photo-placeholder">
+          <span class="photo-initial">R</span>
+        </div>
+        <div class="photo-ring"></div>
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <div class="eyebrow"><span class="mono">// hello world</span></div>
+      <h1 class="name"><span class="serif-italic">Ryan</span> Lin</h1>
+      <p class="title">
+        Undergraduate Researcher &nbsp;·&nbsp; <span class="muted">Affiliation TBD</span>
+      </p>
+      <p class="tagline">
+        Working on <span class="accent">computer vision</span>,
+        <span class="accent">diffusion models</span>, and
+        <span class="accent">embodied AI</span>.
+      </p>
+      <div class="hero-meta">
+        <a href="mailto:2004lryan@gmail.com" class="chip">
+          <span class="mono">↳</span> 2004lryan@gmail.com
+        </a>
+        <a href="https://github.com/2004lryan" class="chip" target="_blank" rel="noopener">
+          <span class="mono">↳</span> github.com/2004lryan
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section">
+    <header class="section-head">
+      <span class="section-num mono">01</span>
+      <h2>About</h2>
+    </header>
+    <div class="prose">
+      <p>
+        I am Ryan Lin, an undergraduate researcher interested in machine learning,
+        computer vision, and how learned systems can ground themselves in the
+        physical world. My current focus is on diffusion-based generative models and
+        their applications to embodied agents.
+      </p>
+      <p>
+        Outside of research, I enjoy long-distance running, mechanical keyboards,
+        and over-engineering my dotfiles. I am actively looking for
+        <span class="hl">PhD opportunities for Fall 2027</span>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== NEWS ========== -->
+  <section id="news" class="section">
+    <header class="section-head">
+      <span class="section-num mono">02</span>
+      <h2>News</h2>
+    </header>
+    <ul class="news-list">
+      <li>
+        <span class="date mono">2026.05</span>
+        <span class="news-body">Submitted first-author paper to <em>NeurIPS 2026</em>.</span>
+      </li>
+      <li>
+        <span class="date mono">2026.03</span>
+        <span class="news-body">Started research internship at <em>Lab Placeholder</em>.</span>
+      </li>
+      <li>
+        <span class="date mono">2025.11</span>
+        <span class="news-body">Received the <em>Outstanding Undergraduate Researcher</em> award.</span>
+      </li>
+      <li>
+        <span class="date mono">2025.09</span>
+        <span class="news-body">First paper accepted to <em>CVPR Workshop 2025</em>.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ========== PUBLICATIONS ========== -->
+  <section id="publications" class="section">
+    <header class="section-head">
+      <span class="section-num mono">03</span>
+      <h2>Publications</h2>
+    </header>
+
+    <div class="pub-list">
+
+      <article class="pub">
+        <div class="pub-thumb">
+          <div class="thumb-placeholder"><span class="mono">FIG&nbsp;1</span></div>
+        </div>
+        <div class="pub-content">
+          <h3 class="pub-title">A Placeholder Paper on Diffusion-Based Embodied Agents</h3>
+          <p class="pub-authors">
+            <strong>Ryan Lin</strong>, Co-author A, Co-author B, Advisor C
+          </p>
+          <p class="pub-venue"><em>NeurIPS</em>, 2026 &nbsp;·&nbsp; <span class="badge">Under Review</span></p>
+          <p class="pub-abstract">
+            A short one-sentence abstract goes here. The page intentionally keeps it
+            brief so the visual rhythm of the publication list stays clean.
+          </p>
+          <div class="pub-links">
+            <a href="#" class="lk"><span class="mono">[PDF]</span></a>
+            <a href="#" class="lk"><span class="mono">[arXiv]</span></a>
+            <a href="#" class="lk"><span class="mono">[Code]</span></a>
+            <a href="#" class="lk"><span class="mono">[BibTeX]</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-thumb">
+          <div class="thumb-placeholder"><span class="mono">FIG&nbsp;2</span></div>
+        </div>
+        <div class="pub-content">
+          <h3 class="pub-title">Sample Title for an Earlier Vision Paper</h3>
+          <p class="pub-authors">
+            Co-author X, <strong>Ryan Lin</strong>, Co-author Y
+          </p>
+          <p class="pub-venue"><em>CVPR Workshop</em>, 2025</p>
+          <p class="pub-abstract">
+            Another one-line teaser describing the contribution of this work.
+          </p>
+          <div class="pub-links">
+            <a href="#" class="lk"><span class="mono">[PDF]</span></a>
+            <a href="#" class="lk"><span class="mono">[Code]</span></a>
+            <a href="#" class="lk"><span class="mono">[Slides]</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-thumb">
+          <div class="thumb-placeholder"><span class="mono">FIG&nbsp;3</span></div>
+        </div>
+        <div class="pub-content">
+          <h3 class="pub-title">Yet Another Placeholder Project Page</h3>
+          <p class="pub-authors">
+            <strong>Ryan Lin</strong>, Co-author Z
+          </p>
+          <p class="pub-venue"><em>Preprint</em>, 2024</p>
+          <p class="pub-abstract">
+            Brief description of the project's main idea.
+          </p>
+          <div class="pub-links">
+            <a href="#" class="lk"><span class="mono">[PDF]</span></a>
+            <a href="#" class="lk"><span class="mono">[Project Page]</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== CV ========== -->
+  <section id="cv" class="section">
+    <header class="section-head">
+      <span class="section-num mono">04</span>
+      <h2>Curriculum Vitae</h2>
+    </header>
+    <div class="cv-download">
+      <a href="https://github.com/2004lryan/about_me/raw/main/02resume.pdf" class="cv-btn" target="_blank" rel="noopener">
+        <span class="mono">[PDF]</span>
+        <span class="cv-label">English Resume</span>
+        <span class="cv-arrow">→</span>
+      </a>
+      <a href="https://github.com/2004lryan/about_me" class="cv-btn cv-btn-alt" target="_blank" rel="noopener">
+        <span class="mono">[Git]</span>
+        <span class="cv-label">Source Repo</span>
+        <span class="cv-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section">
+    <header class="section-head">
+      <span class="section-num mono">05</span>
+      <h2>Contact</h2>
+    </header>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:2004lryan@gmail.com">
+        <span class="mono cc-label">// email</span>
+        <span class="cc-value">2004lryan@gmail.com</span>
+      </a>
+      <a class="contact-card" href="https://github.com/2004lryan" target="_blank" rel="noopener">
+        <span class="mono cc-label">// github</span>
+        <span class="cc-value">@2004lryan</span>
+      </a>
+      <a class="contact-card" href="#" target="_blank" rel="noopener">
+        <span class="mono cc-label">// scholar</span>
+        <span class="cc-value">Google Scholar →</span>
+      </a>
+      <a class="contact-card" href="#" target="_blank" rel="noopener">
+        <span class="mono cc-label">// linkedin</span>
+        <span class="cc-value">LinkedIn →</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <div class="foot-row">
+      <span class="mono">© 2026 Ryan Lin</span>
+      <span class="mono dim">— hand-crafted · last updated 2026.05.21</span>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
