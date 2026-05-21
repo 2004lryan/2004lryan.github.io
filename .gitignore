@@ -7,3 +7,8 @@
 *.swp
 *.swo
 Thumbs.db
+
+# Plaintext drafts for the encrypted Others page — NEVER commit these
+_private_content.html
+_private_*.html
+*.plaintext

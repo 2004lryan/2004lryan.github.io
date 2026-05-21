@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Others — 李盼林 Ryan Lin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<script>
+  (function () {
+    var saved = localStorage.getItem('lang') || 'en';
+    document.documentElement.setAttribute('data-lang', saved);
+  })();
+</script>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="brand">
+    <span data-lang="en">Ryan Lin</span>
+    <span data-lang="zh">李盼林</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="index.html#about"><span data-lang="en">About</span><span data-lang="zh">简介</span></a>
+      <a href="index.html#news"><span data-lang="en">News</span><span data-lang="zh">动态</span></a>
+      <a href="index.html#publications"><span data-lang="en">Publications</span><span data-lang="zh">论文</span></a>
+      <a href="index.html#cv">CV</a>
+      <a href="index.html#contact"><span data-lang="en">Contact</span><span data-lang="zh">联系</span></a>
+      <a href="others.html" class="nav-active">
+        <span data-lang="en">Others</span><span data-lang="zh">其他</span>
+      </a>
+    </div>
+    <button class="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">
+      <span class="lt-en">EN</span><span class="lt-sep">·</span><span class="lt-zh">中</span>
+    </button>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ========== LOCK SCREEN ========== -->
+  <section class="lock-screen" id="lock-screen">
+    <div class="lock-card">
+      <div class="lock-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="11" width="16" height="9" rx="1.5"/>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+        </svg>
+      </div>
+      <h1 class="lock-title">
+        <span data-lang="en">Private Space</span><span data-lang="zh">私人空间</span>
+      </h1>
+      <p class="lock-hint">
+        <span data-lang="en">The content here is encrypted. Enter the password to unlock.</span>
+        <span data-lang="zh">本页内容已加密，请输入密码解锁。</span>
+      </p>
+      <form id="lock-form" onsubmit="event.preventDefault(); unlock();">
+        <input
+          type="password"
+          id="pwd"
+          placeholder=""
+          autocomplete="current-password"
+          autofocus
+          required
+        />
+        <button type="submit" class="lock-btn">
+          <span data-lang="en">Unlock</span><span data-lang="zh">解锁</span>
+          <span class="arrow">→</span>
+        </button>
+      </form>
+      <p id="lock-error" class="lock-error"></p>
+    </div>
+  </section>
+
+  <!-- ========== DECRYPTED CONTENT (hidden until unlock) ========== -->
+  <section id="content" class="content hidden"></section>
+
+  <!-- ========== EDIT TOOLS (hidden until unlock) ========== -->
+  <details id="edit-tools" class="edit-tools hidden">
+    <summary>
+      <span data-lang="en">Edit content (re-encrypt)</span>
+      <span data-lang="zh">编辑内容（重新加密）</span>
+    </summary>
+    <div class="edit-body">
+      <p class="edit-help">
+        <span data-lang="en">
+          Paste new HTML content below, then click "Generate". Copy the resulting
+          ciphertext and replace the <code>CIPHERTEXT</code> constant near the
+          bottom of <code>others.html</code>. Commit and push.
+        </span>
+        <span data-lang="zh">
+          在下方粘贴新的 HTML 内容，点击「生成」。复制结果，替换
+          <code>others.html</code> 底部的 <code>CIPHERTEXT</code> 常量，提交并推送即可。
+        </span>
+      </p>
+      <textarea id="new-content" rows="10" placeholder="<h2>Title</h2>&#10;<p>Your content here…</p>"></textarea>
+      <div class="edit-actions">
+        <button onclick="encryptNew()" class="edit-btn">
+          <span data-lang="en">Generate ciphertext</span><span data-lang="zh">生成密文</span>
+        </button>
+        <button onclick="copyOutput()" class="edit-btn edit-btn-alt" id="copy-btn" disabled>
+          <span data-lang="en">Copy</span><span data-lang="zh">复制</span>
+        </button>
+      </div>
+      <textarea id="ciphertext-output" rows="6" readonly placeholder="// ciphertext will appear here"></textarea>
+    </div>
+  </details>
+
+  <footer class="site-foot">
+    <span data-lang="en">© 2026 Ryan Lin · Encrypted with AES-256-GCM</span>
+    <span data-lang="zh">© 2026 李盼林 · AES-256-GCM 加密</span>
+  </footer>
+
+</main>
+
+<script>
+// ============ Language toggle ============
+function toggleLang() {
+  var current = document.documentElement.getAttribute('data-lang') || 'en';
+  var next = current === 'en' ? 'zh' : 'en';
+  document.documentElement.setAttribute('data-lang', next);
+  try { localStorage.setItem('lang', next); } catch (e) {}
+}
+
+// ============ WebCrypto helpers ============
+const ITERATIONS = 200000;
+
+function b64decode(b64) {
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return bytes;
+}
+function b64encode(bytes) {
+  let bin = "";
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+
+async function deriveKey(password, salt) {
+  const km = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(password),
+    { name: "PBKDF2" },
+    false,
+    ["deriveKey"]
+  );
+  return crypto.subtle.deriveKey(
+    { name: "PBKDF2", salt: salt, iterations: ITERATIONS, hash: "SHA-256" },
+    km,
+    { name: "AES-GCM", length: 256 },
+    false,
+    ["encrypt", "decrypt"]
+  );
+}
+
+async function decryptBlob(b64blob, password) {
+  const data = b64decode(b64blob);
+  const salt = data.slice(0, 16);
+  const iv   = data.slice(16, 28);
+  const ct   = data.slice(28);
+  const key  = await deriveKey(password, salt);
+  const pt   = await crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, ct);
+  return new TextDecoder().decode(pt);
+}
+
+async function encryptText(plaintext, password) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv   = crypto.getRandomValues(new Uint8Array(12));
+  const key  = await deriveKey(password, salt);
+  const ct   = await crypto.subtle.encrypt(
+    { name: "AES-GCM", iv: iv },
+    key,
+    new TextEncoder().encode(plaintext)
+  );
+  const ctBytes = new Uint8Array(ct);
+  const blob = new Uint8Array(16 + 12 + ctBytes.length);
+  blob.set(salt, 0);
+  blob.set(iv, 16);
+  blob.set(ctBytes, 28);
+  return b64encode(blob);
+}
+
+// ============ Lock / unlock ============
+let _currentPassword = null;
+
+async function unlock() {
+  const pwd = document.getElementById('pwd').value;
+  const errEl = document.getElementById('lock-error');
+  errEl.textContent = "";
+
+  try {
+    const html = await decryptBlob(CIPHERTEXT, pwd);
+    _currentPassword = pwd;
+    document.getElementById('content').innerHTML = html;
+    document.getElementById('content').classList.remove('hidden');
+    document.getElementById('edit-tools').classList.remove('hidden');
+    document.getElementById('lock-screen').classList.add('hidden');
+  } catch (e) {
+    errEl.textContent =
+      document.documentElement.getAttribute('data-lang') === 'zh'
+        ? '密码错误'
+        : 'Incorrect password';
+    document.getElementById('pwd').value = '';
+  }
+}
+
+// ============ Edit / re-encrypt ============
+async function encryptNew() {
+  const plain = document.getElementById('new-content').value;
+  if (!plain.trim()) return;
+  if (!_currentPassword) return;
+  const out = await encryptText(plain, _currentPassword);
+  const ta = document.getElementById('ciphertext-output');
+  ta.value = out;
+  document.getElementById('copy-btn').disabled = false;
+}
+
+function copyOutput() {
+  const ta = document.getElementById('ciphertext-output');
+  ta.select();
+  document.execCommand('copy');
+  const btn = document.getElementById('copy-btn');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '✓';
+  setTimeout(() => (btn.innerHTML = orig), 1200);
+}
+
+// ============ Ciphertext (replace this when you re-encrypt) ============
+const CIPHERTEXT = "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";
+
+</script>
+
+</body>
+</html>
