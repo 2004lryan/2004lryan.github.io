@@ -346,6 +346,51 @@ html[data-lang="zh"] .section-title {
 }
 .pub-links a:hover { color: var(--accent); }
 
+/* ===== Inline BibTeX toggle ===== */
+.pub-bib {
+  display: inline-block;
+}
+.pub-bib > summary {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-2);
+  list-style: none;
+  transition: color 0.15s ease;
+}
+.pub-bib > summary::-webkit-details-marker { display: none; }
+.pub-bib > summary::marker { content: ''; }
+.pub-bib > summary:hover { color: var(--accent); }
+.pub-bib[open] > summary {
+  color: var(--accent);
+  font-weight: 500;
+}
+.pub-bib > pre {
+  display: block;
+  margin-top: 0.7rem;
+  margin-bottom: 0.2rem;
+  width: 100%;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.78rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  color: var(--text-2);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.pub-bib-pending {
+  font-size: 0.82rem;
+  color: var(--text-3);
+  font-style: italic;
+  padding: 0.05rem 0.5rem;
+  border: 1px dashed var(--border-hi);
+  border-radius: 3px;
+}
+
 /* ===== CV ===== */
 .cv-download {
   display: flex;
