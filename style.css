@@ -600,6 +600,11 @@ main {
   border-color: var(--border);
   background: var(--surface);
 }
+.tag-program {
+  color: #92400e;
+  border-color: #92400e;
+  background: rgba(146, 64, 14, 0.04);
+}
 /* Role variants */
 .tag-role-pi {
   color: var(--text);
