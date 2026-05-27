@@ -441,6 +441,69 @@ main {
   margin-bottom: 0.4rem;
   line-height: 1.55;
 }
+
+/* ===== Per-pub "Details" collapsible (method / innovation / outcome / story) ===== */
+details.pub-extra {
+  margin-top: 0.45rem;
+}
+details.pub-extra > summary {
+  cursor: pointer;
+  font-size: 0.78rem;
+  color: var(--link);
+  list-style: none;
+  display: inline-block;
+  padding: 0.05rem 0;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+details.pub-extra > summary::-webkit-details-marker { display: none; }
+details.pub-extra > summary::marker { content: ''; }
+details.pub-extra > summary::before {
+  content: '▸';
+  display: inline-block;
+  margin-right: 0.35rem;
+  font-size: 0.7em;
+  transition: transform 0.18s ease;
+  color: var(--text-3);
+}
+details.pub-extra[open] > summary::before {
+  transform: rotate(90deg);
+  color: var(--link-hover);
+}
+details.pub-extra > summary:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.pub-extra-body {
+  margin-top: 0.5rem;
+  padding: 0.7rem 0.95rem;
+  background: var(--surface);
+  border-left: 2px solid var(--border-hi);
+  border-radius: 0 3px 3px 0;
+  font-size: 0.86rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.pub-extra-body p {
+  margin: 0 0 0.55rem;
+}
+.pub-extra-body p:last-child { margin-bottom: 0; }
+.pub-extra-body p strong {
+  font-weight: 600;
+  color: var(--text);
+}
+.pub-extra-body .pub-extra-story {
+  margin-top: 0.7rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed var(--border-hi);
+  font-style: italic;
+  color: var(--text-2);
+}
+.pub-extra-body .pub-extra-story strong {
+  font-style: normal;
+  color: var(--text);
+}
 .pub-links {
   display: flex;
   flex-wrap: wrap;
