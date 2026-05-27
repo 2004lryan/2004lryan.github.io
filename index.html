@@ -636,22 +636,22 @@
 
     <div class="pub-list">
 
-      <article class="pub" data-tags="first drafting">
+      <article class="pub" data-tags="sci first drafting">
         <h3 class="pub-title">Functional Contrastive PCA + Sparse Multi-Task Learning for Cross-Cultivar Hyperspectral Detection of Agricultural Products</h3>
         <p class="pub-authors"><strong>Panlin Li</strong>, <em>et al.</em></p>
-        <p class="pub-venue"><em>npj Science of Food / Nature Communications</em>. <span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
+        <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-first"><span data-lang="en">First Author</span><span data-lang="zh">第一作者</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
       </article>
 
-      <article class="pub" data-tags="first drafting">
+      <article class="pub" data-tags="sci first drafting">
         <h3 class="pub-title">Mechanism-Embedded Post-Harvest Modeling — Arrhenius PDE Soft-Constrained Function-on-Function Regression (Mech-FoFR)</h3>
         <p class="pub-authors"><strong>Panlin Li</strong>, <em>et al.</em></p>
-        <p class="pub-venue"><em>Nature Food</em>. <span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
+        <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-first"><span data-lang="en">First Author</span><span data-lang="zh">第一作者</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
       </article>
 
-      <article class="pub" data-tags="first drafting">
+      <article class="pub" data-tags="sci first drafting">
         <h3 class="pub-title">FoodSpec-FM — A Functional Foundation Model for Cross-Device Smartphone Spectral Quick-Screening of Agricultural Products</h3>
         <p class="pub-authors"><strong>Panlin Li</strong>, <em>et al.</em></p>
-        <p class="pub-venue"><em>Nature Food</em>. <span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
+        <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-first"><span data-lang="en">First Author</span><span data-lang="zh">第一作者</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
       </article>
 
       <article class="pub pub-with-thumb" id="pub-cross-year" data-tags="sci first submitted">
@@ -1136,7 +1136,6 @@
   // Tag filtering for Projects / Publications / Patents / Awards
   (function () {
     var listSelector = '.pub-list, .ip-list, .award-list, .proj-mini-list, .proj-list';
-    var DEFAULT_LEVEL_TAGS = ['natl', 'prov'];
 
     function applyFilter(section, tags) {
       section.querySelectorAll('[data-tags]').forEach(function (item) {
@@ -1171,18 +1170,17 @@
       var section = document.querySelector(bar.getAttribute('data-target'));
       if (!section) return;
       var buttons = bar.querySelectorAll('.filter-btn');
-      // Sections with natl + prov + univ buttons (i.e., Projects) default to
-      // showing natl + prov only; univ is hidden until 校级 is clicked.
-      var hasLevelFilter = bar.querySelector('[data-tag="natl"]')
-                          && bar.querySelector('[data-tag="prov"]')
-                          && bar.querySelector('[data-tag="univ"]');
-      if (hasLevelFilter) {
+      // Default to the most prestigious tag per section:
+      //   sections with a 国家级 (natl) button -> default to natl only
+      //   sections with an SCI button (Publications) -> default to SCI only
+      var defaultTag = null;
+      if (bar.querySelector('[data-tag="natl"]')) defaultTag = 'natl';
+      else if (bar.querySelector('[data-tag="sci"]')) defaultTag = 'sci';
+      if (defaultTag) {
         buttons.forEach(function (b) {
-          b.classList.remove('active');
-          var t = b.getAttribute('data-tag');
-          if (t === 'natl' || t === 'prov') b.classList.add('active');
+          b.classList.toggle('active', b.getAttribute('data-tag') === defaultTag);
         });
-        applyFilter(section, DEFAULT_LEVEL_TAGS);
+        applyFilter(section, defaultTag);
       }
       buttons.forEach(function (btn) {
         btn.addEventListener('click', function () {
