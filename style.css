@@ -213,6 +213,14 @@ main {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.hero-memberships {
+  margin-top: 0.85rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.78rem;
+  color: var(--text-3);
+  line-height: 1.55;
+}
 
 .hero-bio {
   display: flex;
@@ -812,9 +820,19 @@ html[data-lang="zh"] .filter-btn { font-family: var(--font-cjk), var(--font-sans
 }
 
 /* ===== Education ===== */
-/* ===== Education card ===== */
+/* The whole edu-block is a <summary> — clicking it toggles the details */
+details.edu-collapse { margin: 0; }
+details.edu-collapse > summary { list-style: none; cursor: pointer; }
+details.edu-collapse > summary::-webkit-details-marker { display: none; }
+details.edu-collapse > summary::marker { content: ''; }
+details.edu-collapse > summary.edu-block {
+  margin-bottom: 0;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+details.edu-collapse > summary.edu-block:hover {
+  border-color: var(--border-hi);
+}
 .edu-block {
-  margin-bottom: 0.5rem;
   padding: 1rem 1.2rem;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -822,10 +840,35 @@ html[data-lang="zh"] .filter-btn { font-family: var(--font-cjk), var(--font-sans
 }
 .edu-row {
   display: grid;
-  grid-template-columns: 54px 1fr auto;
+  grid-template-columns: 54px 1fr auto auto;
   gap: 1.1rem;
   align-items: center;
 }
+.edu-toggle {
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--text-3);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  transition: transform 0.2s ease;
+  transform-origin: 3px 5px;
+  display: inline-block;
+}
+details.edu-collapse[open] > summary .edu-toggle { transform: rotate(90deg); }
+details.edu-collapse > summary:hover .edu-toggle { border-left-color: var(--text); }
+.edu-details {
+  margin-top: 0.6rem;
+  padding: 0 0.4rem;
+}
+.edu-detail-label {
+  font-weight: 600;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0.8rem 0 0.3rem;
+}
+.edu-detail-label:first-child { margin-top: 0.3rem; }
 .edu-mark {
   width: 54px;
   height: 54px;
