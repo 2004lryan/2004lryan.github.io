@@ -365,7 +365,9 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
   z-index: 2;
+  background: #ffffff;
 }
 .pub-thumb-venue {
   font-size: 0.92rem;
