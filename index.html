@@ -1210,6 +1210,26 @@
         });
       });
     });
+
+    // If a same-page anchor link targets an item hidden by the current filter,
+    // reset that section's filter to 全部/all before the browser jumps.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var hash = a.getAttribute('href');
+      if (!hash || hash === '#') return;
+      var target = document.querySelector(hash);
+      if (!target) return;
+      var hidden = target.classList.contains('filter-hidden')
+                || (target.closest && target.closest('.filter-hidden'));
+      if (!hidden) return;
+      var section = target.closest('section[id]');
+      if (!section) return;
+      var bar = section.querySelector('.filter-bar');
+      if (!bar) return;
+      var allBtn = bar.querySelector('[data-tag="all"]');
+      if (allBtn) allBtn.click();
+    });
   })();
 </script>
 
