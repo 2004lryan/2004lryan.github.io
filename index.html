@@ -1173,9 +1173,11 @@
       // Default to the most prestigious tag per section:
       //   sections with a 国家级 (natl) button -> default to natl only
       //   sections with an SCI button (Publications) -> default to SCI only
+      //   sections with a utility (Patents) button -> default to utility only
       var defaultTag = null;
       if (bar.querySelector('[data-tag="natl"]')) defaultTag = 'natl';
       else if (bar.querySelector('[data-tag="sci"]')) defaultTag = 'sci';
+      else if (bar.querySelector('[data-tag="utility"]')) defaultTag = 'utility';
       if (defaultTag) {
         buttons.forEach(function (b) {
           b.classList.toggle('active', b.getAttribute('data-tag') === defaultTag);
