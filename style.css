@@ -1003,6 +1003,16 @@ details.edu-collapse > summary:hover .edu-toggle { border-left-color: var(--text
   background: var(--text-3);
   border-radius: 50%;
 }
+.honors-list a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border-hi);
+}
+.honors-list a:hover {
+  color: var(--link-hover);
+  border-bottom-style: solid;
+  border-bottom-color: var(--link-hover);
+}
 
 /* ===== Collapsible (rotating chevron) ===== */
 details.collapse { margin: 0.2rem 0 0; }
