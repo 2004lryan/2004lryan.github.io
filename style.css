@@ -928,14 +928,30 @@ details.proj > .proj-body + .proj-body {
   white-space: nowrap;
   line-height: 1.4;
 }
-/* === Tier 1: level chips (SCI / 国家级 / 自治区级 / 校级) — light pine fill === */
-.tag-sci,
-.tag-natl,
-.tag-prov,
-.tag-univ {
+/* === Venue chips (SCI / Conf / Journal) — light pine fill === */
+.tag-sci {
   color: var(--color-primary);
   background: var(--color-primary-light);
   border: none;
+  font-weight: 500;
+}
+/* === Project-level chips — three intensities so 国家级 stands out === */
+.tag-natl {
+  color: #ffffff;
+  background: var(--color-primary);
+  border: none;
+  font-weight: 600;
+}
+.tag-prov {
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border: none;
+  font-weight: 500;
+}
+.tag-univ {
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
   font-weight: 500;
 }
 /* === Tier 2: emphasis chips (重点 / 面上项目 / IF) — gold-brown fill === */
