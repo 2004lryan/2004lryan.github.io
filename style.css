@@ -709,15 +709,66 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   gap: 0.75rem;
 }
 .proj {
-  padding: 1.1rem 1.25rem;
+  padding: 0;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  overflow: hidden;
 }
 .proj:hover {
   border-color: var(--color-border-strong);
   box-shadow: 0 2px 10px -4px rgba(20, 84, 59, 0.10);
+}
+/* Details-as-card: clickable summary header + collapsible body */
+details.proj > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.05rem 2.6rem 1.05rem 1.25rem;
+  position: relative;
+  user-select: none;
+}
+details.proj > summary::-webkit-details-marker { display: none; }
+details.proj > summary::marker { content: ''; }
+details.proj > summary::after {
+  content: '';
+  position: absolute;
+  top: 1.4rem;
+  right: 1.25rem;
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--color-text-subtle);
+  border-bottom: 1.5px solid var(--color-text-subtle);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+details.proj[open] > summary::after {
+  transform: rotate(-135deg);
+  border-color: var(--color-primary);
+  top: 1.65rem;
+}
+details.proj > summary:hover::after { border-color: var(--color-primary); }
+details.proj > summary > .proj-title,
+details.proj > summary > .proj-meta {
+  margin-left: 0;
+}
+details.proj[open] > summary {
+  border-bottom: 1px dashed var(--color-border);
+}
+/* Expanded content padding (proj-body / proj-outputs sit below summary) */
+details.proj > .proj-body,
+details.proj > .proj-outputs {
+  padding: 0 1.25rem;
+}
+details.proj > .proj-body:first-of-type {
+  padding-top: 0.85rem;
+}
+details.proj > .proj-outputs:last-of-type,
+details.proj > .proj-body:last-of-type {
+  padding-bottom: 1.05rem;
+}
+details.proj > .proj-body + .proj-body {
+  padding-top: 0;
 }
 .proj-title {
   font-family: var(--font-serif);
