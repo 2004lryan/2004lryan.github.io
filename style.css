@@ -816,16 +816,25 @@ details.proj > .proj-body + .proj-body {
   border: none;
   font-weight: 500;
 }
-/* === Tier 2: emphasis chips (重点 / 面上项目 / IF) — gold-brown fill === */
+/* === Tier 2: emphasis chips (重点 / 面上项目 / IF / 优秀结项) — gold-brown fill === */
 .tag-key,
 .tag-program,
-.tag-if {
+.tag-if,
+.tag-excellent {
   color: #8A5A12;
   background: rgba(180, 120, 30, 0.12);
   border: none;
   font-weight: 500;
 }
 .tag-if { font-variant-numeric: tabular-nums; }
+
+/* === Tier 1 neutral chip (合格结项) — soft pine outline === */
+.tag-pass {
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
+  font-weight: 500;
+}
 /* === Tier 3: project role (PI / Participant) — plain muted text with · === */
 .tag-role-pi,
 .tag-role-part {
@@ -1042,17 +1051,33 @@ html[data-lang="zh"] .filter-btn { font-family: var(--font-cjk), var(--font-sans
 .ip-list li {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 0.3rem 1rem;
-  padding: 0.45rem 0;
+  grid-template-rows: auto auto;
+  gap: 0.18rem 1rem;
+  padding: 0.55rem 0;
   align-items: baseline;
 }
-.ip-title { font-size: 0.9rem; color: var(--text); }
+.ip-title { font-size: 0.9rem; color: var(--text); grid-column: 1; grid-row: 1; }
+.ip-authors {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 0.78rem;
+  color: var(--color-text-subtle);
+  line-height: 1.4;
+}
 .ip-meta {
   font-family: var(--font-mono);
   font-size: 0.76rem;
   color: var(--text-3);
   text-align: right;
   font-variant-numeric: tabular-nums;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+}
+.ip-granted {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-sans);
 }
 
 /* ===== Education ===== */
