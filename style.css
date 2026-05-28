@@ -1456,11 +1456,41 @@ details.collapse > .honors-list { margin-top: 0; }
 
 /* ===== Footer ===== */
 .site-foot {
-  margin-top: 3.5rem;
-  padding: 1.6rem 0 2rem;
-  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  padding: 2.2rem 0 2.5rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-text-subtle);
+}
+.foot-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+.foot-line {
   font-size: 0.78rem;
-  color: var(--text-3);
+  line-height: 1.7;
+  color: var(--color-text-subtle);
+}
+.foot-contact {
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+}
+.foot-contact a {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-border-strong);
+}
+.foot-contact a:hover {
+  color: var(--color-primary-dark);
+  border-bottom-color: var(--color-primary-dark);
+}
+.foot-sep {
+  margin: 0 0.55rem;
+  color: var(--color-text-subtle);
 }
 
 /* ===== Personal / About Me ===== */
