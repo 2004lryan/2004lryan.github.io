@@ -748,6 +748,40 @@
           </div>
     </details>
 
+      <details class="pub" id="pub-mech" data-tags="sci first drafting">
+      <summary>
+        <h3 class="pub-title">Mechanism-Embedded Post-Harvest Modeling — Arrhenius PDE Soft-Constrained Function-on-Function Regression (Mech-FoFR)</h3>
+        <p class="pub-authors"><strong>Panlin Li</strong>, Hua Huang, <em>et al.</em></p>
+        <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-first"><span data-lang="en">First Author</span><span data-lang="zh">第一作者</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
+      </summary>
+      <div class="pub-extra-body">
+        <p><strong><span data-lang="en">Method.</span><span data-lang="zh">方法。</span></strong> <span data-lang="en">Arrhenius kinetics imposed as PDE soft constraint on β(λ,t) coefficient surface in function-on-function regression Y(d) = ∬ β(λ,t) X(λ,t) dλ dt + ε; per-fruit "physiological time" warping τ_i(t) with Q₁₀ ∈ [2.0, 3.0] as a mechanism-consistency hard constraint.</span><span data-lang="zh">在函数对函数回归 Y(d) = ∬ β(λ,t) X(λ,t) dλ dt + ε 的系数面 β(λ,t) 上强加 ∂β/∂t = −k(T) g(β) Arrhenius 物理先验；学习逐果级"生理时间"扭曲映射 τ_i(t)，以 Q₁₀ ∈ [2.0, 3.0] 作机理自洽性硬约束。</span></p>
+        <p><strong><span data-lang="en">Innovation.</span><span data-lang="zh">创新点。</span></strong> <span data-lang="en">First joint identifiability proof for (β, E<sub>a</sub>, A) under Arrhenius soft constraint, with contraction-rate upper bounds; predictions translate into "decision regret + avoided-waste tonnage + CO₂-eq reduction" three-dim evaluation.</span><span data-lang="zh">首次给出 Arrhenius 软约束下 (β, E<sub>a</sub>, A) 联合可识别性证明 + contraction-rate 上界；预测精度直接换算为"决策遗憾 + 避免浪费吨数 + CO₂eq 减排"三维评估。</span></p>
+        <p><strong><span data-lang="en">Outcome.</span><span data-lang="zh">结论。</span></strong> <span data-lang="en">The Arrhenius-soft-constrained coefficient surface is provably identifiable; cross-species zero-shot transfer holds where unconstrained baselines collapse, and prediction error translates directly into avoided-waste tonnage and CO₂-eq decisions.</span><span data-lang="zh">Arrhenius 软约束下的系数面可识别性已证明；在无约束基线崩溃的场景下，跨物种零样本迁移仍然成立；预测误差可直接换算成"避免浪费吨数 + CO₂eq 减排"决策量。</span></p>
+      </div>
+      <details class="pub-story">
+        <summary><span data-lang="en">Behind the paper</span><span data-lang="zh">论文背后</span></summary>
+        <p class="pub-extra-story"><strong><span data-lang="en">Behind the paper.</span><span data-lang="zh">论文背后。</span></strong> <span data-lang="en">Origin: high-school chemistry already says fruit rots faster at 25 °C than at 4 °C, exponentially so. Path: vanilla function-on-function regression learns β(λ,t) but is blind to Arrhenius. Why not bake the physics in as a PDE soft constraint? Once joint identifiability of (β, E<sub>a</sub>, A) is proved, the model becomes cross-species transferable. Elevation: precision is not the goal; the goal is to tell the cold-chain operator "shipping today saves 12 tons of waste and 8 t-CO₂ — go." Then the model has earned its electricity.</span><span data-lang="zh">缘起：高中化学就说了——苹果 25 °C 比 4 °C 烂得快，呈指数关系。展开：函数对函数回归可以学 β(λ,t)，但不知道 Arrhenius；把物理作为 PDE 软约束直接塞进系数面，证完 (β, E<sub>a</sub>, A) 联合可识别性，模型就能跨物种迁移。升华：精度不是终点；终点是告诉冷链调度员"今天发货能省 12 吨损耗、8 吨 CO₂——走"。模型才算挣回了自己的电费。</span></p>
+      </details>
+    </details>
+
+      <details class="pub" id="pub-foodspec" data-tags="sci first drafting">
+      <summary>
+        <h3 class="pub-title">FoodSpec-FM — A Functional Foundation Model for Cross-Device Smartphone Spectral Quick-Screening of Agricultural Products</h3>
+        <p class="pub-authors"><strong>Panlin Li</strong>, Hua Huang, <em>et al.</em></p>
+        <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-first"><span data-lang="en">First Author</span><span data-lang="zh">第一作者</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
+      </summary>
+      <div class="pub-extra-body">
+        <p><strong><span data-lang="en">Method.</span><span data-lang="zh">方法。</span></strong> <span data-lang="en">Common functional eigen-basis under heterogeneous sampling operators (CFE-HSO) with joint identifiability + minimax convergence rates; FoodSpec-FM — masked-band SSL + cross-device contrastive alignment + band-agnostic Transformer; three device tiers (lab HSI 348 bands → 7-channel portable → smartphone 8-band multispectral).</span><span data-lang="zh">异构采样算子下共同函数型本征基（CFE-HSO）+ joint identifiability 与 minimax 收敛率；FoodSpec-FM——masked-band 自监督预训练 + 跨设备对比对齐 + band-agnostic Transformer；三档设备（实验室 348 波段 → 便携 7 通道 → 手机 8 波段多光谱）。</span></p>
+        <p><strong><span data-lang="en">Innovation.</span><span data-lang="zh">创新点。</span></strong> <span data-lang="en">First foundation model that treats lab / portable / smartphone spectra as different sampling operators of the same underlying functional spectrum; quantifies "consumer protection rate" against EU MRL 2023/915 + Codex Alimentarius thresholds.</span><span data-lang="zh">首次把实验室 / 便携 / 手机三档光谱视作同一光谱本征的不同采样算子；以 EU MRL 2023/915 + Codex Alimentarius 阈值量化"消费者保护率"。</span></p>
+        <p><strong><span data-lang="en">Outcome.</span><span data-lang="zh">结论。</span></strong> <span data-lang="en">A single foundation model serves all three device tiers (lab 348-band HSI → 7-channel portable → smartphone 8-band) without per-device retraining, and maintains MRL-aligned pesticide-residue detection sensitivity on the consumer tier.</span><span data-lang="zh">一个 foundation model 同时服务三档设备（实验室 348 波段 → 便携 7 通道 → 手机 8 波段），无需逐设备重训；在消费级设备上仍保持与 MRL 阈值对齐的农残检出灵敏度。</span></p>
+      </div>
+      <details class="pub-story">
+        <summary><span data-lang="en">Behind the paper</span><span data-lang="zh">论文背后</span></summary>
+        <p class="pub-extra-story"><strong><span data-lang="en">Behind the paper.</span><span data-lang="zh">论文背后。</span></strong> <span data-lang="en">Origin: lab hyperspectral imagers have 348 bands; a consumer smartphone spectroscopy attachment has 8. Both should be able to detect pesticide residue on apples. Path: training a separate model per device → useless. Treat each device as a different sampling operator of one shared functional spectrum → one foundation model handles all three. Elevation: tying model accuracy to the "consumer protection rate" against EU MRL means food-safety regulators can finally use this in the field — not just in a paper.</span><span data-lang="zh">缘起：实验室高光谱 348 个波段，消费者手机才 8 个波段。两者都该能查苹果上的农药残留。展开：一档设备训一个模型——没用；把每档设备当作同一光谱本征的不同采样算子——一个 foundation model 通吃三档。升华：把模型精度绑到 EU MRL 阈值的"消费者保护率"上，食品安全监管才能真正落到菜场——而不是只停在论文里。</span></p>
+      </details>
+    </details>
+
       <details class="pub pub-with-thumb" data-tags="sci first submitted">
       <summary>
         <div class="pub-thumb">
@@ -786,40 +820,6 @@
   note    = {Under review},
 }</pre></details>
           </div>
-    </details>
-
-      <details class="pub" id="pub-foodspec" data-tags="sci first drafting">
-      <summary>
-        <h3 class="pub-title">FoodSpec-FM — A Functional Foundation Model for Cross-Device Smartphone Spectral Quick-Screening of Agricultural Products</h3>
-        <p class="pub-authors"><strong>Panlin Li</strong>, Hua Huang, <em>et al.</em></p>
-        <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-first"><span data-lang="en">First Author</span><span data-lang="zh">第一作者</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
-      </summary>
-      <div class="pub-extra-body">
-        <p><strong><span data-lang="en">Method.</span><span data-lang="zh">方法。</span></strong> <span data-lang="en">Common functional eigen-basis under heterogeneous sampling operators (CFE-HSO) with joint identifiability + minimax convergence rates; FoodSpec-FM — masked-band SSL + cross-device contrastive alignment + band-agnostic Transformer; three device tiers (lab HSI 348 bands → 7-channel portable → smartphone 8-band multispectral).</span><span data-lang="zh">异构采样算子下共同函数型本征基（CFE-HSO）+ joint identifiability 与 minimax 收敛率；FoodSpec-FM——masked-band 自监督预训练 + 跨设备对比对齐 + band-agnostic Transformer；三档设备（实验室 348 波段 → 便携 7 通道 → 手机 8 波段多光谱）。</span></p>
-        <p><strong><span data-lang="en">Innovation.</span><span data-lang="zh">创新点。</span></strong> <span data-lang="en">First foundation model that treats lab / portable / smartphone spectra as different sampling operators of the same underlying functional spectrum; quantifies "consumer protection rate" against EU MRL 2023/915 + Codex Alimentarius thresholds.</span><span data-lang="zh">首次把实验室 / 便携 / 手机三档光谱视作同一光谱本征的不同采样算子；以 EU MRL 2023/915 + Codex Alimentarius 阈值量化"消费者保护率"。</span></p>
-        <p><strong><span data-lang="en">Outcome.</span><span data-lang="zh">结论。</span></strong> <span data-lang="en">A single foundation model serves all three device tiers (lab 348-band HSI → 7-channel portable → smartphone 8-band) without per-device retraining, and maintains MRL-aligned pesticide-residue detection sensitivity on the consumer tier.</span><span data-lang="zh">一个 foundation model 同时服务三档设备（实验室 348 波段 → 便携 7 通道 → 手机 8 波段），无需逐设备重训；在消费级设备上仍保持与 MRL 阈值对齐的农残检出灵敏度。</span></p>
-      </div>
-      <details class="pub-story">
-        <summary><span data-lang="en">Behind the paper</span><span data-lang="zh">论文背后</span></summary>
-        <p class="pub-extra-story"><strong><span data-lang="en">Behind the paper.</span><span data-lang="zh">论文背后。</span></strong> <span data-lang="en">Origin: lab hyperspectral imagers have 348 bands; a consumer smartphone spectroscopy attachment has 8. Both should be able to detect pesticide residue on apples. Path: training a separate model per device → useless. Treat each device as a different sampling operator of one shared functional spectrum → one foundation model handles all three. Elevation: tying model accuracy to the "consumer protection rate" against EU MRL means food-safety regulators can finally use this in the field — not just in a paper.</span><span data-lang="zh">缘起：实验室高光谱 348 个波段，消费者手机才 8 个波段。两者都该能查苹果上的农药残留。展开：一档设备训一个模型——没用；把每档设备当作同一光谱本征的不同采样算子——一个 foundation model 通吃三档。升华：把模型精度绑到 EU MRL 阈值的"消费者保护率"上，食品安全监管才能真正落到菜场——而不是只停在论文里。</span></p>
-      </details>
-    </details>
-
-      <details class="pub" id="pub-mech" data-tags="sci first drafting">
-      <summary>
-        <h3 class="pub-title">Mechanism-Embedded Post-Harvest Modeling — Arrhenius PDE Soft-Constrained Function-on-Function Regression (Mech-FoFR)</h3>
-        <p class="pub-authors"><strong>Panlin Li</strong>, Hua Huang, <em>et al.</em></p>
-        <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-first"><span data-lang="en">First Author</span><span data-lang="zh">第一作者</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
-      </summary>
-      <div class="pub-extra-body">
-        <p><strong><span data-lang="en">Method.</span><span data-lang="zh">方法。</span></strong> <span data-lang="en">Arrhenius kinetics imposed as PDE soft constraint on β(λ,t) coefficient surface in function-on-function regression Y(d) = ∬ β(λ,t) X(λ,t) dλ dt + ε; per-fruit "physiological time" warping τ_i(t) with Q₁₀ ∈ [2.0, 3.0] as a mechanism-consistency hard constraint.</span><span data-lang="zh">在函数对函数回归 Y(d) = ∬ β(λ,t) X(λ,t) dλ dt + ε 的系数面 β(λ,t) 上强加 ∂β/∂t = −k(T) g(β) Arrhenius 物理先验；学习逐果级"生理时间"扭曲映射 τ_i(t)，以 Q₁₀ ∈ [2.0, 3.0] 作机理自洽性硬约束。</span></p>
-        <p><strong><span data-lang="en">Innovation.</span><span data-lang="zh">创新点。</span></strong> <span data-lang="en">First joint identifiability proof for (β, E<sub>a</sub>, A) under Arrhenius soft constraint, with contraction-rate upper bounds; predictions translate into "decision regret + avoided-waste tonnage + CO₂-eq reduction" three-dim evaluation.</span><span data-lang="zh">首次给出 Arrhenius 软约束下 (β, E<sub>a</sub>, A) 联合可识别性证明 + contraction-rate 上界；预测精度直接换算为"决策遗憾 + 避免浪费吨数 + CO₂eq 减排"三维评估。</span></p>
-        <p><strong><span data-lang="en">Outcome.</span><span data-lang="zh">结论。</span></strong> <span data-lang="en">The Arrhenius-soft-constrained coefficient surface is provably identifiable; cross-species zero-shot transfer holds where unconstrained baselines collapse, and prediction error translates directly into avoided-waste tonnage and CO₂-eq decisions.</span><span data-lang="zh">Arrhenius 软约束下的系数面可识别性已证明；在无约束基线崩溃的场景下，跨物种零样本迁移仍然成立；预测误差可直接换算成"避免浪费吨数 + CO₂eq 减排"决策量。</span></p>
-      </div>
-      <details class="pub-story">
-        <summary><span data-lang="en">Behind the paper</span><span data-lang="zh">论文背后</span></summary>
-        <p class="pub-extra-story"><strong><span data-lang="en">Behind the paper.</span><span data-lang="zh">论文背后。</span></strong> <span data-lang="en">Origin: high-school chemistry already says fruit rots faster at 25 °C than at 4 °C, exponentially so. Path: vanilla function-on-function regression learns β(λ,t) but is blind to Arrhenius. Why not bake the physics in as a PDE soft constraint? Once joint identifiability of (β, E<sub>a</sub>, A) is proved, the model becomes cross-species transferable. Elevation: precision is not the goal; the goal is to tell the cold-chain operator "shipping today saves 12 tons of waste and 8 t-CO₂ — go." Then the model has earned its electricity.</span><span data-lang="zh">缘起：高中化学就说了——苹果 25 °C 比 4 °C 烂得快，呈指数关系。展开：函数对函数回归可以学 β(λ,t)，但不知道 Arrhenius；把物理作为 PDE 软约束直接塞进系数面，证完 (β, E<sub>a</sub>, A) 联合可识别性，模型就能跨物种迁移。升华：精度不是终点；终点是告诉冷链调度员"今天发货能省 12 吨损耗、8 吨 CO₂——走"。模型才算挣回了自己的电费。</span></p>
-      </details>
     </details>
 
       <details class="pub" id="pub-huang-apple" data-tags="sci">
