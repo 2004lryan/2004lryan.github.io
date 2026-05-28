@@ -307,11 +307,23 @@ main {
   border-top: 1px solid var(--border);
 }
 .section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   font-weight: 700;
   font-size: 1.2rem;
-  color: var(--text);
+  color: var(--color-primary);
   margin-bottom: 1rem;
   letter-spacing: -0.01em;
+}
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  flex: 0 0 auto;
 }
 
 /* ===== Prose ===== */
@@ -407,23 +419,25 @@ main {
   padding: 1.1rem 1.25rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
-  border-radius: 8px;
+  border-left: 3px solid var(--color-primary);
+  border-radius: 2px 8px 8px 2px;
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 .pub:hover {
   border-color: var(--color-primary);
   box-shadow: 0 2px 10px -4px rgba(20, 84, 59, 0.16);
 }
-/* author block: highlight my own name as a rounded chip */
+/* author block: highlight my own name with a primary-color underline */
 .pub-authors strong {
-  display: inline-block;
-  padding: 0.05rem 0.45rem;
-  background: var(--color-primary-light);
+  display: inline;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--color-primary);
+  border-radius: 0;
   color: var(--color-primary);
-  border: 1px solid var(--color-primary-light);
-  border-radius: 4px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-weight: 500;
+  letter-spacing: 0;
   line-height: 1.4;
 }
 .pub-with-thumb {
@@ -532,7 +546,7 @@ details.pub-extra {
 details.pub-extra > summary {
   cursor: pointer;
   font-size: 0.76rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-subtle);
   list-style: none;
   display: inline-block;
   padding: 0.05rem 0;
@@ -692,7 +706,8 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   padding: 1.1rem 1.25rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
-  border-radius: 8px;
+  border-left: 3px solid var(--color-primary);
+  border-radius: 2px 8px 8px 2px;
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 .proj:hover {
@@ -734,46 +749,32 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   white-space: nowrap;
   line-height: 1.4;
 }
-/* Level variants */
-.tag-key {
-  color: #ffffff;
-  border-color: var(--accent);
-  background: var(--accent);
-  font-weight: 600;
-}
-.tag-natl {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background: var(--color-primary-light);
-}
-.tag-prov {
-  color: var(--text);
-  border-color: var(--border-hi);
-  background: var(--surface);
-}
+/* === Tier 1: level chips (SCI / 国家级 / 自治区级 / 校级) — light pine fill === */
+.tag-sci,
+.tag-natl,
+.tag-prov,
 .tag-univ {
-  color: var(--text-2);
-  border-color: var(--border);
-  background: var(--surface);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border: none;
+  font-weight: 500;
 }
-.tag-program {
-  color: #8A5A12;                          /* burnished gold-brown */
-  border-color: rgba(180, 120, 30, 0.3);
-  background: rgba(180, 120, 30, 0.12);
-}
+/* === Tier 2: emphasis chips (重点 / 面上项目 / IF) — gold-brown fill === */
+.tag-key,
+.tag-program,
 .tag-if {
   color: #8A5A12;
-  border-color: rgba(180, 120, 30, 0.3);
   background: rgba(180, 120, 30, 0.12);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  border: none;
+  font-weight: 500;
 }
-/* === Role labels (PI / Participant) — plain muted text === */
+.tag-if { font-variant-numeric: tabular-nums; }
+/* === Tier 3: project role (PI / Participant) — plain muted text with · === */
 .tag-role-pi,
 .tag-role-part {
   display: inline;
   padding: 0;
-  margin-left: 0.5rem;
+  margin-left: 0.4rem;
   background: transparent;
   border: none;
   color: var(--color-text-subtle);
@@ -784,30 +785,28 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   white-space: normal;
   vertical-align: baseline;
 }
+.tag-role-pi::before,
+.tag-role-part::before {
+  content: '· ';
+  margin-right: 0.18rem;
+  color: var(--color-text-subtle);
+}
 .tag-role-pi { color: var(--color-text-muted); font-weight: 600; }
-/* Publication-specific tag variants */
-.tag-sci {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background: var(--color-primary-light);
-}
-.tag-conf {
-  color: var(--text);
-  border-color: var(--border-hi);
-  background: var(--surface);
-}
+/* tag-conf / tag-jour also live in Tier 1 (venue tier) */
+.tag-conf,
 .tag-jour {
-  color: var(--text-2);
-  border-color: var(--border);
-  background: var(--surface);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border: none;
+  font-weight: 500;
 }
-/* === Secondary publication labels (role / status) — plain muted text === */
+/* === Tier 3: role / status — plain muted text with · separator === */
 .tag-first,
 .tag-submitted,
 .tag-drafting {
   display: inline;
   padding: 0;
-  margin-left: 0.5rem;
+  margin-left: 0.4rem;
   background: transparent;
   border: none;
   color: var(--color-text-subtle);
@@ -817,6 +816,13 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   letter-spacing: 0.01em;
   white-space: normal;
   vertical-align: baseline;
+}
+.tag-first::before,
+.tag-submitted::before,
+.tag-drafting::before {
+  content: '· ';
+  margin-right: 0.18rem;
+  color: var(--color-text-subtle);
 }
 .tag-first { color: var(--color-text-muted); font-weight: 600; }
 .tag-drafting { font-style: italic; }
@@ -825,8 +831,13 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   color: var(--color-text-subtle);
   font-size: 0.74rem;
   font-weight: 500;
-  margin-left: 0.5rem;
+  margin-left: 0.4rem;
   letter-spacing: 0.01em;
+}
+.proj-meta-status::before {
+  content: '· ';
+  margin-right: 0.18rem;
+  color: var(--color-text-subtle);
 }
 .pub-tag {
   display: inline-block;
@@ -870,12 +881,12 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   margin: -0.3rem 0 1.3rem;
 }
 .filter-btn {
-  padding: 0.22rem 0.7rem;
+  padding: 0.16rem 0.7rem;
   font-size: 0.76rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   border: 1px solid var(--border-hi);
-  border-radius: 3px;
+  border-radius: 8px;
   background: transparent;
   color: var(--text-2);
   cursor: pointer;
