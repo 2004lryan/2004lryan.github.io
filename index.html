@@ -1295,19 +1295,12 @@
       var section = document.querySelector(bar.getAttribute('data-target'));
       if (!section) return;
       var buttons = bar.querySelectorAll('.filter-btn');
-      // Default to the most prestigious tag per section:
-      //   sections with a 国家级 (natl) button -> default to natl only
-      //   sections with an SCI button (Publications) -> default to SCI only
-      //   sections with a utility (Patents) button -> default to utility only
-      var defaultTag = null;
-      if (bar.querySelector('[data-tag="natl"]')) defaultTag = 'natl';
-      else if (bar.querySelector('[data-tag="sci"]')) defaultTag = 'sci';
-      else if (bar.querySelector('[data-tag="utility"]')) defaultTag = 'utility';
-      if (defaultTag) {
-        buttons.forEach(function (b) {
-          b.classList.toggle('active', b.getAttribute('data-tag') === defaultTag);
-        });
-        applyFilter(section, defaultTag);
+      // Default: keep whichever button has class="active" in the HTML
+      // (the 'All' button), do NOT silently filter to a prestige tag.
+      // Apply the active button's filter on load.
+      var activeBtn = bar.querySelector('.filter-btn.active');
+      if (activeBtn) {
+        applyFilter(section, activeBtn.getAttribute('data-tag'));
       }
       buttons.forEach(function (btn) {
         btn.addEventListener('click', function () {
