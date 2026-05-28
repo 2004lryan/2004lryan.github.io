@@ -443,10 +443,10 @@ main {
 /* Details-as-card: clickable summary + collapsible expanded section */
 details.pub > summary {
   list-style: none;
-  cursor: default;
+  cursor: pointer;
   padding: 1.05rem 2.6rem 1.05rem 1.25rem;
   position: relative;
-  user-select: text;
+  user-select: none;
 }
 details.pub > summary::-webkit-details-marker { display: none; }
 details.pub > summary::marker { content: ''; }
@@ -840,10 +840,10 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
 /* Details-as-card: clickable summary header + collapsible body */
 details.proj > summary {
   list-style: none;
-  cursor: default;
+  cursor: pointer;
   padding: 1.05rem 2.6rem 1.05rem 1.25rem;
   position: relative;
-  user-select: text;
+  user-select: none;
 }
 details.proj > summary::-webkit-details-marker { display: none; }
 details.proj > summary::marker { content: ''; }
@@ -1540,6 +1540,9 @@ details.collapse > .honors-list { margin-top: 0; }
 @media (max-width: 720px) {
   .personal-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Global: no italics anywhere ===== */
+em, i, cite, dfn, address, var { font-style: normal; }
 
 /* ===== Selection ===== */
 ::selection { background: rgba(20, 84, 59, 0.18); color: var(--color-text); }

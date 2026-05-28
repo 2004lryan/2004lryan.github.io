@@ -720,7 +720,7 @@
       </div>
       <details class="pub-story">
         <summary><span data-lang="en">Behind the paper</span><span data-lang="zh">论文背后</span></summary>
-        <p class="pub-extra-story"><span data-lang="en">we framed the project as <em>MS-UHDA — multi-source universal heterogeneous domain adaptation</em>. 2018/2019 came in at 2048 bands, 2025 at 346, three origins per year, and 2025 quietly swapped Shaanxi for Gansu — on paper, a textbook open-set + heterogeneous-band + temporal-shift problem. <strong>First draft:</strong> we built a "twin-private-class guard + selective alignment + new-class confirmation" framework. The first external review (Codex gpt-5.4) came back <strong>4/10</strong> — problem definition was wrong (UniDA, not OSDA), align-then-detect risks negative transfer, modules were stacked without a clean story. <strong>Hard pivot:</strong> three reframings landed at once — (i) the raw data alone would have killed us (2018/19 are counts 0–65535, 2025 is reflectance 0–0.7, so SG smoothing + interpolation to a common grid + SNV had to come first); (ii) the 9 (year × origin) cells were the benchmark, not a single task; (iii) the whole research framing became "large-sample pretraining + few-shot meta transfer", evaluated on a Leave-One-Element-Out (LOEO) protocol over those 9 cells. <strong>Surprise:</strong> the experiments told a very different story from the proposal. Gansu — the supposed "hard new origin" — hit 0.93 recall at K=10. Source quantity saturated at ~2 cells. The real bottleneck was Shandong 2018/2019, where recall stuck at 0.78–0.84. Xinjiang stayed at 0.97+ across seven years; the much-feared temporal drift was a paper tiger. <strong>What shipped:</strong> the paper stopped being a "new adaptation algorithm" and became an honest "9-domain benchmark + leakage-controlled LOEO + a baseline study". That is the version that went to Computers and Electronics in Agriculture.</span><span data-lang="zh">项目立项为 <em>MS-UHDA — 多源通用异构域适应</em>。2018/2019 是 2048 波段，2025 是 346 波段，每年三个产地，2025 还悄悄把陕西换成了甘肃——纸面上是个开集 + 波段异构 + 时序漂移的"教科书题目"。<strong>第一版：</strong>搭了 "双私有类守卫 + 选择性对齐 + 新类确认" 的框架。第一次外部评审（Codex gpt-5.4）给了 <strong>4/10</strong>——问题定义错了（应该是 UniDA 不是 OSDA），先对齐再检测会负迁移，模块堆叠没有干净的叙事。<strong>硬转向：</strong>同时落地三件事——(i) 不预处理直接迁移会原地崩盘（2018/19 是原始计数值 0–65535，2025 是反射率 0–0.7，必须先 SG 平滑 + 插值到统一波段网格 + SNV）；(ii) 9 个 (年份 × 产地) 单元是 "基准" 而不是单任务；(iii) 把整套研究框架改成 "大样本预训练 + 小样本元迁移"，在 9 元素上做 Leave-One-Element-Out (LOEO) 系统评估。<strong>意外：</strong>实验跑出来的故事跟方案完全不一样。一直被当成"新产地难题"的甘肃，K=10 就到 0.93 Recall；源数量在 ~2 个产地就饱和；真正难的是山东 2018/2019（Recall 卡在 0.78–0.84）；新疆跨 7 年保持 0.97+，时序漂移是纸老虎。<strong>最终投出去的：</strong>论文不再是"提出某个新算法"，而是诚实地揭示 "产地 × 年份" 评估的系统性漏洞。最后投到 Computers and Electronics in Agriculture 的，是 "9 域基准 + 防泄漏 LOEO + 基线研究" 这一版。</span></p>
+        <p class="pub-extra-story"><span data-lang="en">we framed the project as <em>MS-UHDA — multi-source universal heterogeneous domain adaptation</em>. 2018/2019 came in at 2048 bands, 2025 at 346, three origins per year — on paper, a textbook open-set + heterogeneous-band + temporal-shift problem. <strong>First draft:</strong> we built a "twin-private-class guard + selective alignment + new-class confirmation" framework. The first external review (Codex gpt-5.4) came back <strong>4/10</strong> — problem definition was wrong (UniDA, not OSDA), align-then-detect risks negative transfer, modules were stacked without a clean story. <strong>Hard pivot:</strong> three reframings landed at once — (i) the raw data alone would have killed us (2018/19 are counts 0–65535, 2025 is reflectance 0–0.7, so SG smoothing + interpolation to a common grid + SNV had to come first); (ii) the 9 (year × origin) cells were the benchmark, not a single task; (iii) the whole research framing became "large-sample pretraining + few-shot meta transfer", evaluated on a Leave-One-Element-Out (LOEO) protocol over those 9 cells. <strong>Surprise:</strong> the experiments told a very different story from the proposal. Gansu — the supposed "hard new origin" — hit 0.93 recall at K=10. Source quantity saturated at ~2 cells. The real bottleneck was Shandong 2018/2019, where recall stuck at 0.78–0.84. Xinjiang stayed at 0.97+ across seven years; the much-feared temporal drift was a paper tiger. <strong>What shipped:</strong> the paper stopped being a "new adaptation algorithm" and became an honest "9-domain benchmark + leakage-controlled LOEO + a baseline study". That is the version that went to Computers and Electronics in Agriculture.</span><span data-lang="zh">项目立项为 <em>MS-UHDA — 多源通用异构域适应</em>。2018/2019 是 2048 波段，2025 是 346 波段，每年三个产地——纸面上是个开集 + 波段异构 + 时序漂移的"教科书题目"。<strong>第一版：</strong>搭了 "双私有类守卫 + 选择性对齐 + 新类确认" 的框架。第一次外部评审（Codex gpt-5.4）给了 <strong>4/10</strong>——问题定义错了（应该是 UniDA 不是 OSDA），先对齐再检测会负迁移，模块堆叠没有干净的叙事。<strong>硬转向：</strong>同时落地三件事——(i) 不预处理直接迁移会原地崩盘（2018/19 是原始计数值 0–65535，2025 是反射率 0–0.7，必须先 SG 平滑 + 插值到统一波段网格 + SNV）；(ii) 9 个 (年份 × 产地) 单元是 "基准" 而不是单任务；(iii) 把整套研究框架改成 "大样本预训练 + 小样本元迁移"，在 9 元素上做 Leave-One-Element-Out (LOEO) 系统评估。<strong>意外：</strong>实验跑出来的故事跟方案完全不一样。一直被当成"新产地难题"的甘肃，K=10 就到 0.93 Recall；源数量在 ~2 个产地就饱和；真正难的是山东 2018/2019（Recall 卡在 0.78–0.84）；新疆跨 7 年保持 0.97+，时序漂移是纸老虎。<strong>最终投出去的：</strong>论文不再是"提出某个新算法"，而是诚实地揭示 "产地 × 年份" 评估的系统性漏洞。最后投到 Computers and Electronics in Agriculture 的，是 "9 域基准 + 防泄漏 LOEO + 基线研究" 这一版。</span></p>
       </details>
       
     </details>
@@ -771,7 +771,7 @@
       <details class="pub" id="pub-mech" data-tags="sci first drafting">
       <summary>
         <h3 class="pub-title">Mechanism-Embedded Post-Harvest Modeling — Arrhenius PDE Soft-Constrained Function-on-Function Regression (Mech-FoFR)</h3>
-        <p class="pub-authors"><strong>Panlin Li</strong>, Hua Huang, <em>et al.</em></p>
+        <p class="pub-authors"><strong>Panlin Li</strong>, Yuchang Li, Hua Huang, <em>et al.</em></p>
         <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
       </summary>
       <div class="pub-extra-body">
@@ -788,7 +788,7 @@
       <details class="pub" id="pub-foodspec" data-tags="sci first drafting">
       <summary>
         <h3 class="pub-title">FoodSpec-FM — A Functional Foundation Model for Cross-Device Smartphone Spectral Quick-Screening of Agricultural Products</h3>
-        <p class="pub-authors"><strong>Panlin Li</strong>, Hua Huang, <em>et al.</em></p>
+        <p class="pub-authors"><strong>Panlin Li</strong>, Yuchang Li, Hua Huang, <em>et al.</em></p>
         <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
       </summary>
       <div class="pub-extra-body">
@@ -805,7 +805,7 @@
       <details class="pub" id="pub-fcpca" data-tags="sci first drafting">
       <summary>
         <h3 class="pub-title">Functional Contrastive PCA + Sparse Multi-Task Learning for Cross-Cultivar Hyperspectral Detection of Agricultural Products</h3>
-        <p class="pub-authors"><strong>Panlin Li</strong>, Hua Huang, <em>et al.</em></p>
+        <p class="pub-authors"><strong>Panlin Li</strong>, Yuchang Li, Hua Huang, <em>et al.</em></p>
         <p class="pub-venue"><span class="pub-tag tag-sci"><span data-lang="en">SCI</span><span data-lang="zh">SCI</span></span><span class="pub-tag tag-drafting"><span data-lang="en">Drafting</span><span data-lang="zh">撰写中</span></span></p>
       </summary>
       <div class="pub-extra-body">
@@ -1428,26 +1428,6 @@
       if (!bar) return;
       var allBtn = bar.querySelector('[data-tag="all"]');
       if (allBtn) allBtn.click();
-    });
-  })();
-
-  // Chevron-only expansion: clicks on the rest of summary do not toggle
-  (function () {
-    var summaries = document.querySelectorAll('details.proj > summary, details.pub > summary');
-    summaries.forEach(function (summary) {
-      summary.addEventListener('click', function (e) {
-        // Always allow real interactive elements inside the summary
-        if (e.target.closest('a, button, details.pub-bib > summary')) return;
-        var rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-        var r = summary.getBoundingClientRect();
-        var cx = r.right - 1.1 * rem - 14;
-        var cy = r.top   + 1.1 * rem + 14;
-        var dx = e.clientX - cx;
-        var dy = e.clientY - cy;
-        if (dx * dx + dy * dy > 18 * 18) {
-          e.preventDefault();
-        }
-      });
     });
   })();
 </script>
