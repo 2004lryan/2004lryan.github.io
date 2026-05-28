@@ -1302,12 +1302,15 @@ details.edu-collapse > summary:hover .edu-toggle { border-left-color: var(--text
   justify-content: center;
   border: 1px solid var(--border-hi);
   border-radius: 6px;
-  background: var(--bg);
-  font-weight: 700;
-  font-size: 0.88rem;
-  color: var(--text);
-  letter-spacing: 0.04em;
+  background: #ffffff;
+  overflow: hidden;
   user-select: none;
+}
+.edu-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
 }
 .edu-info { min-width: 0; }
 .edu-school {
