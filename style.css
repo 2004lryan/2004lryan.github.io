@@ -824,15 +824,7 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   white-space: normal;
   vertical-align: baseline;
 }
-.tag-first::before,
-.tag-submitted::before,
-.tag-drafting::before {
-  content: '· ';
-  margin-right: 0.18rem;
-  color: var(--color-text-subtle);
-}
 .tag-first { color: var(--color-text-muted); font-weight: 600; }
-.tag-drafting { font-style: italic; }
 /* Plain status text alongside chips (申请中/在研/结项) */
 .proj-meta-status {
   color: var(--color-text-subtle);
