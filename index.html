@@ -1430,6 +1430,26 @@
       if (allBtn) allBtn.click();
     });
   })();
+
+  // Chevron-only expansion: clicks outside the right-side chevron don't toggle
+  (function () {
+    var summaries = document.querySelectorAll('details.proj > summary, details.pub > summary');
+    summaries.forEach(function (summary) {
+      summary.addEventListener('click', function (e) {
+        // Real interactive children (PDF link, BibTeX toggle, buttons) always work
+        if (e.target.closest('a, button, details.pub-bib > summary')) return;
+        var rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        var r = summary.getBoundingClientRect();
+        var cx = r.right - 1.1 * rem - 14;   // chevron center x
+        var cy = r.top   + 1.1 * rem + 14;   // chevron center y
+        var dx = e.clientX - cx;
+        var dy = e.clientY - cy;
+        if (dx * dx + dy * dy > 18 * 18) {   // outside chevron → block expand
+          e.preventDefault();
+        }
+      });
+    });
+  })();
 </script>
 
 </body>
