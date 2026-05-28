@@ -37,9 +37,9 @@
   --font-cjk:   'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --container:   1100px;
+  --container:   1000px;
   --section-gap: 1.8rem;
-  --read-width:  68ch;     /* comfortable reading column for hero-bio / prose */
+  --read-width:  68ch;     /* reserved for prose blocks if needed elsewhere */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -287,7 +287,6 @@ main {
   flex-direction: column;
   gap: 0.9rem;
   padding-top: 0.15rem;
-  max-width: var(--read-width);
 }
 .hero-bio p {
   font-size: 0.95rem;
