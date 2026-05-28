@@ -4,18 +4,34 @@
    ============================================================ */
 
 :root {
-  --bg:         #f3f6f1;
-  --surface:    #e9efe5;
-  --border:     #d8e0d2;
-  --border-hi:  #c0cab7;
+  /* ===== Semantic color palette (single source of truth) ===== */
+  --color-primary:       #4F46E5;   /* links / buttons / emphasis */
+  --color-primary-dark:  #3730A3;   /* button hover / deep title */
+  --color-primary-light: #EEF2FF;   /* tinted backgrounds, badge fill */
+  --color-accent:        #F59E0B;   /* sparing decorative accent */
 
-  --text:       #1a1a1a;
-  --text-2:     #555555;
-  --text-3:     #999999;
+  --color-text:          #1E293B;   /* body text */
+  --color-text-muted:    #64748B;   /* subtitles / dates / captions */
+  --color-text-subtle:   #94A3B8;   /* labels / placeholders (extra tier) */
 
-  --link:       #2d5f3f;
-  --link-hover: #1f4632;
-  --accent:     #2d5f3f;
+  --color-bg:            #FAFAFA;   /* page background */
+  --color-surface:       #FFFFFF;   /* cards / blocks / navbar */
+  --color-border:        #E2E8F0;   /* borders / dividers */
+  --color-border-strong: #CBD5E1;   /* hover / emphasized border (extra tier) */
+
+  /* ===== Aliases (existing CSS / HTML keeps using these names) ===== */
+  --bg:         var(--color-bg);
+  --surface:    var(--color-surface);
+  --border:     var(--color-border);
+  --border-hi:  var(--color-border-strong);
+
+  --text:       var(--color-text);
+  --text-2:     var(--color-text-muted);
+  --text-3:     var(--color-text-subtle);
+
+  --link:       var(--color-primary);
+  --link-hover: var(--color-primary-dark);
+  --accent:     var(--color-primary);
 
   --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   --font-cjk:   'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -68,7 +84,7 @@ html[data-lang="zh"] .edu-dates {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem max(1.25rem, calc((100vw - var(--container)) / 2 - 1.25rem));
-  background: rgba(243, 246, 241, 0.9);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: saturate(140%) blur(6px);
   -webkit-backdrop-filter: saturate(140%) blur(6px);
   border-bottom: 1px solid var(--border);
@@ -76,7 +92,7 @@ html[data-lang="zh"] .edu-dates {
 .brand {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--color-primary);
   text-decoration: none;
   letter-spacing: -0.01em;
 }
@@ -101,7 +117,7 @@ html[data-lang="zh"] .edu-dates {
   text-underline-offset: 4px;
 }
 .nav-active {
-  color: var(--text) !important;
+  color: var(--color-primary) !important;
   font-weight: 500;
 }
 
@@ -364,7 +380,7 @@ main {
   width: 170px;
   border-radius: 4px;
   overflow: hidden;
-  background: linear-gradient(135deg, #2d5f3f 0%, #163325 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -529,9 +545,9 @@ details.pub-extra > summary:hover {
 }
 .pub-links a:hover,
 .pub-bib > summary:hover {
-  background: var(--text);
+  background: var(--color-primary);
   color: #ffffff;
-  border-color: var(--text);
+  border-color: var(--color-primary);
 }
 
 /* ===== Inline BibTeX toggle ===== */
@@ -540,9 +556,9 @@ details.pub-extra > summary:hover {
 .pub-bib > summary::-webkit-details-marker { display: none; }
 .pub-bib > summary::marker { content: ''; }
 .pub-bib[open] > summary {
-  background: var(--text);
+  background: var(--color-primary);
   color: #ffffff;
-  border-color: var(--text);
+  border-color: var(--color-primary);
 }
 .pub-bib > pre {
   display: block;
@@ -649,9 +665,9 @@ details.pub-extra > summary:hover {
   font-weight: 600;
 }
 .tag-natl {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: rgba(45, 95, 63, 0.07);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 .tag-prov {
   color: var(--text);
@@ -664,9 +680,9 @@ details.pub-extra > summary:hover {
   background: var(--surface);
 }
 .tag-program {
-  color: #92400e;
-  border-color: #92400e;
-  background: rgba(146, 64, 14, 0.04);
+  color: #B45309;                          /* darker amber for AA contrast on light bg */
+  border-color: var(--color-accent);
+  background: #FEF3C7;                     /* amber-100 tint */
 }
 /* Role variants */
 .tag-role-pi {
@@ -682,9 +698,9 @@ details.pub-extra > summary:hover {
 }
 /* Publication-specific tag variants */
 .tag-sci {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: rgba(45, 95, 63, 0.07);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 .tag-conf {
   color: var(--text);
@@ -704,9 +720,9 @@ details.pub-extra > summary:hover {
 }
 /* Status variants */
 .tag-submitted {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: rgba(45, 95, 63, 0.07);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
 }
 .tag-drafting {
   color: var(--text-2);
@@ -780,9 +796,9 @@ details.pub-extra > summary:hover {
   color: var(--text);
 }
 .filter-btn.active {
-  border-color: var(--text);
-  background: var(--text);
-  color: var(--bg);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #ffffff;
 }
 html[data-lang="zh"] .filter-btn { font-family: var(--font-cjk), var(--font-sans); }
 .filter-hidden { display: none !important; }
@@ -1058,18 +1074,18 @@ details.collapse > .honors-list { margin-top: 0; }
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.9rem;
-  background: var(--surface);
-  border: 1px solid var(--border-hi);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
   border-radius: 3px;
   text-decoration: none;
-  color: var(--text);
+  color: #ffffff;
   font-size: 0.88rem;
   transition: all 0.15s ease;
 }
 .cv-btn:hover {
-  background: var(--text);
+  background: var(--color-primary-dark);
   color: #ffffff;
-  border-color: var(--text);
+  border-color: var(--color-primary-dark);
 }
 .cv-tag {
   color: var(--text-3);
@@ -1114,7 +1130,7 @@ details.collapse > .honors-list { margin-top: 0; }
 }
 
 /* ===== Selection ===== */
-::selection { background: rgba(45, 95, 63, 0.16); color: var(--text); }
+::selection { background: rgba(79, 70, 229, 0.18); color: var(--color-text); }
 
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
