@@ -564,22 +564,10 @@ details.pub-story > .pub-extra-story strong {
   letter-spacing: 0.01em;
   line-height: 1.4;
 }
-.pub-with-thumb {
-  display: flex;
-  gap: 1.2rem;
-  align-items: stretch;
-}
-.pub-with-thumb > .pub-thumb {
-  flex: 0 0 170px;
-  min-height: 160px;
-  align-self: stretch;
-}
-.pub-with-thumb > .pub-content {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
+/* Legacy .pub-with-thumb (article era) — neutralized; thumb-layout now
+   handled inside details.pub.pub-with-thumb > summary. The outer
+   details element stays in normal block flow so expanded content
+   sits BELOW the summary, not beside the thumb. */
 .pub-thumb {
   position: relative;
   width: 170px;
@@ -1446,8 +1434,8 @@ details.collapse > .honors-list { margin-top: 0; }
 
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
-  .pub-with-thumb { flex-direction: column; }
-  .pub-with-thumb > .pub-thumb { flex: 0 0 auto; width: 100%; min-height: 100px; height: 100px; }
+  details.pub.pub-with-thumb > summary { flex-direction: column; }
+  details.pub.pub-with-thumb > summary > .pub-thumb { flex: 0 0 auto; width: 100%; min-height: 100px; height: 100px; }
   :root { --section-gap: 2rem; }
   body { font-size: 14.5px; }
   .top-nav { padding: 0.7rem 1rem; }
