@@ -13,9 +13,9 @@
   --text-2:     #555555;
   --text-3:     #999999;
 
-  --link:       #1a4d8c;
-  --link-hover: #002b6b;
-  --accent:     #1a4d8c;
+  --link:       #2d5f3f;
+  --link-hover: #1f4632;
+  --accent:     #2d5f3f;
 
   --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
   --font-cjk:   'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -364,7 +364,7 @@ main {
   width: 170px;
   border-radius: 4px;
   overflow: hidden;
-  background: linear-gradient(135deg, #1a4d8c 0%, #0a2d5c 100%);
+  background: linear-gradient(135deg, #2d5f3f 0%, #163325 100%);
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -651,7 +651,7 @@ details.pub-extra > summary:hover {
 .tag-natl {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(26, 77, 140, 0.05);
+  background: rgba(45, 95, 63, 0.07);
 }
 .tag-prov {
   color: var(--text);
@@ -684,7 +684,7 @@ details.pub-extra > summary:hover {
 .tag-sci {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(26, 77, 140, 0.05);
+  background: rgba(45, 95, 63, 0.07);
 }
 .tag-conf {
   color: var(--text);
@@ -706,7 +706,7 @@ details.pub-extra > summary:hover {
 .tag-submitted {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(26, 77, 140, 0.05);
+  background: rgba(45, 95, 63, 0.07);
 }
 .tag-drafting {
   color: var(--text-2);
@@ -1114,7 +1114,7 @@ details.collapse > .honors-list { margin-top: 0; }
 }
 
 /* ===== Selection ===== */
-::selection { background: rgba(26, 77, 140, 0.14); color: var(--text); }
+::selection { background: rgba(45, 95, 63, 0.16); color: var(--text); }
 
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
