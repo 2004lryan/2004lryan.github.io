@@ -443,10 +443,10 @@ main {
 /* Details-as-card: clickable summary + collapsible expanded section */
 details.pub > summary {
   list-style: none;
-  cursor: pointer;
+  cursor: default;
   padding: 1.05rem 2.6rem 1.05rem 1.25rem;
   position: relative;
-  user-select: none;
+  user-select: text;
 }
 details.pub > summary::-webkit-details-marker { display: none; }
 details.pub > summary::marker { content: ''; }
@@ -464,6 +464,7 @@ details.pub > summary::after {
   background-repeat: no-repeat;
   background-position: center;
   transition: background-color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
 }
 details.pub > summary:hover::after {
   background-color: var(--color-primary-light);
@@ -839,10 +840,10 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
 /* Details-as-card: clickable summary header + collapsible body */
 details.proj > summary {
   list-style: none;
-  cursor: pointer;
+  cursor: default;
   padding: 1.05rem 2.6rem 1.05rem 1.25rem;
   position: relative;
-  user-select: none;
+  user-select: text;
 }
 details.proj > summary::-webkit-details-marker { display: none; }
 details.proj > summary::marker { content: ''; }
@@ -860,6 +861,7 @@ details.proj > summary::after {
   background-repeat: no-repeat;
   background-position: center;
   transition: background-color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
 }
 details.proj > summary:hover::after {
   background-color: var(--color-primary-light);
