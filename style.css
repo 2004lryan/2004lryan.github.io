@@ -4,20 +4,20 @@
    ============================================================ */
 
 :root {
-  /* ===== Semantic color palette (single source of truth) ===== */
-  --color-primary:       #4F46E5;   /* links / buttons / emphasis */
-  --color-primary-dark:  #3730A3;   /* button hover / deep title */
-  --color-primary-light: #EEF2FF;   /* tinted backgrounds, badge fill */
-  --color-accent:        #F59E0B;   /* sparing decorative accent */
+  /* ===== Semantic color palette (Bold Pine + 金棕 accent) ===== */
+  --color-primary:       #14543B;             /* deep pine — links / buttons / emphasis */
+  --color-primary-dark:  #0E3D2A;             /* darker pine — hover state */
+  --color-primary-light: rgba(20, 84, 59, 0.09); /* tinted pine fill */
+  --color-accent:        #8A5A12;             /* burnished gold-brown (program / IF chips only) */
 
-  --color-text:          #1E293B;   /* body text */
-  --color-text-muted:    #64748B;   /* subtitles / dates / captions */
-  --color-text-subtle:   #94A3B8;   /* labels / placeholders (extra tier) */
+  --color-text:          #16201B;   /* body text — near-black with green undertone */
+  --color-text-muted:    #4A5550;   /* subtitles / dates / captions */
+  --color-text-subtle:   #8A9089;   /* labels / placeholders */
 
-  --color-bg:            #FAFAFA;   /* page background */
+  --color-bg:            #FBFCF9;   /* warm off-white page background */
   --color-surface:       #FFFFFF;   /* cards / blocks / navbar */
-  --color-border:        #E2E8F0;   /* borders / dividers */
-  --color-border-strong: #CBD5E1;   /* hover / emphasized border (extra tier) */
+  --color-border:        #E2E8DE;   /* borders / dividers */
+  --color-border-strong: #C4D0C0;   /* hover / emphasized border */
 
   /* ===== Aliases (existing CSS / HTML keeps using these names) ===== */
   --bg:         var(--color-bg);
@@ -84,7 +84,7 @@ html[data-lang="zh"] .edu-dates {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem max(1.25rem, calc((100vw - var(--container)) / 2 - 1.25rem));
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(251, 252, 249, 0.9);
   backdrop-filter: saturate(140%) blur(6px);
   -webkit-backdrop-filter: saturate(140%) blur(6px);
   border-bottom: 1px solid var(--border);
@@ -447,7 +447,7 @@ main {
   width: 170px;
   border-radius: 4px;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(135deg, #14543B 0%, #0B2E1E 100%);
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -759,14 +759,14 @@ details.pub-extra > summary:hover {
   background: var(--surface);
 }
 .tag-program {
-  color: #B45309;                          /* darker amber for AA contrast on light bg */
-  border-color: var(--color-accent);
-  background: #FEF3C7;                     /* amber-100 tint */
+  color: #8A5A12;                          /* burnished gold-brown */
+  border-color: rgba(180, 120, 30, 0.3);
+  background: rgba(180, 120, 30, 0.12);
 }
 .tag-if {
-  color: #B45309;
-  border-color: #FCD34D;                   /* amber-300 */
-  background: #FEF3C7;                     /* amber-100 */
+  color: #8A5A12;
+  border-color: rgba(180, 120, 30, 0.3);
+  background: rgba(180, 120, 30, 0.12);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
@@ -1216,7 +1216,7 @@ details.collapse > .honors-list { margin-top: 0; }
 }
 
 /* ===== Selection ===== */
-::selection { background: rgba(79, 70, 229, 0.18); color: var(--color-text); }
+::selection { background: rgba(20, 84, 59, 0.18); color: var(--color-text); }
 
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
