@@ -4,10 +4,10 @@
    ============================================================ */
 
 :root {
-  --bg:         #ffffff;
-  --surface:    #fafafa;
-  --border:     #e5e5e5;
-  --border-hi:  #cccccc;
+  --bg:         #f3f6f1;
+  --surface:    #e9efe5;
+  --border:     #d8e0d2;
+  --border-hi:  #c0cab7;
 
   --text:       #1a1a1a;
   --text-2:     #555555;
@@ -68,7 +68,7 @@ html[data-lang="zh"] .edu-dates {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem max(1.25rem, calc((100vw - var(--container)) / 2 - 1.25rem));
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(243, 246, 241, 0.9);
   backdrop-filter: saturate(140%) blur(6px);
   -webkit-backdrop-filter: saturate(140%) blur(6px);
   border-bottom: 1px solid var(--border);
