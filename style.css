@@ -1653,7 +1653,7 @@ details.collapse > .honors-list { margin-top: 0; }
 /* ===== Personal / About Me ===== */
 .personal-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 .personal-block {
