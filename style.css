@@ -680,7 +680,7 @@ details.pub-story > .pub-extra-story {
   font-size: 0.86rem;
   color: var(--color-text);
   line-height: 1.65;
-  font-style: italic;
+  font-style: normal;
 }
 details.pub-story > .pub-extra-story strong {
   font-style: normal;
@@ -841,7 +841,7 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   margin-top: 0.7rem;
   padding-top: 0.55rem;
   border-top: 1px dashed var(--border-hi);
-  font-style: italic;
+  font-style: normal;
   color: var(--text-2);
 }
 .pub-extra-body .pub-extra-story strong {
@@ -908,7 +908,7 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
 .pub-bib-pending {
   font-size: 0.8rem;
   color: var(--text-3);
-  font-style: italic;
+  font-style: normal;
 }
 
 /* ===== Research areas ===== */
@@ -1676,7 +1676,7 @@ details.collapse > .honors-list { margin-top: 0; }
   line-height: 1.65;
 }
 .personal-quote {
-  font-style: italic;
+  font-style: normal;
   color: var(--color-text-muted);
   text-align: center;
   margin-top: 0.3rem;
