@@ -10,7 +10,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Noto+Serif+SC:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
   (function () {
     var saved = localStorage.getItem('lang') || 'en';
@@ -1503,46 +1502,48 @@
 <!-- ========== Page View Counter ========== -->
 <script>
 (function () {
-  var SUPABASE_URL       = 'https://xiwcznqcddzlisnxbwks.supabase.co';
-  var SUPABASE_ANON_KEY  = 'sb_publishable_XC9qXupgKK7uSraKPo907g_zuTHpEJO';
+  var SUPABASE_URL = 'https://xiwcznqcddzlisnxbwks.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_XC9qXupgKK7uSraKPo907g_zuTHpEJO';
+  var RPC_URL = SUPABASE_URL + '/rest/v1/rpc/log_page_view';
 
-  if (!window.supabase) return;
-
-  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   var counterEl = document.getElementById('visitor-counter');
   var countEl   = document.getElementById('visitor-count');
 
-  // Step 1: geolocate via ipapi.co (free, HTTPS, 1000 req/day)
-  // Step 2: call Supabase RPC with location + server-captured IP
+  function showCount(n) {
+    countEl.textContent = Number(n).toLocaleString();
+    counterEl.style.display = '';
+  }
+
+  function callRPC(body) {
+    return fetch(RPC_URL, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body || {})
+    }).then(function (r) { return r.ok ? r.json() : null; });
+  }
+
+  // Step 1: geolocate via ipapi.co (free, HTTPS)
+  // Step 2: call Supabase RPC with server-captured IP + geo
   fetch('https://ipapi.co/json/')
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .catch(function () { return null; })
+    .then(function (r)  { return r.ok ? r.json() : null; })
+    .catch(function ()   { return null; })
     .then(function (geo) {
-      var country = geo ? (geo.country_name || null) : null;
-      var region  = geo ? (geo.region       || null) : null;
-      var city    = geo ? (geo.city          || null) : null;
-      return sb.rpc('log_page_view', {
-        _country: country,
-        _region:  region,
-        _city:    city
+      return callRPC({
+        _country: geo ? (geo.country_name || null) : null,
+        _region:  geo ? (geo.region       || null) : null,
+        _city:    geo ? (geo.city          || null) : null
       });
     })
-    .then(function (res) {
-      if (!res || res.error) { console.error('Counter:', res && res.error && res.error.message); return; }
-      if (res.data != null) {
-        countEl.textContent = Number(res.data).toLocaleString();
-        counterEl.style.display = '';
-      }
+    .then(function (n) {
+      if (n != null) showCount(n);
     })
-    .catch(function (e) {
-      // Fallback: call RPC without geo data
-      sb.rpc('log_page_view').then(function (res) {
-        if (!res || res.error) { console.error('Counter offline'); return; }
-        if (res.data != null) {
-          countEl.textContent = Number(res.data).toLocaleString();
-          counterEl.style.display = '';
-        }
-      }).catch(function () {});
+    .catch(function () {
+      // Fallback without geo
+      callRPC().then(function (n) { if (n != null) showCount(n); }).catch(function () {});
     });
 })();
 </script>
