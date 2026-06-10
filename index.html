@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Noto+Serif+SC:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
   (function () {
     var saved = localStorage.getItem('lang') || 'en';
@@ -1364,6 +1365,12 @@
       <span data-lang="en">© 2026 Ryan Lin · Xinjiang Agricultural University</span>
       <span data-lang="zh">© 2026 李盼林 · 新疆农业大学</span>
     </p>
+    <p class="foot-counter" id="visitor-counter" style="display:none">
+      <span class="foot-counter-icon">👁</span>
+      <span id="visitor-count">…</span>
+      <span class="foot-counter-label" data-lang="en">visitors</span>
+      <span class="foot-counter-label" data-lang="zh">次浏览</span>
+    </p>
   </footer>
 
 </main>
@@ -1492,6 +1499,33 @@
       });
     });
   })();
+</script>
+
+<!-- ========== Page View Counter ========== -->
+<script>
+(function () {
+  // ============================================================
+  // CONFIGURATION — replace these with your Supabase project values
+  // ============================================================
+  var SUPABASE_URL       = 'https://xiwcznqcddzlisnxbwks.supabase.co';
+  var SUPABASE_ANON_KEY  = 'sb_publishable_XC9qXupgKK7uSraKPo907g_zuTHpEJO';
+
+  if (!window.supabase || SUPABASE_URL.indexOf('YOUR-PROJECT') !== -1) return;
+
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var counterEl  = document.getElementById('visitor-counter');
+  var countEl    = document.getElementById('visitor-count');
+
+  sb.rpc('log_page_view').then(function (res) {
+    if (res.error) { console.error('Counter:', res.error.message); return; }
+    if (res.data != null) {
+      countEl.textContent = Number(res.data).toLocaleString();
+      counterEl.style.display = '';
+    }
+  }).catch(function (e) {
+    console.error('Counter offline:', e.message);
+  });
+})();
 </script>
 
 </body>
