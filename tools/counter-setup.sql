@@ -48,7 +48,7 @@ CREATE OR REPLACE FUNCTION log_page_view()
 RETURNS BIGINT
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = ''
+SET search_path = 'public'
 AS $$
 DECLARE
   headers   JSON;
