@@ -16,6 +16,9 @@ CREATE TABLE IF NOT EXISTS page_views (
   id          BIGSERIAL PRIMARY KEY,
   created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   ip          TEXT,
+  country     TEXT,
+  region      TEXT,
+  city        TEXT,
   user_agent  TEXT,
   page        TEXT DEFAULT '/',
   referrer    TEXT,
@@ -44,7 +47,11 @@ CREATE POLICY "allow_auth_select"
 -- ---------- RPC: log a page view ----------
 -- Called from the browser. Real IP is captured server-side
 -- from PostgREST request headers — the browser cannot lie about it.
-CREATE OR REPLACE FUNCTION log_page_view()
+CREATE OR REPLACE FUNCTION log_page_view(
+  _country TEXT DEFAULT NULL,
+  _region  TEXT DEFAULT NULL,
+  _city    TEXT DEFAULT NULL
+)
 RETURNS BIGINT
 LANGUAGE plpgsql
 SECURITY DEFINER
@@ -81,8 +88,8 @@ BEGIN
   ua  := headers->>'user-agent';
   ref := headers->>'referer';
 
-  INSERT INTO page_views (ip, user_agent, page, referrer)
-  VALUES (client_ip, ua, '/', ref);
+  INSERT INTO page_views (ip, country, region, city, user_agent, page, referrer)
+  VALUES (client_ip, _country, _region, _city, ua, '/', ref);
 
   SELECT COUNT(*) INTO total FROM page_views;
   RETURN total;
