@@ -1364,12 +1364,11 @@
     <p class="foot-line">
       <span data-lang="en">© 2026 Ryan Lin · Xinjiang Agricultural University</span>
       <span data-lang="zh">© 2026 李盼林 · 新疆农业大学</span>
-    </p>
-    <p class="foot-counter" id="visitor-counter" style="display:none">
-      <span class="foot-counter-icon">👁</span>
-      <span id="visitor-count">…</span>
-      <span class="foot-counter-label" data-lang="en">visitors</span>
-      <span class="foot-counter-label" data-lang="zh">次浏览</span>
+      <span class="foot-counter" id="visitor-counter" style="display:none">
+        <span class="foot-counter-sep">·</span>
+        <span class="foot-counter-icon">👁</span>
+        <span id="visitor-count">…</span>
+      </span>
     </p>
   </footer>
 
@@ -1504,27 +1503,47 @@
 <!-- ========== Page View Counter ========== -->
 <script>
 (function () {
-  // ============================================================
-  // CONFIGURATION — replace these with your Supabase project values
-  // ============================================================
   var SUPABASE_URL       = 'https://xiwcznqcddzlisnxbwks.supabase.co';
   var SUPABASE_ANON_KEY  = 'sb_publishable_XC9qXupgKK7uSraKPo907g_zuTHpEJO';
 
-  if (!window.supabase || SUPABASE_URL.indexOf('YOUR-PROJECT') !== -1) return;
+  if (!window.supabase) return;
 
   var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  var counterEl  = document.getElementById('visitor-counter');
-  var countEl    = document.getElementById('visitor-count');
+  var counterEl = document.getElementById('visitor-counter');
+  var countEl   = document.getElementById('visitor-count');
 
-  sb.rpc('log_page_view').then(function (res) {
-    if (res.error) { console.error('Counter:', res.error.message); return; }
-    if (res.data != null) {
-      countEl.textContent = Number(res.data).toLocaleString();
-      counterEl.style.display = '';
-    }
-  }).catch(function (e) {
-    console.error('Counter offline:', e.message);
-  });
+  // Step 1: geolocate via ipapi.co (free, HTTPS, 1000 req/day)
+  // Step 2: call Supabase RPC with location + server-captured IP
+  fetch('https://ipapi.co/json/')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .catch(function () { return null; })
+    .then(function (geo) {
+      var country = geo ? (geo.country_name || null) : null;
+      var region  = geo ? (geo.region       || null) : null;
+      var city    = geo ? (geo.city          || null) : null;
+      return sb.rpc('log_page_view', {
+        _country: country,
+        _region:  region,
+        _city:    city
+      });
+    })
+    .then(function (res) {
+      if (!res || res.error) { console.error('Counter:', res && res.error && res.error.message); return; }
+      if (res.data != null) {
+        countEl.textContent = Number(res.data).toLocaleString();
+        counterEl.style.display = '';
+      }
+    })
+    .catch(function (e) {
+      // Fallback: call RPC without geo data
+      sb.rpc('log_page_view').then(function (res) {
+        if (!res || res.error) { console.error('Counter offline'); return; }
+        if (res.data != null) {
+          countEl.textContent = Number(res.data).toLocaleString();
+          counterEl.style.display = '';
+        }
+      }).catch(function () {});
+    });
 })();
 </script>
 
