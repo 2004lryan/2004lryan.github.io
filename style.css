@@ -842,6 +842,20 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   font-size: 0.78rem;
   align-items: center;
 }
+.pub-links a[href$=".pdf"]::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 14px;
+  margin-right: 0.28rem;
+  vertical-align: -2px;
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'><path d='M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V128L256 0H64zm208 128V13.3L365.3 128H272zM104 264c0-13.3 10.7-24 24-24h128c13.3 0 24 10.7 24 24v16c0 13.3-10.7 24-24 24H128c-13.3 0-24-10.7-24-24v-16zm0 96c0-13.3 10.7-24 24-24h128c13.3 0 24 10.7 24 24v16c0 13.3-10.7 24-24 24H128c-13.3 0-24-10.7-24-24v-16z'/></svg>");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
 .pub-links a,
 .pub-bib > summary {
   display: inline-block;
