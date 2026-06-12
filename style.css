@@ -845,15 +845,14 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
 .pub-links a[href$=".pdf"]::before {
   content: '';
   display: inline-block;
-  width: 12px;
-  height: 14px;
-  margin-right: 0.28rem;
-  vertical-align: -2px;
-  background-color: currentColor;
-  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'><path d='M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V128L256 0H64zm208 128V13.3L365.3 128H272zM104 264c0-13.3 10.7-24 24-24h128c13.3 0 24 10.7 24 24v16c0 13.3-10.7 24-24 24H128c-13.3 0-24-10.7-24-24v-16zm0 96c0-13.3 10.7-24 24-24h128c13.3 0 24 10.7 24 24v16c0 13.3-10.7 24-24 24H128c-13.3 0-24-10.7-24-24v-16z'/></svg>");
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
+  width: 15px;
+  height: 15px;
+  margin-right: 0.3rem;
+  vertical-align: -3px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='4' width='60' height='56' rx='6' ry='6' fill='%23e5252a'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='28' font-weight='bold' fill='white'%3EPDF%3C/text%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .pub-links a,
