@@ -1400,14 +1400,14 @@ details.honor-detail[open] > summary::after {
 }
 .honor-sublist li {
   display: block !important;
-  padding: 0.18rem 0 !important;
-  font-size: 0.82rem;
+  padding: 0.16rem 0 !important;
+  font-size: 0.78rem;
   color: var(--text-2);
-  line-height: 1.65;
+  line-height: 1.55;
 }
 .honor-sublist .honor-date {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-3);
 }
 
