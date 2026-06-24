@@ -1,6 +1,6 @@
-# panlinryan.github.io
+# 2004lryan.github.io
 
-Source for https://panlinryan.github.io —— personal homepage of 李盼林 (Panlin Li).
+Source for https://2004lryan.github.io —— personal homepage of 李盼林 (Panlin Li).
 
 Hand-crafted static HTML/CSS, no build step. Bilingual EN/中 toggle.
 
