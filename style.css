@@ -1565,7 +1565,7 @@ details.edu-collapse > summary:hover .edu-toggle { border-left-color: var(--text
 }
 .edu-date-dash { opacity: 0.6; }
 
-/* ===== Honors tier headings (国家级 / 自治区级 / 校级) ===== */
+/* ===== Honors tier headings (国家级 / 省部级 / 校级) ===== */
 .honors-tier {
   font-weight: 600;
   font-size: 0.78rem;
