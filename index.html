@@ -1487,6 +1487,59 @@
  });
  });
  })();
+
+ // Liquid Glass: sliding lens — the selection pill glides between tabs
+ // (main nav scrollspy + every filter bar) instead of jumping.
+ (function () {
+ var syncs = [];
+
+ function setupLens(container, activeSel) {
+ var lens = document.createElement('span');
+ lens.className = 'tab-lens';
+ lens.setAttribute('aria-hidden', 'true');
+ container.appendChild(lens);
+
+ function sync() {
+ var active = container.querySelector(activeSel);
+ if (!active) { lens.style.opacity = '0'; return; }
+ // First placement (or reappearing) snaps into place without gliding
+ var snap = getComputedStyle(lens).opacity === '0';
+ if (snap) lens.style.transition = 'none';
+ lens.style.opacity = '1';
+ lens.style.width = active.offsetWidth + 'px';
+ lens.style.height = active.offsetHeight + 'px';
+ lens.style.transform =
+ 'translate(' + active.offsetLeft + 'px, ' + active.offsetTop + 'px)';
+ if (snap) { void lens.offsetWidth; lens.style.transition = ''; }
+ }
+
+ var raf = null;
+ function queueSync() {
+ if (raf) return;
+ raf = requestAnimationFrame(function () { raf = null; sync(); });
+ }
+ new MutationObserver(queueSync).observe(container, {
+ attributes: true, attributeFilter: ['class'], subtree: true
+ });
+ syncs.push(sync);
+ sync();
+ }
+
+ var navLinks = document.querySelector('.nav-links');
+ if (navLinks) setupLens(navLinks, '.nav-active');
+ document.querySelectorAll('.filter-bar').forEach(function (bar) {
+ setupLens(bar, '.filter-btn.active');
+ });
+
+ function syncAll() { syncs.forEach(function (fn) { fn(); }); }
+ window.addEventListener('resize', syncAll);
+ window.addEventListener('load', syncAll);
+ if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncAll);
+ // Language switch changes label widths — reposition after EN/中 toggles
+ new MutationObserver(syncAll).observe(document.documentElement, {
+ attributes: true, attributeFilter: ['data-lang']
+ });
+ })();
 </script>
 
 <!-- ========== Page View Counter ========== -->

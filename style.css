@@ -209,20 +209,44 @@ html.lg-lens .top-nav {
   color: var(--color-text);
   text-decoration: none;
 }
-/* Selected tab — Apple tab-bar style: a translucent glass "lens" pill,
-   tinted text instead of a solid colored fill */
+/* Selected tab — Apple tab-bar style: the glass pill itself is a separate
+   sliding .tab-lens element (injected by JS) that glides between tabs;
+   the active item only tints its text */
 .nav-active {
-  background: rgba(255, 255, 255, 0.72) !important;
+  background: transparent !important;
   color: var(--color-primary) !important;
   font-weight: 600;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.55),
-              0 3px 10px -3px rgba(20, 84, 59, 0.35);
 }
 .nav-active:hover {
-  background: rgba(255, 255, 255, 0.85) !important;
+  background: transparent !important;
   color: var(--color-primary-dark) !important;
 }
+
+/* Sliding glass lens — shared by the main nav and every filter bar */
+.tab-lens {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95),
+              0 3px 10px -3px rgba(20, 84, 59, 0.35);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 0;
+  will-change: transform, width;
+  transition: transform 0.45s cubic-bezier(0.3, 1.3, 0.4, 1),
+              width 0.45s cubic-bezier(0.3, 1.3, 0.4, 1),
+              height 0.3s ease,
+              opacity 0.25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab-lens { transition: opacity 0.25s ease; }
+}
+.nav-links { position: relative; }
+.nav-links a { position: relative; z-index: 1; }
 
 /* Lang toggle (sits on light glass) */
 .lang-toggle {
@@ -1354,8 +1378,11 @@ details.proj > .proj-body + .proj-body {
   flex-wrap: wrap;
   gap: 0.4rem;
   margin: -0.3rem 0 1.3rem;
+  position: relative;   /* anchor for the sliding .tab-lens */
 }
 .filter-btn {
+  position: relative;
+  z-index: 1;
   padding: 0.16rem 0.75rem;
   font-size: 0.76rem;
   font-weight: 500;
@@ -1376,12 +1403,11 @@ details.proj > .proj-body + .proj-body {
   background: rgba(255, 255, 255, 0.65);
 }
 .filter-btn.active {
-  border-color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.82);
+  border-color: transparent;
+  background: transparent;
   color: var(--color-primary);
   font-weight: 600;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95),
-              0 4px 12px -4px rgba(20, 84, 59, 0.35);
+  box-shadow: none;
 }
 html[data-lang="zh"] .filter-btn { font-family: var(--font-cjk), var(--font-sans); }
 .filter-hidden { display: none !important; }
