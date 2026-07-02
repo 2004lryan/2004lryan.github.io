@@ -75,8 +75,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== Ambient backdrop — soft pine / gold light pools that the
-   glass surfaces above can actually blur and refract ===== */
+/* ===== Ambient backdrop, three layers under the glass =====
+   1. body::before (fixed)  — omnipresent soft light pools + fine grain,
+      so every glass surface always has something to blur and refract
+   2. body::after (scrolls) — a pine/gold aurora crowning the hero,
+      fading back to white where reading begins  ===== */
 body::before {
   content: '';
   position: fixed;
@@ -84,12 +87,30 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(38% 34% at 14% 8%,  rgba(20, 84, 59, 0.09),   transparent 68%),
-    radial-gradient(30% 30% at 88% 5%,  rgba(160, 108, 28, 0.07), transparent 70%),
-    radial-gradient(36% 36% at 80% 62%, rgba(20, 84, 59, 0.06),   transparent 72%),
-    radial-gradient(28% 28% at 6% 76%,  rgba(160, 108, 28, 0.05), transparent 70%),
-    radial-gradient(32% 28% at 48% 36%, rgba(96, 140, 110, 0.06), transparent 75%);
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type='linear'%20slope='0.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width='160'%20height='160'%20filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(38% 34% at 14% 8%,  rgba(20, 84, 59, 0.11),   transparent 68%),
+    radial-gradient(30% 30% at 88% 5%,  rgba(176, 120, 36, 0.09), transparent 70%),
+    radial-gradient(36% 36% at 80% 62%, rgba(20, 84, 59, 0.08),   transparent 72%),
+    radial-gradient(28% 28% at 6% 76%,  rgba(176, 120, 36, 0.07), transparent 70%),
+    radial-gradient(32% 28% at 48% 36%, rgba(96, 140, 110, 0.08), transparent 75%);
   animation: lg-drift 70s ease-in-out infinite alternate;
+}
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 130vh;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(52% 42% at 18% -6%, rgba(20, 84, 59, 0.16),   transparent 70%),
+    radial-gradient(44% 38% at 85% -4%, rgba(176, 120, 36, 0.14), transparent 72%),
+    radial-gradient(60% 46% at 55% 8%,  rgba(96, 140, 110, 0.10), transparent 75%),
+    linear-gradient(180deg, rgba(20, 84, 59, 0.05) 0%, transparent 60%);
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
 }
 @keyframes lg-drift {
   from { transform: translate3d(-1.2%, -0.8%, 0) scale(1); }
