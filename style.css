@@ -51,7 +51,7 @@
   --font-cjk:   var(--font-sans);   /* legacy alias — collapse to unified sans */
   --font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --container:   960px;
+  --container:   1100px;
   --section-gap: 1.8rem;
   --read-width:  68ch;     /* reserved for prose blocks if needed elsewhere */
 }
@@ -148,7 +148,7 @@ html[data-lang="zh"] .edu-dates {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  max-width: min(1020px, calc(100% - 28px));
+  max-width: min(1160px, calc(100% - 28px));
   margin: 12px auto 4px;
   padding: 0.5rem 0.65rem 0.5rem 1.15rem;
   /* Clear glass, Apple-style: almost no fill tint — the material is defined
