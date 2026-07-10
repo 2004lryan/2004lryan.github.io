@@ -376,13 +376,13 @@
  </summary>
 
  <p class="proj-body" data-lang="en">
- Lead-authored the proposal and coordinated execution; re-engineered the non-homogeneous grey model via <em>conformable fractional accumulation</em> (CFA) into KR-NGM(1,1) with a closed-form solution for the kernel-regularized objective, relaxing the periodicity/monotonicity assumptions of classical grey models; benchmarked against the KRNGM baseline on renewable-energy and natural-gas consumption series (China, Energy Institute), with the Hiking Optimization Algorithm (HOA) for parameter tuning; accuracy assessed by MAPE and ARE.
+ Lead-authored the proposal and coordinated execution; re-engineered the kernel-regularized non-homogeneous grey model (KRNGM, Ma et al. 2017) via <em>conformable fractional accumulation</em> (CFA) into CFAKRNGM; benchmarked against the KRNGM baseline on renewable-energy and natural-gas consumption series (China, Energy Institute), with the Hiking Optimization Algorithm (HOA) for parameter tuning; accuracy assessed by MAPE and ARE. Honest note: the optimum falls back to integer-order accumulation (alpha = 0.9998 and 0.9995 in the two case studies).
  </p>
  <p class="proj-body" data-lang="zh">
- 主笔撰写申报书并统筹项目执行；以 conformable 分数阶累加（CFA）改造非齐次灰色模型，构建 KR-NGM(1,1) 并推导核正则化目标函数的闭式解；在中国可再生能源消费与天然气消费两组小样本时序上与 KRNGM 基线对比，用 Hiking 优化算法（HOA）调参，以 MAPE 与 ARE 评估精度。
+ 主笔撰写申报书并统筹项目执行；以共形分数阶累加（CFA）改造核正则化非齐次灰色模型（KRNGM，Ma et al. 2017），构建 CFAKRNGM；在中国可再生能源消费与天然气消费两组小样本时序上与 KRNGM 基线对比，用 Hiking 优化算法（HOA）调参，以 MAPE 与 ARE 评估精度。诚实说明：两个算例搜出的最优阶数分别为 α = 0.9998 与 α = 0.9995，即最优解退回了整数阶累加。
  </p>
  
- <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><a href="#pub-grey"><span data-lang="en">KR-NGM grey-model paper</span><span data-lang="zh">KR-NGM 灰色模型论文</span></a><span class="cv-tag"><span data-lang="en"> (co-first author)</span><span data-lang="zh">（共一）</span></span></p>
+ <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><a href="#pub-grey"><span data-lang="en">CFAKRNGM grey-model paper</span><span data-lang="zh">CFAKRNGM 灰色模型论文</span></a><span class="cv-tag"><span data-lang="en"> (co-first author)</span><span data-lang="zh">（共一）</span></span></p>
  </details>
  <details class="proj" data-tags="natl part key">
  <summary>
@@ -395,10 +395,10 @@
  </summary>
 
  <p class="proj-body" data-lang="en">
- Lead-authored, under advisor guidance, the proposal and anonymous argumentation sheet for a national-level Key Program (National Statistical Science Research Project, CNY 50k), mapping the frontier of cotton-yield prediction and climate attribution. Proposed a heterogeneous-multimodal tensor-sparse fusion model jointly modeling meteorological / soil / remote-sensing / phenological signals; designed a spatio-temporal doubly-debiased Lasso + generalized random forest causal-identification framework that separates the marginal effect of climate shocks from confounding bias; planned a multi-stream INSPECT online change-point detector coupled with PCMCI for field-level early warning.
+ Lead-authored, under advisor guidance, the proposal and anonymous argumentation sheet for a national-level Key Program (National Statistical Science Research Project, CNY 50k), mapping the frontier of cotton-yield prediction and climate attribution. Proposed a heterogeneous-multimodal tensor-sparse fusion model jointly modeling meteorological / soil / remote-sensing / phenological signals; designed a double-machine-learning + debiased-Lasso + causal-forest identification framework that separates the marginal effect of climate shocks from confounding bias; planned a multi-stream sparse-CUSUM online change-point detector, with INSPECT / PELT for offline confirmation and PCMCI for causal attribution, delivering county- and grid-level early warning.
  </p>
  <p class="proj-body" data-lang="zh">
- 在导师指导下主笔撰写国家级重点项目（全国统计科学研究项目·重点项目，资助 5 万元）申报书与论证活页，系统梳理棉花产量预测与气候归因前沿；提出"异构–多模态张量稀疏融合"模型，联合气象 / 土壤 / 遥感 / 物候四源数据；构建"时空双重去偏 Lasso + 广义随机森林"因果识别框架，分离气候冲击边际效应与混杂偏差；规划多流 INSPECT 在线变点检测 + PCMCI 因果对接的棉田级早期预警算法。
+ 在导师指导下主笔撰写国家级重点项目（全国统计科学研究项目·重点项目，资助 5 万元）申报书与论证活页，系统梳理棉花产量预测与气候归因前沿；提出"异构–多模态张量稀疏融合"模型，联合气象 / 土壤 / 遥感 / 物候四源数据；构建"双重机器学习 + 去偏 Lasso + 因果森林"因果识别框架，分离气候冲击边际效应与混杂偏差；规划以多流稀疏 CUSUM 做在线变点检测、INSPECT / PELT 做离线复核、PCMCI 做因果溯源的县域 / 网格级早期预警流程。
  </p>
  </details>
  <details class="proj" data-tags="natl part">
@@ -412,10 +412,10 @@
  </summary>
 
  <p class="proj-body" data-lang="en">
- Main author of the national-level proposal and project coordinator. Targets geographical-indication protection of Xinjiang specialty fruits — building a cross-origin, cross-year transfer-learning framework for apple geographic-origin traceability. Led cross-year apple HSI and image data collection across Xinjiang / Shandong / Gansu with unified SSC and origin labels; built a 9-domain benchmark with an "origin × year" double-layered leakage-controlled evaluation protocol; ran PLS-DA / SVM / 1D-CNN / Transformer baselines with cross-year generalization analysis.
+ Main author of the national-level proposal and project coordinator. Targets geographical-indication protection of Xinjiang specialty fruits — building a cross-origin, cross-year transfer-learning framework for apple geographic-origin traceability. Led cross-year apple NIR point-spectra collection (229 bands, 591-1001 nm; push-broom hyperspectral imaging added in 2025) across four origins - Xinjiang, Shandong, Shanxi and Gansu - labelled by geographic origin; built a 9-domain benchmark under a leave-one-year-out (LOEO-Year) leakage-controlled protocol; ran nearest-centroid, PLS-DA, SVM and ProtoNet baselines with cross-year generalisation analysis. The manuscript's Limitations section states that modern deep baselines (1D ResNet, 1D Transformer) were not included.
  </p>
  <p class="proj-body" data-lang="zh">
- 主笔撰写国家级大创申报书并统筹项目执行。面向新疆特色林果地理标志保护，构建跨产地、跨年份的迁移学习苹果产地溯源框架；牵头采集新疆 / 山东 / 甘肃多产地跨年苹果高光谱与图像数据，统一标注 SSC 与产地；构建 9 域基准数据集与"产地 × 年份"双层防泄漏评估协议；完成 PLS-DA / SVM / 1D-CNN / Transformer 多基线对比与跨年泛化分析。
+ 主笔撰写国家级大创申报书并统筹项目执行。面向新疆特色林果地理标志保护，构建跨产地、跨年份的迁移学习苹果产地溯源框架；牵头采集新疆 / 山东 / 山西 / 甘肃四产区跨年苹果近红外点光谱（229 波段，591–1001 nm；2025 年另用推扫高光谱成像），标注地理产地；构建 9 域基准数据集与留一年（LOEO-Year）防泄漏评估协议；完成最近质心 / PLS-DA / SVM / ProtoNet 多基线对比与跨年泛化分析（稿件《局限性》一节写明未纳入 1D-ResNet、1D-Transformer 等深度基线）。
  </p>
 
  <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><a href="#pub-cross-year"><span data-lang="en">Cross-year apple origin paper</span><span data-lang="zh">跨产地苹果溯源论文</span></a><span class="cv-tag"><span data-lang="en"> (first author)</span><span data-lang="zh">（一作）</span></span></p>
@@ -459,13 +459,13 @@
  <p class="proj-outputs">
  <span class="proj-outputs-label"><span data-lang="en">Sub-projects →</span><span data-lang="zh">子课题 →</span></span>
  <a href="#mini-fcpca">FCPCA + MTSL</a>
- <span class="proj-paper-link">(<a href="#pub-fcpca"><span data-lang="en">paper</span><span data-lang="zh">论文</span></a><span class="cv-tag"><span data-lang="en"> · first author</span><span data-lang="zh">，一作</span></span>)</span>
+ <span class="proj-paper-link">(<span data-lang="en">paper = Publication [2]</span><span data-lang="zh">论文即 Publications [2]</span><span class="cv-tag"><span data-lang="en"> · first author</span><span data-lang="zh">，一作</span></span>)</span>
  <span class="proj-outputs-sep">·</span>
  <a href="#mini-foodspec"><span data-lang="en">Cross-device transfer</span><span data-lang="zh">跨设备光谱迁移</span></a>
- <span class="proj-paper-link">(<a href="#pub-foodspec"><span data-lang="en">paper</span><span data-lang="zh">论文</span></a><span class="cv-tag"><span data-lang="en"> · first author</span><span data-lang="zh">，一作</span></span>)</span>
+ <span class="proj-paper-link">(<span data-lang="en">manuscript (not submitted)</span><span data-lang="zh">稿件（未投稿）</span><span class="cv-tag"><span data-lang="en"> · first author</span><span data-lang="zh">，一作</span></span>)</span>
  <span class="proj-outputs-sep">·</span>
  <a href="#mini-mech"><span data-lang="en">Storage evolution</span><span data-lang="zh">果蔬储藏品质演化</span></a>
- <span class="proj-paper-link">(<a href="#pub-mech"><span data-lang="en">paper</span><span data-lang="zh">论文</span></a><span class="cv-tag"><span data-lang="en"> · first author</span><span data-lang="zh">，一作</span></span>)</span>
+ <span class="proj-paper-link">(<span data-lang="en">manuscript (not submitted)</span><span data-lang="zh">稿件（未投稿）</span><span class="cv-tag"><span data-lang="en"> · first author</span><span data-lang="zh">，一作</span></span>)</span>
  </p>
  </details>
  <details class="proj" data-tags="prov part">
@@ -541,7 +541,7 @@
  <p class="proj-body" data-lang="zh">
  主笔撰写省部级大创申报书并统筹项目执行。在连续光谱函数空间 L²([λ_min, λ_max]) 上提出函数型对比主成分分析（FCPCA）+ 多任务稀疏函数型回归（MTSL）联合学习框架，把"真伪鉴别 + 多生化指标联合预测 + 视觉–光谱跨模态融合"三目标统一在一个模型里；引入已知化学吸收带（970/1190/1450/1670/1900 nm）作为函数空间稀疏先验，使模型具备物理化学解释力；整合 10 个跨物种公开数据集（苹果 / 芒果 / 猕猴桃 / 葡萄 / 番茄 / 柑橘 / 草莓 / 牛油果 等）。
  </p>
- <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><a href="#pub-fcpca"><span data-lang="en">FCPCA-MTSL paper</span><span data-lang="zh">FCPCA-MTSL 论文</span></a><span class="cv-tag"><span data-lang="en"> (first author)</span><span data-lang="zh">（一作）</span></span></p>
+ <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><span data-lang="en">Functional Identifiability Analysis of Hyperspectral Spatial-Spectral Fusion (same as Publication [2])</span><span data-lang="zh">《高光谱空谱融合的函数型可识别性分析》（即 Publications 第 [2] 篇，勿重复计数）</span><span class="cv-tag"><span data-lang="en"> (first author)</span><span data-lang="zh">（一作）</span></span></p>
  </details>
  <details class="proj" data-tags="univ pi">
  <summary>
@@ -653,7 +653,7 @@
  <p class="proj-body" data-lang="zh">
  主笔撰写校级大创申报书并统筹项目执行。面向食品安全监管"实验室设备 vs 手机外设"的设备鸿沟，研发面向农产品 / 食品光谱的函数型基础模型 FoodSpec-FM——把不同设备（8 / 37 / 204 / 348 / 400 / 685 波段）视作 H = L²([λ_min, λ_max]) 上不同的采样算子 S_m，联合估计共同 KL 本征基底；以掩码波段重建 + 跨设备对比对齐做自监督预训练，下游零样本 / 少样本即可适应任意设备。
  </p>
- <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><a href="#pub-foodspec"><span data-lang="en">FoodSpec-FM paper</span><span data-lang="zh">FoodSpec-FM 论文</span></a><span class="cv-tag"><span data-lang="en"> (first author)</span><span data-lang="zh">（一作）</span></span></p>
+ <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><span data-lang="en">Label-free cross-instrument transferability diagnosis for food-spectral quantification (Chinese draft complete, not submitted)</span><span data-lang="zh">《食品光谱定量的无标签跨仪器可迁移性诊断与最小监督修复》（中文稿完成，未投稿）</span><span class="cv-tag"><span data-lang="en"> (first author)</span><span data-lang="zh">（一作）</span></span></p>
  </details>
  
  <details class="proj" id="mini-mech" data-tags="univ part">
@@ -672,7 +672,7 @@
  <p class="proj-body" data-lang="zh">
  主笔撰写校级大创申报书并统筹项目执行。面向全球水果蔬菜采后损失（万亿美元 / 年量级），构建"时序光谱 + 化学动力学 + 逐果级决策"三位一体系统。提出 Arrhenius PDE 软约束的双时间轴函数对函数回归（Mech-FoFR）：在 Y(d) = ∬ β(λ,t) X(λ,t) dλ dt + ε 上以 ∂β/∂t = −k(T) g(β) 软约束系数面 β(λ,t)，给出 (β, E_a, A) 联合可识别性条件；学习逐果级"生理时间"扭曲映射 τ_i(t)，以 Q₁₀ ∈ [2.0, 3.0] 实现跨物种零样本迁移。
  </p>
- <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><a href="#pub-mech"><span data-lang="en">Mech-FoFR paper</span><span data-lang="zh">Mech-FoFR 论文</span></a><span class="cv-tag"><span data-lang="en"> (first author)</span><span data-lang="zh">（一作）</span></span></p>
+ <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><span data-lang="en">Pre-modelling recoverability diagnostic Psi: a trichotomy for chemical kinetics (Chinese draft complete, not submitted)</span><span data-lang="zh">《建模前可恢复性诊断 Ψ：化学动力学的严格三分律与异构光谱的条件性扩展》（中文稿完成，未投稿）</span><span class="cv-tag"><span data-lang="en"> (first author)</span><span data-lang="zh">（一作）</span></span></p>
  </details>
  </div>
  </section>
