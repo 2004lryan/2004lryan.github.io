@@ -1464,7 +1464,8 @@
  var rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
  var r = summary.getBoundingClientRect();
  var cx = r.right - 1.1 * rem - 14; // chevron center x
- var cy = r.top + r.height / 2; // chevron center y (vertically centered)
+ var isPub = summary.parentElement.classList.contains('pub');
+ var cy = isPub ? (r.top + 1.1 * rem + 14) : (r.top + r.height / 2); // pub: top-right; proj: centered
  var dx = e.clientX - cx;
  var dy = e.clientY - cy;
  if (dx * dx + dy * dy > 18 * 18) { // outside chevron → block expand
