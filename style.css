@@ -46,7 +46,7 @@
   --link-hover: var(--color-primary-dark);
   --accent:     var(--color-primary);
 
-  --font-serif: 'Newsreader', 'Noto Serif SC', Georgia, 'Songti SC', 'STSong', serif;
+  --font-serif: 'Times New Roman', 'Noto Serif SC', 'Songti SC', 'STSong', serif;
   --font-sans:  'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-cjk:   var(--font-sans);   /* legacy alias — collapse to unified sans */
   --font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
