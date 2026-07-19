@@ -1028,14 +1028,12 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   text-decoration: none;
   transition: all 0.15s ease;
   line-height: 1.4;
-  cursor: default;
-  opacity: 0.5;
+  cursor: pointer;
 }
 .pub-github:hover {
   background: #f6f8fa;
   border-color: #d0d7de;
   color: #24292f;
-  opacity: 0.75;
 }
 
 /* ===== Inline BibTeX toggle ===== */
