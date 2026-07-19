@@ -1642,6 +1642,20 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
   margin-bottom: 0.22rem;
   line-height: 1.3;
 }
+/* Links inside the edu summary: inherit type colour, reveal underline on hover.
+   onclick stopPropagation in the markup keeps them from toggling the <details>. */
+.edu-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.edu-link:hover,
+.edu-link:focus-visible {
+  color: var(--accent, currentColor);
+  border-bottom-color: currentColor;
+}
+
 .edu-degree {
   font-size: 0.92rem;
   color: var(--text);
