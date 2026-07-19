@@ -1659,9 +1659,16 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
 .ref-link:hover,
 .ref-link:focus-visible { opacity: 1; text-decoration: underline; }
 /* Briefly highlight the entry that was jumped to */
-:target.pub, :target.proj {
+:target.pub, :target.proj,
+#patents li:target, #software li:target {
   animation: ref-flash 1.6s ease-out 1;
   scroll-margin-top: 5rem;
+}
+/* li 默认无内边距，高亮时给一点呼吸空间，避免色块贴着文字 */
+#patents li:target, #software li:target {
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  margin-left: -0.5rem;
 }
 @keyframes ref-flash {
   0%, 45% { background-color: rgba(255, 214, 102, 0.28); }
