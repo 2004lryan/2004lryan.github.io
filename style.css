@@ -1644,6 +1644,29 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
 }
 /* Links inside the edu summary: inherit type colour, reveal underline on hover.
    onclick stopPropagation in the markup keeps them from toggling the <details>. */
+/* Inline [n] references in the News feed, jumping to the matching entry
+   in Publications / Projects. Kept visually light so the prose still reads. */
+.ref-link {
+  color: var(--accent, currentColor);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9em;
+  padding-right: 0.12em;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+.ref-link:hover,
+.ref-link:focus-visible { opacity: 1; text-decoration: underline; }
+/* Briefly highlight the entry that was jumped to */
+:target.pub, :target.proj {
+  animation: ref-flash 1.6s ease-out 1;
+  scroll-margin-top: 5rem;
+}
+@keyframes ref-flash {
+  0%, 45% { background-color: rgba(255, 214, 102, 0.28); }
+  100%    { background-color: transparent; }
+}
+
 .edu-link {
   color: inherit;
   text-decoration: none;
