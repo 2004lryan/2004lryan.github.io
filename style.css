@@ -1561,7 +1561,10 @@ details.honor-detail[open] > summary::after {
 /* ===== Education ===== */
 /* The whole edu-block is a <summary> — clicking it toggles the details */
 details.edu-collapse { margin: 0; }
-details.edu-collapse > summary { list-style: none; cursor: pointer; }
+details.edu-collapse > summary { list-style: none; cursor: default; }
+/* Only the chevron and the real links are clickable, so only they show a hand */
+details.edu-collapse > summary .edu-toggle { cursor: pointer; }
+details.edu-collapse > summary a { cursor: pointer; }
 details.edu-collapse > summary::-webkit-details-marker { display: none; }
 details.edu-collapse > summary::marker { content: ''; }
 details.edu-collapse > summary.edu-block {
