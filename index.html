@@ -385,10 +385,18 @@
  </summary>
 
  <p class="proj-body" data-lang="en">
- Lead-authored the proposal and coordinated execution; re-engineered the kernel-regularized non-homogeneous grey model (KRNGM, Ma et al. 2017) via <em>conformable fractional accumulation</em> (CFA) into CFAKRNGM; benchmarked against the KRNGM baseline on renewable-energy and natural-gas consumption series (China, Energy Institute), with the Hiking Optimization Algorithm (HOA) for parameter tuning; accuracy assessed by MAPE and ARE. Honest note: the optimum falls back to integer-order accumulation (alpha = 0.9998 and 0.9995 in the two case studies).
+ <strong>Background:</strong> Energy-economics series such as national renewable-energy and natural-gas consumption offer only a handful of annual observations, where conventional statistical and machine-learning forecasters overfit. Grey models are built for exactly this small-sample regime, and the kernel-regularized non-homogeneous grey model (KRNGM, Ma et al. 2017) is a strong representative.<br>
+ <strong>Method:</strong> Lead-authored the proposal and coordinated execution; re-engineered KRNGM via <em>conformable fractional accumulation</em> (CFA) into CFAKRNGM, tuned the accumulation order with the Hiking Optimization Algorithm (HOA), and benchmarked against KRNGM on Chinese renewable-energy and natural-gas consumption, scored by MAPE and ARE.<br>
+ <strong>Innovation:</strong> 1) replaces the integer-order accumulation of KRNGM with a conformable fractional operator, making the accumulation order a learnable parameter rather than a fixed choice; 2) couples that order with kernel regularization so smoothing strength and accumulation order are optimized jointly; 3) delegates order search to HOA instead of a manual grid, making the procedure reproducible.<br>
+ <strong>Outcome:</strong> CFAKRNGM matches the KRNGM baseline on both cases, but the optimum falls back to integer-order accumulation (alpha = 0.9998 and 0.9995), i.e. the data did not activate the fractional mechanism the model was built around.<br>
+ <strong>Significance:</strong> A negative result worth reporting: it delimits when fractional-order accumulation is worth its extra complexity, and it is the case that first taught me to check whether a proposed mechanism is actually exercised by the data rather than only assumed.
  </p>
  <p class="proj-body" data-lang="zh">
- 主笔撰写申报书并统筹项目执行；以共形分数阶累加（CFA）改造核正则化非齐次灰色模型（KRNGM，Ma et al. 2017），构建 CFAKRNGM；在中国可再生能源消费与天然气消费两组小样本时序上与 KRNGM 基线对比，用 Hiking 优化算法（HOA）调参，以 MAPE 与 ARE 评估精度。诚实说明：两个算例搜出的最优阶数分别为 α = 0.9998 与 α = 0.9995，即最优解退回了整数阶累加。
+ <strong>背景：</strong>可再生能源消费、天然气消费这类能源经济序列每年只有个位数的观测点，常规统计与机器学习预测器在这种样本量下极易过拟合。灰色模型正是为小样本情形设计的，其中核正则化非齐次灰色模型（KRNGM，Ma et al. 2017）是有代表性的一支。<br>
+ <strong>方法：</strong>主笔撰写申报书并统筹项目执行；以共形分数阶累加（CFA）改造 KRNGM，构建 CFAKRNGM，用 Hiking 优化算法（HOA）搜索累加阶数，在中国可再生能源消费与天然气消费两组小样本时序上与 KRNGM 基线对比，以 MAPE 与 ARE 评估精度。<br>
+ <strong>创新点：</strong>1) 以共形分数阶算子替换 KRNGM 的整数阶累加，把累加阶数从固定设定变为可学习参数；2) 将该阶数与核正则化耦合优化，使平滑强度与累加阶数联合确定；3) 用 HOA 替代人工网格搜索阶数，使调参过程可复现。<br>
+ <strong>结论：</strong>CFAKRNGM 在两个算例上与 KRNGM 基线相当，但搜出的最优阶数分别为 α = 0.9998 与 α = 0.9995，即最优解退回了整数阶累加——模型赖以立论的分数阶机制并未被数据激活。<br>
+ <strong>意义：</strong>这是一个值得如实报告的负结果：它划出了分数阶累加"多付出的复杂度"在什么条件下并不划算，也是我第一次意识到，必须检验所提机制是否真的被数据用到，而不能只停留在假设。
  </p>
  
  <p class="proj-outputs"><span class="proj-outputs-label"><span data-lang="en">Outputs →</span><span data-lang="zh">成果 →</span></span><a href="#pub-grey"><span data-lang="en">CFAKRNGM grey-model paper</span><span data-lang="zh">CFAKRNGM 灰色模型论文</span></a><span class="cv-tag"><span data-lang="en"> (co-first author)</span><span data-lang="zh">（共一）</span></span></p>
@@ -956,7 +964,7 @@
  </summary>
  <div class="pub-extra-body">
  <p><strong><span data-lang="en">Method:</span><span data-lang="zh">方法：</span></strong> <span data-lang="en">Re-engineers the kernel-regularized non-homogeneous grey model (KRNGM) via conformable fractional accumulation into CFAKRNGM, tuned by the Hiking Optimization Algorithm (HOA).</span><span data-lang="zh">以共形分数阶累加（CFA）改造核正则化非齐次灰色模型（KRNGM），构建 CFAKRNGM，并用 Hiking 优化算法（HOA）调参。</span></p>
- <p><strong><span data-lang="en">Innovation:</span><span data-lang="zh">创新点：</span></strong> <span data-lang="en">Replaces the fixed first-order accumulation (recovered at alpha = 1) with a tunable conformable fractional accumulation. Honest note: HOA selects alpha = 0.9998 (Case 1) and alpha = 0.9995 (Case 2), i.e. the optimum falls back to the classical integer-order operator. Co-first author.</span><span data-lang="zh">用可调的共形分数阶累加代替写死的一次累加生成（α = 1 时退化为经典 1-AGO）。诚实说明：HOA 在两个算例上搜出的最优阶数分别是 α = 0.9998 与 α = 0.9995，即最优解退回了整数阶。本人为共同一作。</span></p>
+ <p><strong><span data-lang="en">Innovation:</span><span data-lang="zh">创新点：</span></strong> <span data-lang="en">Replaces the fixed first-order accumulation (recovered at alpha = 1) with a tunable conformable fractional accumulation. HOA selects alpha = 0.9998 (Case 1) and alpha = 0.9995 (Case 2), i.e. the optimum falls back to the classical integer-order operator. Co-first author.</span><span data-lang="zh">用可调的共形分数阶累加代替写死的一次累加生成（α = 1 时退化为经典 1-AGO）。HOA 在两个算例上搜出的最优阶数分别是 α = 0.9998 与 α = 0.9995，即最优解退回了整数阶。本人为共同一作。</span></p>
  <p><strong><span data-lang="en">Outcome:</span><span data-lang="zh">结论：</span></strong> <span data-lang="en">Across renewable-energy and natural-gas consumption series (China, Energy Institute), CFAKRNGM attains lower MAPE and ARE than the KRNGM baseline.</span><span data-lang="zh">在中国可再生能源消费与天然气消费序列上，CFAKRNGM 的 MAPE 与 ARE 均低于 KRNGM 基线。</span></p>
  </div>
 
