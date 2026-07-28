@@ -636,6 +636,19 @@ main {
   line-height: 1.55;
 }
 .news-body em { font-style: italic; color: var(--text); }
+/* 动态里的仓库链接:只放 GitHub 图标,不铺裸 URL */
+.news-github {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: -0.2em;
+  margin-left: 0.35em;
+  color: var(--text-3);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.news-github:hover,
+.news-github:focus-visible { opacity: 1; color: var(--accent, currentColor); }
 .news-photo {
   display: block;
   margin-top: 0.45rem;
