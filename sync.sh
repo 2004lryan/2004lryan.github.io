@@ -6,14 +6,22 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-if [ -z "$(git status --porcelain)" ]; then
+dirty=$(git status --porcelain)
+unpushed=$(git log origin/main..HEAD --oneline 2>/dev/null || echo "")
+
+if [ -z "$dirty" ] && [ -z "$unpushed" ]; then
   echo "No changes to sync."
   exit 0
 fi
 
-git add -A
-msg="${1:-update $(date '+%Y-%m-%d %H:%M')}"
-git commit -m "$msg"
+if [ -n "$dirty" ]; then
+  git add -A
+  msg="${1:-update $(date '+%Y-%m-%d %H:%M')}"
+  git commit -m "$msg"
+else
+  echo "Working tree clean; pushing $(echo "$unpushed" | wc -l | tr -d ' ') already-committed change(s)."
+fi
+
 git push origin main
-echo "Synced: $msg"
+echo "Synced."
 echo "Live at: https://2004lryan.github.io (rebuild ~30s)"
