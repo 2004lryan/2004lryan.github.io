@@ -1082,6 +1082,33 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   font-style: normal;
 }
 
+/* Copy-to-clipboard button under a citation */
+.pub-bib > .cite-copy {
+  display: block;
+  margin: 0.35rem 0 0.15rem auto;
+  padding: 0.14rem 0.62rem;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-3);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pub-bib > .cite-copy:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+.pub-bib > .cite-copy.copied {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
 /* ===== Research areas ===== */
 .research-tldr {
   margin-bottom: 1.5rem;

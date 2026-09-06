@@ -11,3 +11,4 @@ tmp/
 tools/
 generated/
 .codex-artifacts/
+.claude/
