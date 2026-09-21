@@ -2066,3 +2066,6 @@ em, i, cite, dfn, address, var { font-style: normal; }
 @media (max-width: 720px) {
   .ip-list { grid-template-columns: 1fr; }
 }
+
+/* 下一段学历（尚未入学，无展开详情）与下方卡片留出间距 */
+.edu-block-next { margin-bottom: 0.9rem; }
