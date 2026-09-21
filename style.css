@@ -1683,6 +1683,8 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
   margin-bottom: 0.22rem;
   line-height: 1.3;
 }
+/* 中文校名、院名只在「·」两侧换行，窄屏不把「数学与统计学院」拆成两半 */
+.edu-school [data-lang="zh"] { word-break: keep-all; }
 /* Links inside the edu summary: inherit type colour, reveal underline on hover.
    onclick stopPropagation in the markup keeps them from toggling the <details>. */
 /* Inline [n] references in the News feed, jumping to the matching entry
