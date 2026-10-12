@@ -1286,6 +1286,13 @@ details.proj > .proj-outputs {
   font-variant-numeric: tabular-nums;
   line-height: var(--lh-meta);
 }
+/* 年份、项目编号：各自不拆行，前面的间隔点由样式生成 */
+.proj-fact { white-space: nowrap; }
+.proj-fact::before {
+  content: '·';
+  margin: 0 0.5em 0 0.3em;
+  color: var(--text-3);
+}
 .proj-meta code {
   font-family: var(--font-mono);
   font-size: 0.76rem;
@@ -1506,6 +1513,7 @@ html[data-lang="zh"] .filter-btn { font-family: var(--font-cjk), var(--font-sans
   color: var(--text);
   line-height: var(--lh-row);
 }
+.award-list .date { white-space: nowrap; }
 .award-list em { font-style: normal; color: var(--text); font-weight: 500; }
 .award-list .cv-tag {
   display: inline-block;
@@ -2156,7 +2164,7 @@ details.edu-collapse > summary:focus-visible {
   .hero { padding: 1.5rem 0 1.5rem; }
   .news-list li { grid-template-columns: 78px 1fr; gap: 0.8rem; }
   .contact-list { grid-template-columns: 82px 1fr; }
-  .award-list li { grid-template-columns: 70px 1fr; gap: 0.7rem; }
+  .award-list li { grid-template-columns: 76px 1fr; gap: 0.7rem; }
   .research-areas { grid-template-columns: 1fr; gap: 1rem; }
   .proj-mini-list li { grid-template-columns: 1fr; }
   .proj-mini-meta { text-align: left; }
