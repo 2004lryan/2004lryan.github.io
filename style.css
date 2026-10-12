@@ -13,7 +13,7 @@
 
   --color-text:          #16201B;   /* body text — near-black with green undertone */
   --color-text-muted:    #4A5550;   /* subtitles / dates / captions */
-  --color-text-subtle:   #8A9089;   /* labels / placeholders */
+  --color-text-subtle:   #69726C;   /* labels / dates / captions — about 5:1 on white */
 
   --color-bg:            #FDFDFD;   /* near-white canvas; faint light pools give glass depth */
   --color-surface:       #FFFFFF;   /* opaque fallback surface */
@@ -50,6 +50,12 @@
   --font-sans:  'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-cjk:   var(--font-sans);   /* legacy alias — collapse to unified sans */
   --font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* 行高：英文一套；中文整体放宽一档，见下方 html[data-lang="zh"] */
+  --lh-prose: 1.68;   /* 成段文字 */
+  --lh-row:   1.55;   /* 列表行、注记 */
+  --lh-meta:  1.5;    /* 作者、出处、标签行 */
+  --lh-title: 1.32;   /* 卡片标题 */
 
   --container:   1100px;
   --page-gutter: 20px;     /* 页面两侧留白；单栏时改为随视口变化 */
@@ -139,6 +145,30 @@ html[data-lang="zh"] .proj-mini-meta,
 html[data-lang="zh"] .edu-dates {
   font-family: var(--font-sans);
 }
+
+/* ===== 中文排版 =====
+   行高放宽；小字不低于 12px（中文环境的浏览器会把更小的字号强行拉到 12px）；
+   全大写小标签的字距对汉字过宽，收回 */
+html[data-lang="zh"] {
+  --lh-prose: 1.82;
+  --lh-row:   1.72;
+  --lh-meta:  1.6;
+  --lh-title: 1.45;
+}
+html[data-lang="zh"] :is(.sb-label, .subhead, .edu-detail-label, .honors-tier, .proj-outputs-label) {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+html[data-lang="zh"] :is(.proj-tag, .pub-tag, .cv-tag.as-chip, .proj-meta-status,
+                         .award-list .cv-tag, .cite-copy, .badge, .ip-granted) {
+  font-size: 0.75rem;
+}
+
+/* ===== 断行 =====
+   标题与成段文字的最后一行不会只剩一两个字 */
+.pub-title, .proj-title, .ip-title, .edu-school, .sb-affil,
+.hero-bio p, .news-body, .proj-body, .pub-extra-body, .personal-body,
+.award-list li, .honors-list li, .honor-sublist li, .section-note { text-wrap: pretty; }
 
 /* ===== Top nav — floating Liquid Glass capsule ===== */
 .top-nav {
@@ -376,7 +406,7 @@ html[data-lang="zh"] .lt-zh { color: var(--color-primary); font-weight: 600; }
   gap: 0.04rem;
 }
 .sb-label {
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--text-3);
@@ -399,7 +429,7 @@ html[data-lang="zh"] .lt-zh { color: var(--color-primary); font-weight: 600; }
   border-top: 1px dashed var(--border);
   font-size: 0.75rem;
   color: var(--text-3);
-  line-height: 1.5;
+  line-height: var(--lh-meta);
   display: flex;
   flex-direction: column;
   gap: 0.18rem;
@@ -540,7 +570,7 @@ main {
 .hero-bio p {
   font-size: 0.95rem;
   color: var(--text);
-  line-height: 1.7;
+  line-height: var(--lh-prose);
   margin: 0;
 }
 .hero-bio p strong { font-weight: 600; color: var(--text); }
@@ -581,7 +611,7 @@ main {
   color: var(--text);
   font-size: 0.95rem;
   margin-bottom: 0.9rem;
-  line-height: 1.65;
+  line-height: var(--lh-prose);
 }
 .prose p:last-child { margin-bottom: 0; }
 .prose p strong { color: var(--text); font-weight: 600; }
@@ -637,7 +667,7 @@ main {
 .news-body {
   color: var(--text);
   font-size: 0.92rem;
-  line-height: 1.55;
+  line-height: var(--lh-row);
 }
 .news-body em { font-style: italic; color: var(--text); }
 /* 动态里的仓库链接:只放 GitHub 图标,不铺裸 URL */
@@ -679,7 +709,7 @@ main {
   font-size: 0.83rem;
   color: var(--text-3);
   margin-bottom: 0.7rem;
-  line-height: 1.55;
+  line-height: var(--lh-row);
 }
 .section-note strong { color: var(--text-2); font-weight: 500; }
 
@@ -816,7 +846,7 @@ details.pub-story > .pub-extra-story {
   border-radius: 0 4px 4px 0;
   font-size: 0.86rem;
   color: var(--color-text);
-  line-height: 1.65;
+  line-height: var(--lh-prose);
   font-style: normal;
 }
 details.pub-story > .pub-extra-story strong {
@@ -882,14 +912,14 @@ details.pub-story > .pub-extra-story strong {
   font-size: 1.08rem;
   color: var(--text);
   margin-bottom: 0.2rem;
-  line-height: 1.32;
+  line-height: var(--lh-title);
   letter-spacing: -0.005em;
 }
 .pub-authors {
   font-size: 0.9rem;
   color: var(--text);
   margin-bottom: 0.1rem;
-  line-height: 1.5;
+  line-height: var(--lh-meta);
 }
 .pub-authors strong {
   color: var(--text);
@@ -899,7 +929,7 @@ details.pub-story > .pub-extra-story strong {
   font-size: 0.88rem;
   color: var(--text-2);
   margin-bottom: 0.32rem;
-  line-height: 1.5;
+  line-height: var(--lh-meta);
 }
 .pub-venue em { font-style: italic; }
 
@@ -921,7 +951,7 @@ details.pub-story > .pub-extra-story strong {
   font-size: 0.9rem;
   color: var(--text-2);
   margin-bottom: 0.4rem;
-  line-height: 1.55;
+  line-height: var(--lh-row);
 }
 
 /* ===== Per-pub "Details" collapsible (method / innovation / outcome / story) ===== */
@@ -964,7 +994,7 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   border-radius: 0 3px 3px 0;
   font-size: 0.86rem;
   color: var(--text);
-  line-height: 1.65;
+  line-height: var(--lh-prose);
 }
 .pub-extra-body p {
   margin: 0 0 0.55rem;
@@ -1236,7 +1266,7 @@ details.proj > .proj-body + .proj-body {
   font-size: 1.08rem;
   color: var(--text);
   margin-bottom: 0.25rem;
-  line-height: 1.32;
+  line-height: var(--lh-title);
   letter-spacing: -0.005em;
 }
 .proj-meta {
@@ -1244,7 +1274,7 @@ details.proj > .proj-body + .proj-body {
   color: var(--text-3);
   margin-bottom: 0.4rem;
   font-variant-numeric: tabular-nums;
-  line-height: 1.5;
+  line-height: var(--lh-meta);
 }
 .proj-meta code {
   font-family: var(--font-mono);
@@ -1323,7 +1353,7 @@ details.proj > .proj-body + .proj-body {
 .pub-venue .pub-tag { margin-left: 0.32rem; margin-right: 0; }
 .pub-rank, .proj-rank {
   display: inline-block;
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   font-weight: 400;
   color: var(--text-3);
   margin-right: 0.28rem;
@@ -1333,7 +1363,7 @@ details.proj > .proj-body + .proj-body {
 .proj-body {
   font-size: 0.9rem;
   color: var(--text-2);
-  line-height: 1.6;
+  line-height: var(--lh-prose);
 }
 .proj-body em { font-style: italic; color: var(--text); }
 .proj-body a {
@@ -1425,7 +1455,7 @@ html[data-lang="zh"] .filter-btn { font-family: var(--font-cjk), var(--font-sans
   margin-top: 0.55rem;
   font-size: 0.83rem;
   color: var(--text-2);
-  line-height: 1.5;
+  line-height: var(--lh-meta);
 }
 .proj-outputs-label {
   color: var(--text-3);
@@ -1460,7 +1490,7 @@ html[data-lang="zh"] .filter-btn { font-family: var(--font-cjk), var(--font-sans
   align-items: baseline;
   font-size: 0.9rem;
   color: var(--text);
-  line-height: 1.55;
+  line-height: var(--lh-row);
 }
 .award-list em { font-style: normal; color: var(--text); font-weight: 500; }
 .award-list .cv-tag {
@@ -1522,7 +1552,7 @@ details.honor-detail[open] > summary::after {
   padding: 0.16rem 0 !important;
   font-size: 0.78rem;
   color: var(--text-2);
-  line-height: 1.55;
+  line-height: var(--lh-row);
 }
 .honor-sublist .honor-date {
   font-family: var(--font-mono);
@@ -1557,7 +1587,7 @@ details.honor-detail[open] > summary::after {
   font-size: 1.08rem;
   font-weight: 500;
   color: var(--text);
-  line-height: 1.32;
+  line-height: var(--lh-title);
   letter-spacing: -0.005em;
 }
 .ip-authors {
@@ -1565,7 +1595,7 @@ details.honor-detail[open] > summary::after {
   margin-top: 0.3rem;
   font-size: 0.78rem;
   color: var(--color-text-subtle);
-  line-height: 1.5;
+  line-height: var(--lh-meta);
 }
 .ip-authors strong {
   display: inline-block;
@@ -1687,7 +1717,7 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
   color: var(--text);
   letter-spacing: -0.005em;
   margin-bottom: 0.22rem;
-  line-height: 1.3;
+  line-height: var(--lh-title);
 }
 /* 中文校名、院名只在「·」两侧换行，窄屏不把「数学与统计学院」拆成两半 */
 .edu-school [data-lang="zh"] { word-break: keep-all; }
@@ -1738,13 +1768,13 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
 .edu-degree {
   font-size: 0.92rem;
   color: var(--text);
-  line-height: 1.5;
+  line-height: var(--lh-meta);
   margin-bottom: 0.1rem;
 }
 .edu-meta {
   font-size: 0.83rem;
   color: var(--text-2);
-  line-height: 1.5;
+  line-height: var(--lh-meta);
 }
 /* 专业名不拆字，「导师：某教授」整段不拆行，窄屏只在「·」处换行 */
 .edu-meta [data-lang="zh"] { word-break: keep-all; }
@@ -1779,7 +1809,7 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
   color: var(--text);
   padding: 0.3rem 0 0.3rem 1.15rem;
   position: relative;
-  line-height: 1.55;
+  line-height: var(--lh-row);
 }
 .honors-list li::before {
   content: '';
@@ -1983,7 +2013,7 @@ details.collapse > .honors-list { margin-top: 0; }
 .personal-body {
   font-size: 0.9rem;
   color: var(--color-text);
-  line-height: 1.65;
+  line-height: var(--lh-prose);
 }
 .personal-quote {
   font-style: normal;
