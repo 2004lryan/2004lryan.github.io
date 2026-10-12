@@ -2160,7 +2160,7 @@ details.edu-collapse > summary:focus-visible {
   details.pub.pub-with-thumb > summary { flex-direction: column; }
   details.pub.pub-with-thumb > summary > .pub-thumb { flex: 0 0 auto; width: 100%; min-height: 0; height: auto; aspect-ratio: 5 / 2; }
   .nav-links a { font-size: 0.76rem; }
-  .lang-toggle { padding: 0.18rem 0.45rem; font-size: 0.72rem; }
+  .lang-toggle { padding: 0.18rem 0.45rem; font-size: 0.75rem; }
   .hero { padding: 1.5rem 0 1.5rem; }
   .news-list li { grid-template-columns: 78px 1fr; gap: 0.8rem; }
   .contact-list { grid-template-columns: 82px 1fr; }
