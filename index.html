@@ -12,11 +12,8 @@
 <link rel="stylesheet" href="style.css" />
 <script>
  (function () {
- var saved = 'en';
- try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
- if (saved !== 'zh') saved = 'en';
+ var saved = localStorage.getItem('lang') || 'en';
  document.documentElement.setAttribute('data-lang', saved);
- document.documentElement.lang = saved === 'zh' ? 'zh-CN' : 'en';
  })();
 </script>
 </head>
@@ -42,7 +39,7 @@
  </filter>
 </svg>
 
-<nav class="top-nav" aria-label="Sections">
+<nav class="top-nav">
  <a href="#top" class="brand">Ryan Lin</a>
  <div class="nav-right">
  <div class="nav-links">
@@ -54,9 +51,9 @@
  <a href="#ip"><span data-lang="en">Software</span><span data-lang="zh">软著</span></a>
  <a href="#awards"><span data-lang="en">Awards</span><span data-lang="zh">竞赛</span></a>
  <a href="#honors"><span data-lang="en">Honors</span><span data-lang="zh">荣誉</span></a>
- <a href="#personal"><span data-lang="en">About Me</span><span data-lang="zh">关于</span></a>
+ <a href="#personal"><span data-lang="en">About</span><span data-lang="zh">关于</span></a>
  </div>
- <button class="lang-toggle lang-toggle-nav" onclick="toggleLang()" aria-label="Switch language · 切换语言">
+ <button class="lang-toggle lang-toggle-nav" onclick="toggleLang()" aria-label="Toggle language">
  <span class="lt-en">EN</span><span class="lt-sep">·</span><span class="lt-zh">中</span>
  </button>
  </div>
@@ -95,7 +92,7 @@
  </li>
 
  <li>
- <span class="sb-label"><span data-lang="en">Email</span><span data-lang="zh">邮箱</span></span>
+ <span class="sb-label">Email</span>
  <a href="mailto:panlinryan@gmail.com">panlinryan@gmail.com</a>
  </li>
  <li>
@@ -103,9 +100,9 @@
  <a href="https://github.com/2004lryan" target="_blank" rel="noopener">@2004lryan</a>
  </li>
  <li>
- <span class="sb-label"><span data-lang="en">CV</span><span data-lang="zh">简历</span></span>
- <a href="assets/resume-zh.pdf" target="_blank" rel="noopener" data-lang="zh">中文简历 PDF</a>
- <a href="assets/resume-en.pdf" target="_blank" rel="noopener" data-lang="en">Resume (PDF)</a>
+ <span class="sb-label">CV</span>
+ <a href="assets/resume-zh.pdf" target="_blank" rel="noopener" data-lang="zh">Resume</a>
+ <a href="assets/resume-en.pdf" target="_blank" rel="noopener" data-lang="en">Resume</a>
  </li>
  </ul>
 
@@ -1265,8 +1262,8 @@
  </div>
 
  <p class="section-note">
- <span data-lang="en">My name is <strong>highlighted</strong>. <em>*</em> corresponding author; <em>†</em> co-first authors. As of September 2026.</span>
- <span data-lang="zh">本人姓名以<strong>色块</strong>标出；<em>*</em> 为通讯作者，<em>†</em> 为共同第一作者。截至 2026 年 9 月。</span>
+ <span data-lang="en">Names are <strong>bold-underlined</strong> for myself; <em>*</em> denotes co-first authorship. As of September 2026.</span>
+ <span data-lang="zh">我本人以<strong>粗体下划线</strong>标出；<em>*</em> 表示共同一作。截至 2026 年 9 月。</span>
  </p>
 
  <div class="pub-list">
@@ -1346,7 +1343,7 @@
  </p>
 
  <div class="pub-links">
- <a href="https://ieeexplore.ieee.org/document/11339538" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://ieeexplore.ieee.org/document/11339538" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/11-li2025pca.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1369,7 +1366,7 @@
  <p class="pub-venue"><em>Highlights in Science, Engineering and Technology</em>, 2024, 116: 270–276.</p>
  
  <div class="pub-links">
- <a href="https://drpress.org/ojs/index.php/HSET/article/view/26840" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://drpress.org/ojs/index.php/HSET/article/view/26840" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/10-li2024hexane.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1392,7 +1389,7 @@
  <p class="pub-venue"><em>International Journal of Public Health and Medical Research</em>, 2026, 6(2): 1–8.</p>
  
  <div class="pub-links">
- <a href="https://doi.org/10.62051/ijphmr.v6n2.01" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://doi.org/10.62051/ijphmr.v6n2.01" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/09-li2026nipt.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1415,7 +1412,7 @@
  <p class="pub-venue"><em>Academic Journal of Computing &amp; Information Science</em>, 2025, 8(10): 99–107.</p>
  
  <div class="pub-links">
- <a href="https://francis-press.com/papers/20078" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://francis-press.com/papers/20078" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/08-li2025niptbayes.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1438,7 +1435,7 @@
  <p class="pub-venue"><em>Academic Journal of Mathematical Sciences</em>, 2025, 6(2): 121–129.</p>
  
  <div class="pub-links">
- <a href="https://francis-press.com/papers/20004" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://francis-press.com/papers/20004" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/07-li2025niptmulti.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1461,7 +1458,7 @@
  <p class="pub-venue"><em>应用数学进展</em>, 2025, 14(5): 23–28.</p>
  
  <div class="pub-links">
- <a href="https://www.hanspub.org/journal/paperinformation?paperid=113847" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://www.hanspub.org/journal/paperinformation?paperid=113847" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/06-li2025kdv.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1484,7 +1481,7 @@
  <p class="pub-venue"><em>智慧农业导刊</em>, 2024, 4(21): 185–188.</p>
  
  <div class="pub-links">
- <a href="https://kns.cnki.net/kcms2/article/abstract?v=ZO6hV6rGk-bZFvHbYVKP4b8rNglgpPzLTmmakmQD6iy6WbI7T722pn91RXu4LWamNSayPBxSo9UBfXIbnDiky2Nf81ifEFGrqmLwZOg1Pql2X8fcGs6XgI7t6YAIfELLP-87wQwkgWKFPofL3DGo9fJrfDxMW4Fyx7LKfxkMT8fzRqR3iB9juw==&uniplatform=NZKPT&language=CHS" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://kns.cnki.net/kcms2/article/abstract?v=ZO6hV6rGk-bZFvHbYVKP4b8rNglgpPzLTmmakmQD6iy6WbI7T722pn91RXu4LWamNSayPBxSo9UBfXIbnDiky2Nf81ifEFGrqmLwZOg1Pql2X8fcGs6XgI7t6YAIfELLP-87wQwkgWKFPofL3DGo9fJrfDxMW4Fyx7LKfxkMT8fzRqR3iB9juw==&uniplatform=NZKPT&language=CHS" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/05-li2024culture.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1503,11 +1500,11 @@
  <details class="pub" id="pub-grey" data-tags="jour first">
  <summary>
  <h3 class="pub-title"><span class="pub-rank">[4]</span> An improved kernel regularized nonhomogeneous grey model based on conformable fractional accumulation</h3>
- <p class="pub-authors">Rao W.J.<sup>†</sup>, <strong>Li P.L.</strong><sup>†</sup></p>
- <p class="pub-venue"><em>Transactions on Computational and Applied Mathematics</em>, 2024, 4: 137–147. &nbsp;·&nbsp; <span class="cv-tag"><span data-lang="en">Co-first author</span><span data-lang="zh">共同一作</span></span></p>
+ <p class="pub-authors">Rao W.J., <strong>Li P.L.</strong><em>*</em></p>
+ <p class="pub-venue"><em>Transactions on Computational and Applied Mathematics</em>, 2024, 4: 137–147. &nbsp;·&nbsp; <span class="cv-tag">Co-First Author</span></p>
 
  <div class="pub-links">
- <a href="https://www.clausiuspress.com/article/14420.html" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://www.clausiuspress.com/article/14420.html" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/04-rao2024grey.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1530,7 +1527,7 @@
  <p class="pub-venue"><em>长春师范大学学报</em>, 2026, 45(4): 6–11.</p>
 
  <div class="pub-links">
- <a href="https://kns.cnki.net/kcms2/article/abstract?v=VfSiRbMmQk2sr2a7pSKwGIJWSPwQxFMQSqSY6BVPk-c9WrsWD1nh1FkAMwo4XChSPo9FTWg0_joEEJnStw-HzbqvDer9PrzdPvyReVd-WLY7BGhaqyPZE8OTnSPWY5m4SSdAs2W_C94sc__--3K9_3Br2QNEoU4zEr5NlHZ56L6q-fihjxImCA==&uniplatform=NZKPT&language=CHS" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://kns.cnki.net/kcms2/article/abstract?v=VfSiRbMmQk2sr2a7pSKwGIJWSPwQxFMQSqSY6BVPk-c9WrsWD1nh1FkAMwo4XChSPo9FTWg0_joEEJnStw-HzbqvDer9PrzdPvyReVd-WLY7BGhaqyPZE8OTnSPWY5m4SSdAs2W_C94sc__--3K9_3Br2QNEoU4zEr5NlHZ56L6q-fihjxImCA==&uniplatform=NZKPT&language=CHS" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/03-zhang2026shallow.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1553,7 +1550,7 @@
  <p class="pub-venue"><em>物联网技术</em>, 2026, 16(2): 9–12, 16.</p>
  
  <div class="pub-links">
- <a href="https://kns.cnki.net/kcms2/article/abstract?v=ZO6hV6rGk-akyOy5jtu3BfA_RjrS2TlIvhA7jc_whnJAcUpwdUKoBp5NWHboJn1fbfg4MpG-vibxpWFv-qFugp_XU_ePniPBkI9PSU9LXkHPi76cKH5Dd4DliTnQXzkksNE-LmiRxsvG02fcQ07nCGuIbayQC5HSO0IoBs88QwvWYd-rw7lDFg==&uniplatform=NZKPT&language=CHS" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://kns.cnki.net/kcms2/article/abstract?v=ZO6hV6rGk-akyOy5jtu3BfA_RjrS2TlIvhA7jc_whnJAcUpwdUKoBp5NWHboJn1fbfg4MpG-vibxpWFv-qFugp_XU_ePniPBkI9PSU9LXkHPi76cKH5Dd4DliTnQXzkksNE-LmiRxsvG02fcQ07nCGuIbayQC5HSO0IoBs88QwvWYd-rw7lDFg==&uniplatform=NZKPT&language=CHS" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/02-jiao2026esp32.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1576,7 +1573,7 @@
  <p class="pub-venue"><em>光谱学与光谱分析</em>, 2025, 45(S1): 415–423.<span class="pub-tag tag-sci">SCI Q4</span><span class="pub-tag tag-if">IF 0.8</span></p>
  
  <div class="pub-links">
- <a href="https://kns.cnki.net/kcms2/article/abstract?v=ZO6hV6rGk-Z17hTi0qNxNhBHzxR_pvU7TsrZhFrAgHip9xYwsD5GnwwPp51YmiuMa8dvnum4pV5wGOVtp3twNvP05qnYrAqGBCrlJbOcI9Vm7Vh-ki2NTx9zzQTF61qGbhvhC_vhO2pQpbAM8F_0bY3kDi83sw6lrhYUfQDmdBRydR1chU7J5g==&uniplatform=NZKPT&language=CHS" target="_blank" rel="noopener"><span data-lang="en">Paper</span><span data-lang="zh">原文</span></a>
+ <a href="https://kns.cnki.net/kcms2/article/abstract?v=ZO6hV6rGk-Z17hTi0qNxNhBHzxR_pvU7TsrZhFrAgHip9xYwsD5GnwwPp51YmiuMa8dvnum4pV5wGOVtp3twNvP05qnYrAqGBCrlJbOcI9Vm7Vh-ki2NTx9zzQTF61qGbhvhC_vhO2pQpbAM8F_0bY3kDi83sw6lrhYUfQDmdBRydR1chU7J5g==&uniplatform=NZKPT&language=CHS" target="_blank" rel="noopener">Paper</a>
  <a href="assets/pdfs/01-huang2025apple.pdf" target="_blank" rel="noopener">PDF</a>
  
      <details class="pub-bib">
@@ -1765,10 +1762,34 @@
  <div class="filter-bar" data-target="#honors">
  <button class="filter-btn" data-tag="all"><span data-lang="en">All</span><span data-lang="zh">全部</span></button>
  <button class="filter-btn active" data-tag="natl"><span data-lang="en">National</span><span data-lang="zh">国家级</span></button>
+ <button class="filter-btn" data-tag="prov"><span data-lang="en">Provincial</span><span data-lang="zh">省部级</span></button>
  <button class="filter-btn" data-tag="univ"><span data-lang="en">University</span><span data-lang="zh">校级</span></button>
  </div>
 
  <ul class="award-list">
+ <li data-tags="natl">
+ <span class="date">2024–2025</span>
+ <div>
+ <details class="honor-detail">
+ <summary>
+ <span data-lang="en">Volunteer Service Certificates (×9) &amp; Outstanding Team (×1) · CYL Central Committee Youth Volunteer Action Guidance Center / Chinese Young Volunteers Association Secretariat</span>
+ <span data-lang="zh">团中央青年志愿者行动指导中心、中国青年志愿者协会秘书处 · 志愿服务证书（9 项）及“优秀团队”（1 项）</span>
+ </summary>
+ <ul class="honor-sublist">
+ <li><span class="honor-date">2025.02</span> “未来之盾志愿队”在 2024 年关爱行动“少年儿童安全守护计划”管道保护宣传志愿服务活动中，圆满完成各项任务，被评为<strong>优秀团队</strong></li>
+ <li><span class="honor-date">2024.07</span> 在 2024 年全国大学生井冈山精神志愿宣讲活动中，圆满完成各项志愿服务任务，为志愿服务做出贡献</li>
+ <li><span class="honor-date">2024.07</span> 在 2024 年全国大学生延安精神志愿宣讲活动中，圆满完成各项志愿服务任务，为志愿服务做出贡献</li>
+ <li><span class="honor-date">2024.10</span> 在 2024 年全国大学生“乡村振兴”志愿服务活动中，圆满完成各项志愿服务任务，为志愿服务做出贡献</li>
+ <li><span class="honor-date">2024.12</span> 在 2024 年关爱行动“七彩假期”志愿服务中，完成各项志愿服务任务</li>
+ <li><span class="honor-date">2025.02</span> 在 2024 年全国大学生“两弹一星”精神志愿宣讲项目中，圆满完成各项志愿服务任务，为志愿服务做出贡献</li>
+ <li><span class="honor-date">2025.02</span> 在 2024 年关爱行动“少年儿童安全守护计划”管道保护宣传志愿服务活动中，完成各项志愿服务任务</li>
+ <li><span class="honor-date">2025.06</span> 在 2024 年全国大学生沂蒙精神志愿宣讲活动中，完成各项志愿服务任务</li>
+ <li><span class="honor-date">2025.07</span> 在 2024 年全国大学生遵义会议精神志愿宣讲活动中，完成各项志愿服务任务</li>
+ <li><span class="honor-date">2025.12</span> 在 2025 年关爱行动“七彩假期”志愿服务中，完成各项志愿服务任务</li>
+ </ul>
+ </details>
+ </div>
+ </li>
  <li data-tags="natl">
  <span class="date">2026.09</span>
  <span>
@@ -1824,29 +1845,6 @@
  <span data-lang="en">Outstanding Student (2024–25) · Xinjiang Agricultural University</span>
  <span data-lang="zh">新疆农业大学“三好学生”（2024-2025 学年）</span>
  </span>
- </li>
- <li data-tags="natl">
- <span class="date">2024–2025</span>
- <div>
- <details class="honor-detail">
- <summary>
- <span data-lang="en">Volunteer Service Certificates (×9) &amp; Outstanding Team (×1) · CYL Central Committee Youth Volunteer Action Guidance Center / Chinese Young Volunteers Association Secretariat</span>
- <span data-lang="zh">团中央青年志愿者行动指导中心、中国青年志愿者协会秘书处 · 志愿服务证书（9 项）及“优秀团队”（1 项）</span>
- </summary>
- <ul class="honor-sublist">
- <li><span class="honor-date">2025.02</span> “未来之盾志愿队”在 2024 年关爱行动“少年儿童安全守护计划”管道保护宣传志愿服务活动中，圆满完成各项任务，被评为<strong>优秀团队</strong></li>
- <li><span class="honor-date">2024.07</span> 在 2024 年全国大学生井冈山精神志愿宣讲活动中，圆满完成各项志愿服务任务，为志愿服务做出贡献</li>
- <li><span class="honor-date">2024.07</span> 在 2024 年全国大学生延安精神志愿宣讲活动中，圆满完成各项志愿服务任务，为志愿服务做出贡献</li>
- <li><span class="honor-date">2024.10</span> 在 2024 年全国大学生“乡村振兴”志愿服务活动中，圆满完成各项志愿服务任务，为志愿服务做出贡献</li>
- <li><span class="honor-date">2024.12</span> 在 2024 年关爱行动“七彩假期”志愿服务中，完成各项志愿服务任务</li>
- <li><span class="honor-date">2025.02</span> 在 2024 年全国大学生“两弹一星”精神志愿宣讲项目中，圆满完成各项志愿服务任务，为志愿服务做出贡献</li>
- <li><span class="honor-date">2025.02</span> 在 2024 年关爱行动“少年儿童安全守护计划”管道保护宣传志愿服务活动中，完成各项志愿服务任务</li>
- <li><span class="honor-date">2025.06</span> 在 2024 年全国大学生沂蒙精神志愿宣讲活动中，完成各项志愿服务任务</li>
- <li><span class="honor-date">2025.07</span> 在 2024 年全国大学生遵义会议精神志愿宣讲活动中，完成各项志愿服务任务</li>
- <li><span class="honor-date">2025.12</span> 在 2025 年关爱行动“七彩假期”志愿服务中，完成各项志愿服务任务</li>
- </ul>
- </details>
- </div>
  </li>
  <li data-tags="univ">
  <span class="date">2024.12</span>
@@ -1943,7 +1941,6 @@
  var current = document.documentElement.getAttribute('data-lang') || 'en';
  var next = current === 'en' ? 'zh' : 'en';
  document.documentElement.setAttribute('data-lang', next);
- document.documentElement.lang = next === 'zh' ? 'zh-CN' : 'en';
  try { localStorage.setItem('lang', next); } catch (e) {}
  }
 
@@ -2014,17 +2011,10 @@
  if (activeBtn) {
  applyFilter(section, activeBtn.getAttribute('data-tag'));
  }
- function markPressed() {
- buttons.forEach(function (b) {
- b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false');
- });
- }
- markPressed();
  buttons.forEach(function (btn) {
  btn.addEventListener('click', function () {
  buttons.forEach(function (b) { b.classList.remove('active'); });
  btn.classList.add('active');
- markPressed();
  applyFilter(section, btn.getAttribute('data-tag'));
  var scroller = section.querySelector('.news-list');
  if (scroller) scroller.scrollTop = 0;
@@ -2057,7 +2047,6 @@
  (function () {
  document.querySelectorAll('details.edu-collapse > summary').forEach(function (summary) {
  summary.addEventListener('click', function (e) {
- if (e.detail === 0) return;                     // Enter / Space on the focused row toggles it
  if (e.target.closest('a, button')) return;      // school / faculty links keep working
  if (e.target.closest('.edu-toggle')) return;    // the chevron is the only toggle
  e.preventDefault();
@@ -2097,7 +2086,6 @@
  var summaries = document.querySelectorAll('details.proj > summary, details.pub > summary');
  summaries.forEach(function (summary) {
  summary.addEventListener('click', function (e) {
- if (e.detail === 0) return; // Enter / Space on the focused row toggles it
  // Real interactive children (PDF link, BibTeX toggle, buttons) always work
  if (e.target.closest('a, button, details.pub-bib > summary')) return;
  var rem = parseFloat(getComputedStyle(document.documentElement).fontSize);

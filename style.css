@@ -131,7 +131,6 @@ body::after {
 }
 @media (prefers-reduced-motion: reduce) {
   body::before { animation: none; }
-  html { scroll-behavior: auto; }
 }
 
 /* ===== Language switching ===== */
@@ -165,7 +164,6 @@ html[data-lang="zh"] {
 html[data-lang="zh"] :is(.sb-label, .subhead, .edu-detail-label, .honors-tier, .proj-outputs-label) {
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  text-transform: none;   /* 夹在汉字标签中间的 GitHub 按原样写，不转全大写 */
 }
 html[data-lang="zh"] :is(.proj-tag, .pub-tag, .cv-tag.as-chip, .proj-meta-status,
                          .award-list .cv-tag, .cite-copy, .badge, .ip-granted) {
