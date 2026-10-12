@@ -1639,6 +1639,8 @@ details.edu-collapse > summary.edu-block:hover {
   transition: transform 0.3s cubic-bezier(0.28, 0.11, 0.32, 1), background-color 0.2s ease;
   display: inline-block;
 }
+/* 没有展开按钮的卡片占住同样宽的一列，两张卡片的时间列才对齐 */
+.edu-toggle-spacer { width: 28px; }
 details.edu-collapse[open] > summary .edu-toggle { transform: rotate(180deg); }
 details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
 .edu-details {
@@ -1740,6 +1742,9 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
   color: var(--text-2);
   line-height: 1.5;
 }
+/* 专业名不拆字，「导师：某教授」整段不拆行，窄屏只在「·」处换行 */
+.edu-meta [data-lang="zh"] { word-break: keep-all; }
+.edu-nowrap { white-space: nowrap; }
 .edu-dates {
   font-size: 0.82rem;
   color: var(--text-3);
@@ -2053,14 +2058,6 @@ em, i, cite, dfn, address, var { font-style: normal; }
   .proj-mini-meta { text-align: left; }
   .ip-list li { grid-template-columns: 1fr; }
   .ip-meta { text-align: left; }
-  .edu-row { grid-template-columns: 48px 1fr; }
-  .edu-mark { width: 48px; height: 48px; font-size: 0.82rem; }
-  .edu-dates {
-    grid-column: 1 / -1;
-    margin-top: 0.4rem;
-    padding-top: 0.5rem;
-    border-top: 1px dashed var(--border);
-  }
 }
 
 
@@ -2071,3 +2068,29 @@ em, i, cite, dfn, address, var { font-style: normal; }
 
 /* 下一段学历（尚未入学，无展开详情）与下方卡片留出间距 */
 .edu-block-next { margin-bottom: 0.9rem; }
+
+/* 学历卡片：信息列放不下一行时改为上下排（时间另起一行），比全站窄屏断点早一档 */
+@media (max-width: 980px) {
+  .edu-row { grid-template-columns: 48px 1fr; }
+  .edu-mark { width: 48px; height: 48px; font-size: 0.82rem; }
+  .edu-toggle-spacer { display: none; }
+  .edu-dates {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    margin-top: 0.4rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border);
+  }
+  /* 展开按钮与时间同一行、靠右 */
+  .edu-toggle {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    justify-self: end;
+    align-self: end;
+    margin-bottom: -3px;
+  }
+}
+/* 极窄屏放开不拆行的片段，避免撑出卡片 */
+@media (max-width: 360px) {
+  .edu-nowrap { white-space: normal; }
+}
