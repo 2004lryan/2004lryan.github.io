@@ -52,7 +52,6 @@
   --font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --container:   1100px;
-  --page-gutter: 20px;     /* 页面两侧留白；单栏时改为随视口变化 */
   --section-gap: 1.8rem;
   --read-width:  68ch;     /* reserved for prose blocks if needed elsewhere */
 }
@@ -193,8 +192,6 @@ html.lg-lens .top-nav {
   color: var(--color-text);
   text-decoration: none;
   letter-spacing: -0.005em;
-  white-space: nowrap;
-  flex: 0 0 auto;
 }
 .brand::before {
   content: '';
@@ -298,9 +295,8 @@ html[data-lang="zh"] .lt-zh { color: var(--color-primary); font-weight: 600; }
 .page-outer {
   display: flex;
   align-items: flex-start;
-  max-width: calc(var(--container) + 2 * var(--page-gutter));
+  max-width: var(--container);
   margin: 0 auto;
-  padding-inline: var(--page-gutter);
 }
 
 .site-sidebar {
@@ -2001,34 +1997,31 @@ em, i, cite, dfn, address, var { font-style: normal; }
 /* ===== Selection ===== */
 ::selection { background: rgba(20, 84, 59, 0.18); color: var(--color-text); }
 
-/* ===== Responsive =====
-   ≥1101     两栏：左侧名片常驻，右侧正文
-   961–1100  两栏收一档（平板横屏、小笔记本）
-   ≤960      单栏：名片横排置顶，导航分两行
-   ≤720      手机：列表列宽、卡片内部再收紧
-   ≤560      名片改为小头像 + 两列联系方式 */
-@media (max-width: 1100px) {
-  .site-sidebar { width: 232px; padding: 1.4rem 1.2rem; }
-  main { padding: 0.3rem 0.5rem 0 1.7rem; }
-  /* 标签放不下时只让这一条横向滚动，不把整页撑宽 */
-  .nav-right { min-width: 0; }
-  .nav-links {
-    min-width: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+/* ===== Responsive ===== */
+@media (max-width: 720px) {
+  details.pub.pub-with-thumb > summary { flex-direction: column; }
+  details.pub.pub-with-thumb > summary > .pub-thumb { flex: 0 0 auto; width: 100%; min-height: 100px; height: 100px; }
+  :root { --section-gap: 2rem; }
+  body { font-size: 14.5px; }
+
+  /* Stack two-column layout vertically on mobile */
+  .page-outer { flex-direction: column; }
+  .site-sidebar {
+    width: auto;
+    height: auto;
+    position: static;
+    max-height: none;
+    margin: 0.9rem 0.9rem 0;
+    padding: 1.3rem 1.2rem 1.2rem;
+    border-radius: 18px;
   }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a { flex: 0 0 auto; }
-}
+  .sb-photo { width: 140px; height: 140px; }
+  main { padding: 0 1.2rem; }
 
-@media (max-width: 960px) {
-  :root { --page-gutter: clamp(16px, 3.2vw, 28px); }
   html { scroll-padding-top: 118px; }  /* two-row glass nav */
-
   .top-nav {
     top: 8px;
-    margin: 8px 12px 0;
+    margin: 8px 10px 0;
     max-width: none;
     padding: 0.55rem 0.8rem;
     border-radius: 22px;
@@ -2040,59 +2033,20 @@ em, i, cite, dfn, address, var { font-style: normal; }
     -webkit-backdrop-filter: blur(20px) saturate(1.8);
     backdrop-filter: blur(20px) saturate(1.8);
   }
-  /* Row 1: brand + lang toggle; row 2: link rail — tabs share the width,
-     and the rail swipes sideways when they do not fit */
+  /* Row 1: brand + lang toggle; row 2: swipeable link rail */
   .nav-right { display: contents; }
   .lang-toggle { order: 2; }
   .nav-links {
     order: 3;
     flex: 1 1 100%;
+    overflow-x: auto;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
-  .nav-links a { flex: 1 0 auto; text-align: center; }
-
-  /* 单栏：侧栏变成横向名片（头像 | 姓名与单位），联系方式和会员身份各占一行 */
-  .page-outer { flex-direction: column; align-items: stretch; }
-  .site-sidebar {
-    position: static;
-    align-self: stretch;
-    width: auto;
-    max-height: none;
-    overflow: visible;
-    margin: 0.9rem 0 0;
-    padding: 1.2rem 1.3rem 1.1rem;
-    border-radius: 20px;
-    display: grid;
-    grid-template-columns: 112px minmax(0, 1fr);
-    column-gap: 1.25rem;
-    align-items: center;
-  }
-  .sb-photo { width: 112px; margin-bottom: 0; }
-  .sb-info {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    justify-content: space-between;
-    gap: 0.7rem 1.5rem;
-    margin: 1.05rem 0 0;
-    padding-top: 0.9rem;
-  }
-  .sb-memberships {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.15rem 1.3rem;
-    margin-top: 0.9rem;
-  }
-  main { padding: 0; }
-}
-
-@media (max-width: 720px) {
-  :root { --section-gap: 2rem; }
-  body { font-size: 14.5px; }
-  details.pub.pub-with-thumb > summary { flex-direction: column; }
-  details.pub.pub-with-thumb > summary > .pub-thumb { flex: 0 0 auto; width: 100%; min-height: 100px; height: 100px; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { flex: 0 0 auto; }
   .nav-links a { font-size: 0.76rem; }
   .lang-toggle { padding: 0.18rem 0.45rem; font-size: 0.72rem; }
   .hero { padding: 1.5rem 0 1.5rem; }
@@ -2102,34 +2056,23 @@ em, i, cite, dfn, address, var { font-style: normal; }
   .research-areas { grid-template-columns: 1fr; gap: 1rem; }
   .proj-mini-list li { grid-template-columns: 1fr; }
   .proj-mini-meta { text-align: left; }
-  .ip-list { grid-template-columns: 1fr; }
+  .ip-list li { grid-template-columns: 1fr; }
   .ip-meta { text-align: left; }
 }
 
-@media (max-width: 560px) {
-  .site-sidebar {
-    grid-template-columns: 84px minmax(0, 1fr);
-    column-gap: 1rem;
-    padding: 1.05rem 1.1rem 1rem;
-  }
-  .sb-photo { width: 84px; border-radius: 12px; }
-  .sb-name { font-size: 1.25rem; }
-  .sb-info {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    justify-content: stretch;
-    gap: 0.65rem 1rem;
-  }
+
+/* ip cards collapse to one column on small screens */
+@media (max-width: 720px) {
+  .ip-list { grid-template-columns: 1fr; }
 }
 
 /* 下一段学历（尚未入学，无展开详情）与下方卡片留出间距 */
 .edu-block-next { margin-bottom: 0.9rem; }
 
-/* 学历卡片：卡片自身不够宽时，时间与展开按钮落到第二行。
-   按卡片宽度判断，两栏的窄档与单栏走同一条规则 */
-.edu-block { container-type: inline-size; }
-@container (max-width: 640px) {
+/* 学历卡片：信息列放不下一行时改为上下排（时间另起一行），比全站窄屏断点早一档 */
+@media (max-width: 980px) {
   .edu-row { grid-template-columns: 48px 1fr; }
-  .edu-mark { width: 48px; height: 48px; }
+  .edu-mark { width: 48px; height: 48px; font-size: 0.82rem; }
   .edu-toggle-spacer { display: none; }
   .edu-dates {
     grid-row: 2;
@@ -2145,28 +2088,6 @@ em, i, cite, dfn, address, var { font-style: normal; }
     justify-self: end;
     align-self: end;
     margin-bottom: -3px;
-  }
-}
-/* 不支持按容器宽度判断的旧浏览器：手机宽度下照样落到第二行 */
-@supports not (container-type: inline-size) {
-  @media (max-width: 720px) {
-    .edu-row { grid-template-columns: 48px 1fr; }
-    .edu-mark { width: 48px; height: 48px; }
-    .edu-toggle-spacer { display: none; }
-    .edu-dates {
-      grid-row: 2;
-      grid-column: 1 / -1;
-      margin-top: 0.4rem;
-      padding-top: 0.5rem;
-      border-top: 1px dashed var(--border);
-    }
-    .edu-toggle {
-      grid-row: 2;
-      grid-column: 1 / -1;
-      justify-self: end;
-      align-self: end;
-      margin-bottom: -3px;
-    }
   }
 }
 /* 极窄屏放开不拆行的片段，避免撑出卡片 */
