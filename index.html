@@ -8,7 +8,11 @@
 <meta name="description" content="Personal homepage of Ryan Lin (李盼林), undergraduate researcher at Xinjiang Agricultural University. Research interests: functional data analysis, high-dimensional statistical learning, physics-informed modeling, and deep learning." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<!-- Web fonts must not hold up the first paint: text shows at once in the system
+     fallbacks named in style.css and swaps when the fonts arrive. Where the
+     font service is slow or unreachable the page still renders immediately. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"></noscript>
 <link rel="stylesheet" href="style.css" />
 <script>
  (function () {
@@ -1275,7 +1279,7 @@
   <details class="pub pub-with-thumb" id="pub-cils" data-tags="sci first submitted">
  <summary>
  <div class="pub-thumb">
- <img src="assets/thumbs/robust-ssc.png" alt="" onerror="this.style.display='none'" />
+ <img src="assets/thumbs/robust-ssc.png" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" />
  <span class="pub-thumb-venue">CILS</span>
  <span class="pub-thumb-meta">2026 · IF 3.8</span>
  </div>
@@ -2208,6 +2212,10 @@
  window.addEventListener('resize', syncAll);
  window.addEventListener('load', syncAll);
  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncAll);
+ // Web fonts arrive after first paint and change label widths
+ if (document.fonts && document.fonts.addEventListener) {
+ document.fonts.addEventListener('loadingdone', syncAll);
+ }
  // Language switch changes label widths — reposition after EN/中 toggles
  new MutationObserver(syncAll).observe(document.documentElement, {
  attributes: true, attributeFilter: ['data-lang']
