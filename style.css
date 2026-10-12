@@ -20,12 +20,6 @@
   --color-border:        #E2E8DE;   /* borders / dividers */
   --color-border-strong: #C4D0C0;   /* hover / emphasized border */
 
-  /* ===== Neutral fills (ink at low alpha, so they pick up the pine undertone
-     of whatever sits behind them) — chips, filter bars, chevron buttons ===== */
-  --color-fill:        rgba(22, 32, 27, 0.055);
-  --color-fill-strong: rgba(22, 32, 27, 0.09);
-  --color-fill-hover:  rgba(22, 32, 27, 0.14);
-
   /* ===== Liquid Glass material ===== */
   --glass-bg:           rgba(255, 255, 255, 0.52);
   --glass-bg-hover:     rgba(255, 255, 255, 0.64);
@@ -611,13 +605,6 @@ main {
   border-radius: 2px;
   flex: 0 0 auto;
 }
-.section-title::after {
-  content: '';
-  flex: 1 1 auto;
-  height: 1px;
-  margin-left: 0.45rem;
-  background: var(--glass-line);
-}
 
 /* ===== Prose ===== */
 .prose p {
@@ -740,8 +727,8 @@ main {
   border: 1px solid var(--glass-edge);
   border-radius: 16px;
   box-shadow: var(--glass-highlight), var(--glass-shadow);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease,
-              background 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease,
+              background 0.25s ease, transform 0.25s ease;
   overflow: hidden;
 }
 .pub:hover {
@@ -768,15 +755,15 @@ details.pub > summary::after {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: var(--color-fill-strong);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.25 6 7.75l3.5-3.5' fill='none' stroke='%234A5550' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-color: #E8E8ED;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.25 6 7.75l3.5-3.5' fill='none' stroke='%236E6E73' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   transition: transform 0.3s cubic-bezier(0.28, 0.11, 0.32, 1), background-color 0.2s ease;
   cursor: pointer;
 }
 details.pub > summary:hover::after {
-  background-color: var(--color-fill-hover);
+  background-color: #DEDEE3;
 }
 details.pub[open] > summary::after {
   transform: rotate(180deg);
@@ -1203,8 +1190,8 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   border: 1px solid var(--glass-edge);
   border-radius: 16px;
   box-shadow: var(--glass-highlight), var(--glass-shadow);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease,
-              background 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease,
+              background 0.25s ease, transform 0.25s ease;
   overflow: hidden;
 }
 .proj:hover {
@@ -1232,15 +1219,15 @@ details.proj > summary::after {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: var(--color-fill-strong);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.25 6 7.75l3.5-3.5' fill='none' stroke='%234A5550' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-color: #E8E8ED;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.25 6 7.75l3.5-3.5' fill='none' stroke='%236E6E73' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   transition: transform 0.3s cubic-bezier(0.28, 0.11, 0.32, 1), background-color 0.2s ease;
   cursor: pointer;
 }
 details.proj > summary:hover::after {
-  background-color: var(--color-fill-hover);
+  background-color: #DEDEE3;
 }
 details.proj[open] > summary::after {
   transform: translateY(-50%) rotate(180deg);
@@ -1258,15 +1245,20 @@ details.proj > summary > .proj-meta {
 details.proj[open] > summary {
   border-bottom: 1px dashed var(--color-border);
 }
-/* Expanded content padding (proj-body / proj-outputs sit below summary).
-   Each language's body carries its own top and bottom padding — only one of
-   the two is displayed — and the outputs line tucks up under it. */
-details.proj > .proj-body {
-  padding: 0.9rem 1.25rem 1.05rem;
-}
+/* Expanded content padding (proj-body / proj-outputs sit below summary) */
+details.proj > .proj-body,
 details.proj > .proj-outputs {
-  padding: 0 1.25rem 1.05rem;
-  margin-top: -0.45rem;
+  padding: 0 1.25rem;
+}
+details.proj > .proj-body:first-of-type {
+  padding-top: 0.85rem;
+}
+details.proj > .proj-outputs:last-of-type,
+details.proj > .proj-body:last-of-type {
+  padding-bottom: 1.05rem;
+}
+details.proj > .proj-body + .proj-body {
+  padding-top: 0;
 }
 .proj-title {
   font-family: var(--font-serif);
@@ -1299,7 +1291,7 @@ details.proj > .proj-outputs {
   line-height: 1.2;
   border-radius: 999px;
   border: none;
-  background: var(--color-fill);
+  background: #F0F0F3;
   color: var(--color-text-muted);
   margin-right: 0.32rem;
   vertical-align: 0.08em;
@@ -1316,7 +1308,7 @@ details.proj > .proj-outputs {
 }
 .tag-univ {
   color: var(--color-text-muted);
-  background: var(--color-fill);
+  background: #F0F0F3;
 }
 /* —— 强调：SCI 实心松绿；重点/面上/IF 金棕 —— */
 .tag-sci {
@@ -1374,10 +1366,6 @@ details.proj > .proj-outputs {
   line-height: var(--lh-prose);
 }
 .proj-body em { font-style: italic; color: var(--text); }
-/* 背景 / 方法 / 创新点 / 结论 / 意义：一段一块，段首标签用正文色 */
-.pb-seg { display: block; }
-.pb-seg + .pb-seg { margin-top: 0.5rem; }
-.pb-seg > strong:first-child { color: var(--text); font-weight: 600; }
 .proj-body a {
   color: var(--link);
   text-decoration: none;
@@ -1399,7 +1387,7 @@ details.proj > .proj-outputs {
   gap: 2px;
   padding: 3px;
   margin: -0.3rem 0 1.3rem;
-  background: var(--color-fill);
+  background: #EFEFF1;
   border-radius: 999px;
   max-width: 100%;
   overflow-x: auto;
@@ -1582,20 +1570,15 @@ details.honor-detail[open] > summary::after {
   gap: 0.9rem;
 }
 .ip-list li {
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
-  backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
-  border: 1px solid var(--glass-edge);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  box-shadow: 0 1px 2px rgba(22, 32, 27, 0.04), 0 6px 20px rgba(22, 32, 27, 0.05);
   padding: 1.05rem 1.2rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease,
-              background 0.2s ease, transform 0.2s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 .ip-list li:hover {
-  background: var(--glass-bg-hover);
-  border-color: rgba(255, 255, 255, 0.85);
-  box-shadow: var(--glass-highlight), var(--glass-shadow-hover);
+  box-shadow: 0 2px 6px rgba(22, 32, 27, 0.06), 0 14px 40px rgba(22, 32, 27, 0.11);
   transform: translateY(-2px);
 }
 .ip-title {
@@ -1683,8 +1666,8 @@ details.edu-collapse > summary.edu-block:hover {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: var(--color-fill-strong);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.25 6 7.75l3.5-3.5' fill='none' stroke='%234A5550' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-color: #E8E8ED;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.25 6 7.75l3.5-3.5' fill='none' stroke='%236E6E73' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   transition: transform 0.3s cubic-bezier(0.28, 0.11, 0.32, 1), background-color 0.2s ease;
@@ -1693,7 +1676,7 @@ details.edu-collapse > summary.edu-block:hover {
 /* 没有展开按钮的卡片占住同样宽的一列，两张卡片的时间列才对齐 */
 .edu-toggle-spacer { width: 28px; }
 details.edu-collapse[open] > summary .edu-toggle { transform: rotate(180deg); }
-details.edu-collapse > summary:hover .edu-toggle { background-color: var(--color-fill-hover); }
+details.edu-collapse > summary:hover .edu-toggle { background-color: #DEDEE3; }
 .edu-details {
   margin-top: 0.6rem;
   padding: 0 0.4rem;
@@ -1758,6 +1741,12 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: var(--color
 #patents li:target, #software li:target {
   animation: ref-flash 1.6s ease-out 1;
   scroll-margin-top: 5rem;
+}
+/* li 默认无内边距，高亮时给一点呼吸空间，避免色块贴着文字 */
+#patents li:target, #software li:target {
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  margin-left: -0.5rem;
 }
 @keyframes ref-flash {
   0%, 45% { background-color: rgba(255, 214, 102, 0.28); }
@@ -2007,7 +1996,7 @@ details.collapse > .honors-list { margin-top: 0; }
   border: 1px solid var(--glass-edge);
   border-radius: 16px;
   box-shadow: var(--glass-highlight), var(--glass-shadow);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 .personal-block:hover {
   transform: translateY(-2px);
@@ -2038,21 +2027,6 @@ details.collapse > .honors-list { margin-top: 0; }
 
 /* ===== Global: no italics anywhere ===== */
 em, i, cite, dfn, address, var { font-style: normal; }
-
-/* ===== Keyboard focus ===== */
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-/* 卡片会裁掉伸出去的描边，整行可聚焦的标题栏把焦点环画在里面 */
-details.pub > summary:focus-visible,
-details.proj > summary:focus-visible,
-details.edu-collapse > summary:focus-visible {
-  outline-offset: -3px;
-  border-radius: 14px;
-}
 
 /* ===== Selection ===== */
 ::selection { background: rgba(20, 84, 59, 0.18); color: var(--color-text); }
@@ -2148,7 +2122,7 @@ details.edu-collapse > summary:focus-visible {
   :root { --section-gap: 2rem; }
   body { font-size: 14.5px; }
   details.pub.pub-with-thumb > summary { flex-direction: column; }
-  details.pub.pub-with-thumb > summary > .pub-thumb { flex: 0 0 auto; width: 100%; min-height: 0; height: auto; aspect-ratio: 5 / 2; }
+  details.pub.pub-with-thumb > summary > .pub-thumb { flex: 0 0 auto; width: 100%; min-height: 100px; height: 100px; }
   .nav-links a { font-size: 0.76rem; }
   .lang-toggle { padding: 0.18rem 0.45rem; font-size: 0.72rem; }
   .hero { padding: 1.5rem 0 1.5rem; }
