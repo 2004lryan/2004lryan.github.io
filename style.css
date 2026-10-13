@@ -582,7 +582,7 @@ main {
   margin: 0;
 }
 .hero-bio p strong { font-weight: 600; color: var(--text); }
-.hero-bio p em { font-style: italic; color: var(--text); }
+.hero-bio p em { font-style: normal; color: var(--text); }
 .hero-bio .tagline {
   color: var(--text);
 }
@@ -630,7 +630,7 @@ main {
 }
 .prose p:last-child { margin-bottom: 0; }
 .prose p strong { color: var(--text); font-weight: 600; }
-.prose p em { font-style: italic; color: var(--text); }
+.prose p em { font-style: normal; color: var(--text); }
 
 /* ===== News (scrollable container, gabesarch-style) ===== */
 .news-list {
@@ -684,7 +684,7 @@ main {
   font-size: 0.92rem;
   line-height: var(--lh-row);
 }
-.news-body em { font-style: italic; color: var(--text); }
+.news-body em { font-style: normal; color: var(--text); }
 /* 动态里的仓库链接:只放 GitHub 图标,不铺裸 URL */
 .news-github {
   display: inline-flex;
@@ -946,7 +946,7 @@ details.pub-story > .pub-extra-story strong {
   margin-bottom: 0.32rem;
   line-height: var(--lh-meta);
 }
-.pub-venue em { font-style: italic; }
+.pub-venue em { font-style: normal; color: var(--text); }
 
 .badge {
   display: inline-block;
@@ -1170,7 +1170,7 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   line-height: 1.6;
 }
 .research-tldr p strong { color: var(--text); font-weight: 600; }
-.research-tldr p em { font-style: italic; color: var(--text); }
+.research-tldr p em { font-style: normal; color: var(--text); }
 .research-tldr p:not(:last-child) { margin-bottom: 0.55rem; }
 
 .research-areas {
@@ -1382,7 +1382,7 @@ details.proj > .proj-outputs {
   color: var(--text-2);
   line-height: var(--lh-prose);
 }
-.proj-body em { font-style: italic; color: var(--text); }
+.proj-body em { font-style: normal; color: var(--text); }
 /* 背景 / 方法 / 创新点 / 结论 / 意义：一段一块，段首标签用正文色 */
 .pb-seg { display: block; }
 .pb-seg + .pb-seg { margin-top: 0.5rem; }
