@@ -1334,6 +1334,7 @@ details.proj > .proj-outputs {
 }
 .tag-key,
 .tag-program,
+.tag-award,
 .tag-if {
   color: #8A5A12;
   background: rgba(180, 120, 30, 0.14);
@@ -1822,6 +1823,10 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: var(--color
   margin: 1.2rem 0 0.4rem;
 }
 .honors-tier:first-of-type { margin-top: 0.2rem; }
+
+/* 教育与荣誉一节末尾单列的媒体报道 */
+.edu-press { margin-top: 1.1rem; padding: 0 0.4rem; }
+.press-src { color: var(--text-3); }
 
 /* ===== Honors list (filled-dot bullets) ===== */
 .honors-list { list-style: none; }
