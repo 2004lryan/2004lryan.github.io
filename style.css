@@ -162,10 +162,10 @@ html[data-lang="zh"] {
   --lh-meta:  1.6;
   --lh-title: 1.45;
 }
-html[data-lang="zh"] :is(.sb-label, .subhead, .edu-detail-label, .honors-tier, .proj-outputs-label) {
+html[data-lang="zh"] :is(.subhead, .edu-detail-label, .honors-tier, .proj-outputs-label) {
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  text-transform: none;   /* 夹在汉字标签中间的 GitHub 按原样写，不转全大写 */
+  text-transform: none;
 }
 html[data-lang="zh"] :is(.proj-tag, .pub-tag, .cv-tag.as-chip, .proj-meta-status,
                          .award-list .cv-tag, .cite-copy, .badge, .ip-granted) {
@@ -1037,7 +1037,8 @@ details.pub-extra > summary:hover::before { color: var(--color-primary); }
   font-size: 0.78rem;
   align-items: center;
 }
-.pub-links a[href$=".pdf"]::before {
+.pub-links a[href$=".pdf"]::before,
+.file-name.is-pdf::before {
   content: '';
   display: inline-block;
   width: 15px;
@@ -2243,4 +2244,184 @@ details.edu-collapse > summary:focus-visible {
 /* 极窄屏放开不拆行的片段，避免撑出卡片 */
 @media (max-width: 360px) {
   .edu-nowrap { white-space: normal; }
+}
+
+/* ===== Blog：会议墙报、幻灯片与论文 =====
+   与首页共用顶栏、玻璃卡片和标签；不带侧栏，正文收窄到便于阅读的宽度 */
+.blog-main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0.3rem 2rem 0;
+}
+.blog-intro {
+  font-size: 0.92rem;
+  line-height: var(--lh-prose);
+  color: var(--text-2);
+  margin: -0.15rem 0 1.3rem;
+}
+.blog-intro strong { color: var(--text); font-weight: 600; }
+
+.post {
+  padding: 1.3rem 1.45rem 1.35rem;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+  border: 1px solid var(--glass-edge);
+  border-radius: 16px;
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  scroll-margin-top: 92px;
+}
+.post + .post { margin-top: 1rem; }
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-3);
+  line-height: var(--lh-meta);
+  font-variant-numeric: tabular-nums;
+}
+.post-meta > .pm-item + .pm-item::before {
+  content: '·';
+  margin-right: 0.5rem;
+  color: var(--text-3);
+}
+.post-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: var(--lh-title);
+  color: var(--text);
+  margin: 0.3rem 0 0.55rem;
+}
+.post-tags { margin-bottom: 0.85rem; }
+.post-body p {
+  font-size: 0.93rem;
+  line-height: var(--lh-prose);
+  color: var(--text);
+  margin-bottom: 0.65rem;
+}
+.post-body p:last-child { margin-bottom: 0; }
+
+.post-figs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 1.05rem 0 0.2rem;
+}
+.post-figs figure { margin: 0; min-width: 0; }
+.post-figs a {
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--glass-line);
+  background: #fff;
+}
+.post-figs img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+.post-figs a:hover img { transform: scale(1.02); }
+.post-figs .fig-poster img { object-fit: contain; padding: 0.4rem; }
+.post-figs figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-3);
+  line-height: var(--lh-meta);
+}
+
+.file-list {
+  list-style: none;
+  border-top: 1px solid var(--glass-line);
+}
+.file-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--glass-line);
+}
+.file-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: var(--lh-row);
+}
+.file-name.is-pdf::before { margin-right: 0.45rem; }
+.file-size {
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.file-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.file-links a {
+  display: inline-block;
+  padding: 0.22rem 0.8rem;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  color: var(--text-2);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.file-links a:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.file-links a.file-dl {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: none;
+}
+.file-links a.file-dl:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.post-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.3rem;
+  margin-top: 0.95rem;
+  font-size: 0.85rem;
+}
+.post-links a {
+  color: var(--link);
+  text-decoration: none;
+}
+.post-links a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 960px) {
+  .blog-main { padding: 0; }
+}
+@media (max-width: 560px) {
+  .post { padding: 1.1rem 1.05rem 1.15rem; }
+  .post-figs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; }
+  .post-figs .fig-poster { grid-column: 1 / -1; }
+  .post-figs .fig-poster a { aspect-ratio: 6 / 5; }
+  .file-list li { flex-direction: column; align-items: flex-start; }
 }
