@@ -5,10 +5,10 @@
    ============================================================ */
 
 :root {
-  /* ===== Semantic color palette (Navy + 金棕 accent) ===== */
-  --color-primary:       #1f3a5f;             /* deep navy — links / buttons / emphasis */
-  --color-primary-dark:  #152a46;             /* darker navy — hover state */
-  --color-primary-light: rgba(31, 58, 95, 0.09); /* tinted navy fill */
+  /* ===== Semantic color palette (Sky blue + 金棕 accent) ===== */
+  --color-primary:       #3d8bd9;             /* sky blue — bars / chips / emphasis */
+  --color-primary-dark:  #2c70b8;             /* deeper sky blue — link text */
+  --color-primary-light: rgba(61, 139, 217, 0.09); /* tinted sky blue fill */
   --color-accent:        #8A5A12;             /* burnished gold-brown (program / IF chips only) */
 
   --color-text:          #161c26;   /* body text — near-black with a cool blue undertone */
@@ -20,7 +20,7 @@
   --color-border:        #e2e6ed;   /* borders / dividers */
   --color-border-strong: #c0c6d0;   /* hover / emphasized border */
 
-  /* ===== Neutral fills (ink at low alpha, so they pick up the navy undertone
+  /* ===== Neutral fills (ink at low alpha, so they pick up the sky blue undertone
      of whatever sits behind them) — chips, filter bars, chevron buttons ===== */
   --color-fill:        rgba(22, 28, 38, 0.055);
   --color-fill-strong: rgba(22, 28, 38, 0.09);
@@ -30,12 +30,12 @@
   --glass-bg:           rgba(255, 255, 255, 0.52);
   --glass-bg-hover:     rgba(255, 255, 255, 0.64);
   --glass-edge:         rgba(255, 255, 255, 0.62);
-  --glass-line:         rgba(31, 58, 95, 0.14);
+  --glass-line:         rgba(61, 139, 217, 0.14);
   --glass-blur:         14px;
   --glass-highlight:    inset 0 1px 0 rgba(255, 255, 255, 0.78);
-  --glass-shadow:       0 10px 30px -18px rgba(31, 58, 95, 0.30),
+  --glass-shadow:       0 10px 30px -18px rgba(61, 139, 217, 0.30),
                         0 1px 3px -1px rgba(22, 28, 38, 0.06);
-  --glass-shadow-hover: 0 18px 44px -20px rgba(31, 58, 95, 0.38),
+  --glass-shadow-hover: 0 18px 44px -20px rgba(61, 139, 217, 0.38),
                         0 2px 6px -2px rgba(22, 28, 38, 0.08);
 
   /* ===== Aliases (existing CSS / HTML keeps using these names) ===== */
@@ -48,8 +48,8 @@
   --text-2:     var(--color-text-muted);
   --text-3:     var(--color-text-subtle);
 
-  --link:       var(--color-primary);
-  --link-hover: var(--color-primary-dark);
+  --link:       var(--color-primary-dark);
+  --link-hover: #235a94;
   --accent:     var(--color-primary);
 
   --font-serif: 'Times New Roman', 'Noto Serif SC', 'Songti SC', 'STSong', serif;
@@ -91,7 +91,7 @@ body {
 /* ===== Ambient backdrop, three layers under the glass =====
    1. body::before (fixed)  — omnipresent soft light pools + fine grain,
       so every glass surface always has something to blur and refract
-   2. body::after (scrolls) — a navy/gold aurora crowning the hero,
+   2. body::after (scrolls) — a sky blue/gold aurora crowning the hero,
       fading back to white where reading begins  ===== */
 body::before {
   content: '';
@@ -101,9 +101,9 @@ body::before {
   pointer-events: none;
   background:
     url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type='linear'%20slope='0.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width='160'%20height='160'%20filter='url(%23n)'/%3E%3C/svg%3E"),
-    radial-gradient(38% 34% at 14% 8%,  rgba(31, 58, 95, 0.11),   transparent 68%),
+    radial-gradient(38% 34% at 14% 8%,  rgba(61, 139, 217, 0.11),   transparent 68%),
     radial-gradient(30% 30% at 88% 5%,  rgba(176, 120, 36, 0.09), transparent 70%),
-    radial-gradient(36% 36% at 80% 62%, rgba(31, 58, 95, 0.08),   transparent 72%),
+    radial-gradient(36% 36% at 80% 62%, rgba(61, 139, 217, 0.08),   transparent 72%),
     radial-gradient(28% 28% at 6% 76%,  rgba(176, 120, 36, 0.07), transparent 70%),
     radial-gradient(32% 28% at 48% 36%, rgba(96, 140, 110, 0.08), transparent 75%);
   animation: lg-drift 70s ease-in-out infinite alternate;
@@ -118,10 +118,10 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(52% 42% at 18% -6%, rgba(31, 58, 95, 0.16),   transparent 70%),
+    radial-gradient(52% 42% at 18% -6%, rgba(61, 139, 217, 0.16),   transparent 70%),
     radial-gradient(44% 38% at 85% -4%, rgba(176, 120, 36, 0.14), transparent 72%),
     radial-gradient(60% 46% at 55% 8%,  rgba(96, 140, 110, 0.10), transparent 75%),
-    linear-gradient(180deg, rgba(31, 58, 95, 0.05) 0%, transparent 60%);
+    linear-gradient(180deg, rgba(61, 139, 217, 0.05) 0%, transparent 60%);
   -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
   mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
 }
@@ -242,7 +242,7 @@ html.lg-lens .top-nav {
   border-radius: 2px;
   display: inline-block;
 }
-.brand:hover { color: var(--color-primary); }
+.brand:hover { color: var(--color-primary-dark); }
 .brand:hover::before { background: var(--color-primary-dark); }
 .nav-right {
   display: flex;
@@ -267,7 +267,7 @@ html.lg-lens .top-nav {
   line-height: 1.3;
 }
 .nav-links a:hover {
-  background: rgba(31, 58, 95, 0.10);
+  background: rgba(61, 139, 217, 0.10);
   color: var(--color-text);
   text-decoration: none;
 }
@@ -276,7 +276,7 @@ html.lg-lens .top-nav {
    the active item only tints its text */
 .nav-active {
   background: transparent !important;
-  color: var(--color-primary) !important;
+  color: var(--color-primary-dark) !important;
   font-weight: 600;
 }
 .nav-active:hover {
@@ -294,7 +294,7 @@ html.lg-lens .top-nav {
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95),
-              0 3px 10px -3px rgba(31, 58, 95, 0.35);
+              0 3px 10px -3px rgba(61, 139, 217, 0.35);
   pointer-events: none;
   opacity: 0;
   z-index: 0;
@@ -317,7 +317,7 @@ html.lg-lens .top-nav {
   gap: 0.2rem;
   padding: 0.24rem 0.62rem;
   background: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(31, 58, 95, 0.22);
+  border: 1px solid rgba(61, 139, 217, 0.22);
   border-radius: 999px;
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -327,10 +327,10 @@ html.lg-lens .top-nav {
   letter-spacing: 0.02em;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
-.lang-toggle:hover { border-color: var(--color-primary); color: var(--color-primary); }
-.lt-sep { color: rgba(31, 58, 95, 0.35); margin: 0 0.1rem; }
-html[data-lang="en"] .lt-en { color: var(--color-primary); font-weight: 600; }
-html[data-lang="zh"] .lt-zh { color: var(--color-primary); font-weight: 600; }
+.lang-toggle:hover { border-color: var(--color-primary); color: var(--color-primary-dark); }
+.lt-sep { color: rgba(61, 139, 217, 0.35); margin: 0 0.1rem; }
+html[data-lang="en"] .lt-en { color: var(--color-primary-dark); font-weight: 600; }
+html[data-lang="zh"] .lt-zh { color: var(--color-primary-dark); font-weight: 600; }
 
 /* ===== Page layout: sidebar + content ===== */
 .page-outer {
@@ -370,7 +370,7 @@ html[data-lang="zh"] .lt-zh { color: var(--color-primary); font-weight: 600; }
   display: block;
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 14px;
-  box-shadow: 0 6px 18px -10px rgba(31, 58, 95, 0.35);
+  box-shadow: 0 6px 18px -10px rgba(61, 139, 217, 0.35);
   margin-bottom: 0.9rem;
 }
 .sb-name {
@@ -600,7 +600,7 @@ main {
   font-weight: 600;
   font-size: 1.35rem;
   line-height: 1.3;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   margin-bottom: 1rem;
   letter-spacing: -0.005em;
 }
@@ -706,7 +706,7 @@ main {
   height: auto;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 6px 16px -10px rgba(31, 58, 95, 0.35);
+  box-shadow: 0 6px 16px -10px rgba(61, 139, 217, 0.35);
 }
 
 /* ===== Sub-section headings (e.g. Under Review / Journals) ===== */
@@ -787,7 +787,7 @@ details.pub > summary {
   transition: background-color 0.18s ease;
 }
 details.pub > summary:hover {
-  background-color: rgba(31, 58, 95, 0.025);
+  background-color: rgba(61, 139, 217, 0.025);
 }
 details.pub[open] > summary {
   border-bottom: 1px solid var(--color-border);
@@ -850,9 +850,9 @@ details.pub-story > summary::before {
 details.pub-story[open] > summary { color: var(--color-text); }
 details.pub-story[open] > summary::before {
   transform: rotate(90deg);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
-details.pub-story > summary:hover { color: var(--color-primary); }
+details.pub-story > summary:hover { color: var(--color-primary-dark); }
 details.pub-story > .pub-extra-story {
   margin: 0.4rem 0 0.8rem;
   padding: 0.7rem 0.9rem;
@@ -868,12 +868,12 @@ details.pub-story > .pub-extra-story strong {
   font-style: normal;
   color: var(--color-text);
 }
-/* author block: highlight my own name as a rounded navy chip */
+/* author block: highlight my own name as a rounded sky blue chip */
 .pub-authors strong {
   display: inline-block;
   padding: 0.04rem 0.45rem;
   background: var(--color-primary-light);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   border: 1px solid var(--color-primary-light);
   border-radius: 4px;
   font-weight: 700;
@@ -889,7 +889,7 @@ details.pub-story > .pub-extra-story strong {
   width: 170px;
   border-radius: 10px;
   overflow: hidden;
-  background: linear-gradient(135deg, #1f3a5f 0%, #0B2E1E 100%);
+  background: linear-gradient(135deg, #3d8bd9 0%, #0B2E1E 100%);
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -997,10 +997,10 @@ details.pub-extra > summary::before {
 details.pub-extra[open] > summary { color: var(--color-text); }
 details.pub-extra[open] > summary::before {
   transform: rotate(90deg);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
-details.pub-extra > summary:hover { color: var(--color-primary); }
-details.pub-extra > summary:hover::before { color: var(--color-primary); }
+details.pub-extra > summary:hover { color: var(--color-primary-dark); }
+details.pub-extra > summary:hover::before { color: var(--color-primary-dark); }
 .pub-extra-body {
   margin-top: 0.5rem;
   padding: 0.7rem 0.95rem;
@@ -1252,7 +1252,7 @@ details.proj > summary {
   transition: background-color 0.18s ease;
 }
 details.proj > summary:hover {
-  background-color: rgba(31, 58, 95, 0.025);
+  background-color: rgba(61, 139, 217, 0.025);
 }
 details.proj > summary > .proj-title,
 details.proj > summary > .proj-meta {
@@ -1315,20 +1315,20 @@ details.proj > .proj-outputs {
   vertical-align: 0.08em;
   white-space: nowrap;
 }
-/* —— 级别：国家级实心，省部级浅海军蓝，校级浅灰 —— */
+/* —— 级别：国家级实心，省部级浅晴空蓝，校级浅灰 —— */
 .tag-natl {
   color: #ffffff;
   background: var(--color-primary);
 }
 .tag-prov {
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   background: var(--color-primary-light);
 }
 .tag-univ {
   color: var(--color-text-muted);
   background: var(--color-fill);
 }
-/* —— 强调：SCI 实心海军蓝；重点/面上/IF 金棕 —— */
+/* —— 强调：SCI 实心晴空蓝；重点/面上/IF 金棕 —— */
 .tag-sci {
   color: #ffffff;
   background: var(--color-primary);
@@ -1630,7 +1630,7 @@ details.honor-detail[open] > summary::after {
   display: inline-block;
   padding: 0.02rem 0.4rem;
   background: var(--color-primary-light);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   border: 1px solid var(--color-primary-light);
   border-radius: 4px;
   font-weight: 700;
@@ -1649,7 +1649,7 @@ details.honor-detail[open] > summary::after {
   display: inline-block;
   padding: 0.04rem 0.5rem;
   background: var(--color-primary-light);
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   border-radius: 4px;
   font-family: var(--font-sans);
   font-size: 0.7rem;
@@ -1728,7 +1728,7 @@ details.edu-collapse > summary:hover .edu-toggle { background-color: var(--color
   border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.78);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px -4px rgba(31, 58, 95, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 8px -4px rgba(61, 139, 217, 0.25);
   overflow: hidden;
   user-select: none;
 }
@@ -1903,7 +1903,7 @@ details.collapse > .honors-list { margin-top: 0; }
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1.05rem;
-  background: rgba(31, 58, 95, 0.92);
+  background: rgba(61, 139, 217, 0.92);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -1913,7 +1913,7 @@ details.collapse > .honors-list { margin-top: 0; }
   font-size: 0.88rem;
   transition: all 0.15s ease;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
-              0 10px 24px -12px rgba(31, 58, 95, 0.6);
+              0 10px 24px -12px rgba(61, 139, 217, 0.6);
 }
 .cv-btn:hover {
   background: var(--color-primary-dark);
@@ -1921,7 +1921,7 @@ details.collapse > .honors-list { margin-top: 0; }
   border-color: rgba(255, 255, 255, 0.35);
   transform: translateY(-1px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
-              0 14px 30px -14px rgba(31, 58, 95, 0.7);
+              0 14px 30px -14px rgba(61, 139, 217, 0.7);
 }
 .cv-tag {
   color: var(--text-3);
@@ -1960,7 +1960,7 @@ details.collapse > .honors-list { margin-top: 0; }
 .site-foot {
   margin-top: 4rem;
   padding: 2.2rem 0 2.5rem;
-  border-top: 1px solid rgba(31, 58, 95, 0.12);
+  border-top: 1px solid rgba(61, 139, 217, 0.12);
   text-align: center;
   color: var(--color-text-subtle);
 }
@@ -1968,7 +1968,7 @@ details.collapse > .honors-list { margin-top: 0; }
   font-family: var(--font-serif);
   font-style: normal;
   font-size: 1.15rem;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   margin-bottom: 1rem;
   letter-spacing: 0.01em;
 }
@@ -1996,7 +1996,7 @@ details.collapse > .honors-list { margin-top: 0; }
   font-size: 0.82rem;
 }
 .foot-contact a {
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   text-decoration: none;
   border-bottom: 1px dotted var(--color-border-strong);
 }
@@ -2033,7 +2033,7 @@ details.collapse > .honors-list { margin-top: 0; }
   font-family: var(--font-serif);
   font-weight: 600;
   font-size: 1rem;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   margin-bottom: 0.55rem;
   line-height: 1.3;
 }
@@ -2071,7 +2071,7 @@ details.edu-collapse > summary:focus-visible {
 }
 
 /* ===== Selection ===== */
-::selection { background: rgba(31, 58, 95, 0.18); color: var(--color-text); }
+::selection { background: rgba(61, 139, 217, 0.18); color: var(--color-text); }
 
 /* ===== Responsive =====
    ≥1101     两栏：左侧名片常驻，右侧正文
